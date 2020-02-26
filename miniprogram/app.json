@@ -15,12 +15,34 @@
     "pages/im/room/room"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+    "navigationStyle":"custom",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "tabBar": {
+    "selectedColor": "#333333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "抽奖",
+        "iconPath": "images/icon_home_gray.png",
+        "selectedIconPath": "images/icon_home_light.png"
+      },
+      {
+        "pagePath": "pages/im/im",
+        "text": "发起抽奖",
+        "iconPath": "images/icon_initiate_gray.png",
+        "selectedIconPath": "images/icon_initiate_light.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "images/icon_owner_gray.png",
+        "selectedIconPath": "images/icon_owner_light.png"
+      }
+    ]
+  }
 }

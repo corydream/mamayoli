@@ -1,0 +1,30 @@
+.outer-home{
+    background-color: #F66400;
+    height: 350rpx;
+    color: #fff;
+    font-size: 40rpx;
+    padding: 100rpx 32rpx 0;
+    font-family:SourceHanSansCN-Bold,SourceHanSansCN;
+}
+.title-second{
+    font-size: 20rpx;
+    font-size: PingFangSC-Regular,PingFang SC;
+}
+.heart-layer{
+    margin-top: 48rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.heart-layer image{
+    width: 90rpx;
+    height: 90rpx;
+    margin-right: 16rpx;
+    vertical-align: -6rpx;
+}
+.heart-layer text{
+    font-size: 64rpx;
+}
+.heart-layer .info{
+    font-size: 28rpx;
+    margin-top: 50rpx;
+}

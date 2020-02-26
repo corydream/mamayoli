@@ -7,66 +7,53 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+    nav: [{
+      id: 0,
+      name: '每日精选',
+      active: true
+    }, {
+      id: 1,
+      name: '热门福利',
+      active: false
+    }],
+    currentTab: 0,
+    mock_list: [{
+      advance: '雅诗兰黛',
+      name: '雅诗兰黛粉底精华眼霜',
+      date: '03月31日',
+      time: '18:00'
+    }, {
+      advance: '雅诗兰黛',
+      name: '雅诗兰黛粉底精华眼霜',
+      date: '03月31日',
+      time: '18:00'
+    }]
   },
 
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
+  onLoad: function () {
 
+  },
+  onGotUserInfo: function (e) {
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
+    console.log(e.detail.errMsg)
+    console.log(e.detail.userInfo)
+    console.log(e.detail.rawData)
+  },
+  navTab: function (e) {
+    this.data.nav.map(v => v.id === e.currentTarget.dataset.index ? v.active = true : v.active = false)
+    this.setData({
+      nav: this.data.nav,
+      currentTab: e.currentTarget.dataset.index
     })
+    console.log(this.data.currentTab);
   },
-
-  onGetUserInfo: function(e) {
-    if (!this.data.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
-  },
-
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
-  },
-
   // 上传图片
   doUpload: function () {
     // 选择图片
@@ -81,7 +68,7 @@ Page({
         })
 
         const filePath = res.tempFilePaths[0]
-        
+
         // 上传图片
         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
@@ -93,7 +80,7 @@ Page({
             app.globalData.fileID = res.fileID
             app.globalData.cloudPath = cloudPath
             app.globalData.imagePath = filePath
-            
+
             wx.navigateTo({
               url: '../storageConsole/storageConsole'
             })

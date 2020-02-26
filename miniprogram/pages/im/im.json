@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "数据库指引",
+  "navigationStyle":"default",
+  "navigationBarTextStyle":"black",
   "usingComponents": {}
 }
