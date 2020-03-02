@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="heart-header">
+    <image class="" src="../../images/icon_heart_pool.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <text class="number" selectable="false">188</text>
+    <text class="info">我的心愿卡</text>
+  </view>
+  <van-cell-group style="width:100%;position:relative">
+    <button class="share" open-type="share" hover-class="none"></button>
+    <van-cell center title="邀请好友抽奖" label="每天限送10张心愿卡" value="去分享 >"/>
+    <van-cell center title="每日登录送" label="每日登录限送3张心愿卡" border="{{ false }}" />
+  </van-cell-group>
+  <button class="bottom-button" bindtap="gohome">免费抽奖</button>
+</view>

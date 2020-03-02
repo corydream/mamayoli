@@ -14,6 +14,7 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 500,
+    show: false,
     nav: [{
       id: 0,
       name: '每日精选',
@@ -38,13 +39,44 @@ Page({
   },
 
   onLoad: function () {
-
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://101.132.68.233/user/login',
+            data: {
+              code: res.code
+            },
+            header: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            method: 'post'
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+  onClose: function () {
+    this.setData({ show: false });
   },
   onGotUserInfo: function (e) {
     // 获取用户信息
     console.log(e.detail.errMsg)
     console.log(e.detail.userInfo)
     console.log(e.detail.rawData)
+  },
+  goMerchant: function (e) {
+
+  },
+  goHeart: function (e) {
+    console.log(this)
+
+    wx.navigateTo({
+      url: '../heartCard/heartCard'
+    })
   },
   navTab: function (e) {
     this.data.nav.map(v => v.id === e.currentTarget.dataset.index ? v.active = true : v.active = false)

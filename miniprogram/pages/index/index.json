@@ -2,6 +2,6 @@
 {
   "usingComponents": {
     "my-component": "/components/header/header",
-    "van-button": "/miniprogram_npm/vant-weapp/button/index"
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
   }
 }

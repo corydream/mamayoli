@@ -1,0 +1,60 @@
+/* pages/databaseGuide/databaseGuide.wxss */
+@import "/miniprogram_npm/vant-weapp/cell/index.wxss";
+@import "/miniprogram_npm/vant-weapp/cell-group/index.wxss";
+
+.container {
+  width           : 100%;
+  background-color: #fff;
+  height          : 100vh;
+  position        : relative;
+}
+
+.heart-header {
+  height         : 525rpx;
+  width          : 100%;
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+}
+
+.heart-header image {
+  width        : 160rpx;
+  height       : 160rpx;
+  margin-bottom: 36rpx;
+}
+
+.heart-header .number {
+  color        : #333;
+  font-size    : 64rpx;
+  margin-bottom: 32rpx;
+}
+
+.heart-header .info {
+  color    : #666;
+  font-size: 28rpx;
+}
+
+.bottom-button {
+  position     : absolute;
+  right        : 0;
+  bottom       : 80rpx;
+  left         : 0;
+  margin       : auto;
+  width        : 686rpx;
+  height       : 100rpx;
+  background   : rgba(246, 100, 0, 1);
+  border-radius: 50px;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 40rpx;
+}
+.share{
+  width: 100%;
+  height: 130rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}

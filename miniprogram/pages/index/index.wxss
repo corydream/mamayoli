@@ -163,3 +163,28 @@ page {
   color: #fff;
   font-size: 28rpx;
 }
+
+.popup-layout{
+  width: 520rpx;
+  height: 622rpx;
+  border-radius: 40rpx;
+  position: relative;
+}
+.popup-image{
+  width: 520rpx;
+  height: 622rpx;  
+}
+.close{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  left:0;
+}
+.getinfo-btn{
+  position: absolute;
+  bottom: 0;
+  width: 520rpx;
+  height: 160rpx;
+  left:0;
+}
