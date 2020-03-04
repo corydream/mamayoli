@@ -1,10 +1,10 @@
 <!-- index.wxml -->
 <view class="container">
-  <my-component style="width:100%" />
+  <my-component style="width:100%" heartNum='{{userData.totalWishCard}}' />
   <view class="category">
     <view class="g-left" bindtap="goHeart">
       <image class="g-image" src="../../images/icon 领心愿卡.png" />
-      <view> 
+      <view>
         <text class="g-title">领心愿卡</text>
         <text class="g-info">参与更多抽奖</text>
       </view>
@@ -20,9 +20,9 @@
   </view>
   <view class="swiper-view">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
-      <block wx:for="{{background}}" wx:key="*this">
+      <block wx:for="{{bannerList}}" wx:key="*this">
         <swiper-item class="swiper-item-list">
-          <view class="swiper-item {{item}}">{{item}}</view>
+          <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         </swiper-item>
       </block>
     </swiper>
@@ -34,15 +34,15 @@
     </view>
   </view>
   <!-- 详情  list -->
-  <view class="list" wx:for="{{mock_list}}" wx:key="index">
+  <view class="list" wx:for="{{currentList}}" wx:key="index">
     <view class="list-image">
-      <image class="" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+      <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="list-ctx">
-      <view class="adv">{{item.advance}}  赞助</view>
+      <view class="adv">{{item.provider}}  赞助</view>
       <view class="title">{{item.name}}</view>
-      <view class="time">{{item.date}}  {{item.time}}  自动开奖</view>
-      <view class="btn">点击抽奖</view>
+      <view class="time">{{item.currTime}} 自动开奖</view>
+      <button class="btn" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">点击抽奖</button>
     </view>
   </view>
   <!-- 上传图片 -->
@@ -60,4 +60,13 @@
     <button class="getinfo-btn" hover-class="none" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
     <image class="popup-image" src="../../images/layout.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
+  <van-popup position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">
+    <view class="close" bindtap="closeHomeLoginLayout"></view>
+    <!-- 获取用户信息 -->
+    <button class="getinfo-login-btn" hover-class="none" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+      马上登录
+    </button>
+    <image class="popup-login-image" src="../../images/home_login.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+  </van-popup>
+  <!-- showLoginLayer -->
 </view>

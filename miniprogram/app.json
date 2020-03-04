@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/index/detail/detail",
     "pages/index/index",
-    "pages/im/im"
+    "pages/im/im",
+    "pages/heartCard/heartCard"
   ],
   "window": {
-    "navigationStyle": "custom",
+    "navigationStyle": "default",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

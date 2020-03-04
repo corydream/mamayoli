@@ -1,2 +1,1 @@
-export const API_ROOT = 'https://tiba.ren/exam/'; 
-// export const API_ROOT = 'http://dev-frontend-oj.banggood.cn/backend/exam/'; 
+export const API_ROOT = 'http://101.132.68.233'; 

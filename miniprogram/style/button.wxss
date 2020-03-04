@@ -1,0 +1,53 @@
+.btn {
+    width        : 176rpx;
+    height       : 72rpx;
+    background   : rgba(246, 100, 0, 1);
+    border-radius: 40rpx;
+    text-align   : center;
+    line-height  : 72rpx;
+    color        : #fff;
+    font-size    : 28rpx;
+}
+
+.bottom-btn {
+    width        : 686rpx;
+    height       : 100rpx;
+    line-height  : 100rpx;
+    text-align   : center;
+    color        : #fff;
+    font-size    : 40rpx;
+    background   : rgba(246, 100, 0, 1);
+    border-radius: 50rpx;
+    margin-top   : 60rpx;
+    font-family  : PingFangSC-Medium, PingFang SC;
+}
+
+.bottom-share-btn {
+    width        : 684rpx;
+    height       : 98rpx;
+    line-height  : 98rpx;
+    text-align   : center;
+    color        : rgba(246, 100, 0, 1);
+    font-size    : 40rpx;
+    background   : #fff;
+    border       : 1rpx solid rgba(246, 100, 0, 1);
+    border-radius: 50rpx;
+    margin-top   : 60rpx;
+    font-family  : PingFangSC-Medium, PingFang SC;
+}
+
+.hover-button {
+    background: rgba(207, 76, 0, 1);
+}
+
+.after-button {
+    background-color: #999;
+}
+
+.end-button {
+    background-color: #666;
+}
+
+.end-hover-button {
+    background-color: #444;
+}

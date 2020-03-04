@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  font-family: PingFangSC-Semibold, PingFang SC;
 } 
 
 button {
@@ -24,6 +25,7 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  font-family: PingFangSC-Semibold, PingFang SC;
 }
 
 .userinfo, .uploader, .tunnel {

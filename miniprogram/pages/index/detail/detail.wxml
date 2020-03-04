@@ -1,0 +1,36 @@
+<view class="detail-container" id="Jdetail">
+    <scroll-view scroll-y="true" style="height: calc(100vh - 212rpx)" bindscrolltoupper="upper" bindscrolltolower="lower">
+        <image class="detail-header" src="{{currInfos.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="d-item">
+            <view class="d-adv">{{currInfos.provider}}  赞助</view>
+            <view class="d-item-item" wx:for="{{awardList}}" wx:key="index">
+                <view class="d-level" wx:if="{{awardList.length>1}}">{{item.level}}</view>
+                <view class="d-tit">{{item.name}} X {{item.number}}</view>
+            </view>
+            <view class="d-time">
+                <text>{{currInfos.currTime}} 自动开奖</text>
+                <button class="d-share" open-type="share" hover-class="none">分享</button>
+            </view>
+        </view>
+        <view class="d-flow">
+            <image wx:if="{{currInfos.attractingType == 'xcx'}}" class="d-image" src="../../../images/xcx_flow.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <image wx:if="{{currInfos.attractingType == 'gzh'}}" class="d-image" src="../../../images/account_flow.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <image wx:if="{{currInfos.attractingType == 'wxh'}}" class="d-image" src="../../../images/number_flow.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <view class="d-type">
+                <view class="d-type-name">小程序名称</view>
+                <view  wx:if="{{currInfos.attractingType == 'xcx'}}" data-type="xcx" class="d-type-btn" bindtap="attractType">去体验 <van-icon class="van-icons" name="arrow" color="#fff" size="32rpx"/></view>
+                <!-- <view   data-type="gzh" class="d-type-btn" bindtap="attractType"></view> -->
+                <button  wx:if="{{currInfos.attractingType == 'gzh'}}" data-type="gzh" class="d-type-btn" open-type='contact' show-message-card="{{true}}" send-message-title="233" send-message-path="当前分享路径">去了解 <van-icon class="van-icons" name="arrow" color="#fff" size="32rpx"/></button>
+                <button  wx:if="{{currInfos.attractingType == 'wxh'}}" class="d-type-btn" open-type='contact' show-message-card="{{true}}" send-message-title="233" send-message-path="当前分享路径">加好友 <van-icon class="van-icons" name="plus" color="#fff" size="32rpx"/></button>
+                <!-- <view  wx:if="{{currInfos.attractingType == 'wxh'}}" data-type="wxh" class="d-type-btn" bindtap="attractType">加好友 <van-icon class="van-icons" name="plus" color="#fff" size="32rpx"/></view> -->
+            </view>
+        </view>
+        <view class="d-ctx">{{currInfos.detail}}</view>
+    </scroll-view>
+    <view class="bottom">
+        <!-- <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" bindtap="lucky">免费抽奖</button> -->
+        <!-- <button class="bottom-share-btn" open-type="share" lang="zh_CN">分享给好友</button> -->
+        <!-- <button class="bottom-btn end-button" hover-class="end-hover-button" lang="zh_CN" bindtap="findLotterRes">已结束，查看中奖结果</button> -->
+        <button class="bottom-btn after-button" hover-class="none" lang="zh_CN">来晚了，抽奖已结束</button>
+    </view>
+</view>

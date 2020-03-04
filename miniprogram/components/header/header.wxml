@@ -5,7 +5,7 @@
       <view class="heart-layer">
          <view class="heart">
             <image src="../../images/icon_heart_gray.png" alt="" />
-            <text>18</text>
+            <text>{{heartNum}}</text>
          </view>
          <view class="info">抽奖说明 ></view>
       </view>

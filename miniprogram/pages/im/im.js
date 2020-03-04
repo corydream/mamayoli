@@ -6,6 +6,7 @@ Page({
 
   onLoad: function (options) {
     if (app.globalData.openid) {
+      return
       this.setData({
         openid: app.globalData.openid
       })

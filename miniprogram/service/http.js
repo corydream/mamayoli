@@ -11,7 +11,7 @@ export default function() {
         defaultHeader: {
             'withCredentials': 'true',
             'content-type': 'application/json',
-            // 'Cookie': 'SESSION=' + token.get() 
+            'token': token.get() 
         }
     }, intcept ? intcept : () => { console.log('intcept不存在') })
 }
