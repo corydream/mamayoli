@@ -1,7 +1,7 @@
 <view class="container">
   <view class="heart-header">
     <image class="" src="../../images/icon_heart_pool.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-    <text class="number" selectable="false">188</text>
+    <text class="number" selectable="false">{{cards}}</text>
     <text class="info">我的心愿卡</text>
   </view>
   <van-cell-group style="width:100%;position:relative">

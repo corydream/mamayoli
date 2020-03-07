@@ -1,0 +1,44 @@
+<view class="user-center">
+  <view class="avatar">
+    <view class="avatar-header">
+      <image class="avatar-image" src="{{userData.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+      <text class="avatar-name">{{userData.nickName}}</text>
+    </view>
+    <view class="center-item">
+      <view>
+        <text class="item-title">101</text>
+        <text class="item-ctx">累计收集心愿</text>
+      </view>
+      <view>
+        <text class="item-title">56</text>
+        <text class="item-ctx">抽奖次数</text>
+      </view>
+      <view>
+        <text class="item-title">0</text>
+        <text class="item-ctx">中奖情况</text>
+      </view>
+    </view>
+  </view>
+  <!-- 内容部分 -->
+  <view class="user-ctx">
+    <view class="user-item">
+      <view>
+        <image class="item-image" src="../../images/gray-lottery.png" />
+        <text class="item-info">抽奖记录</text>
+      </view>
+      <view>
+        <image class="item-image" src="../../images/gray-config.png" />
+        <text class="item-info">设置</text>
+      </view>
+      <view>
+        <image class="item-image" src="../../images/gray-center.png" />
+        <text class="item-info">商家中心</text>
+      </view>
+    </view>
+    <button class="cooperate">商务合作</button>
+  </view>
+  <view class="produce">
+    <view class="produce-title">触雪出品</view>
+    <view>妈妈酉礼</view>
+  </view>
+</view>

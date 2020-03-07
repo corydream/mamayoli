@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="*this">
         <swiper-item class="swiper-item-list">
-          <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+          <image class="swiper-item-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         </swiper-item>
       </block>
     </swiper>
@@ -56,8 +56,8 @@
   </view> -->
   <van-popup show="{{ show }}" bind:close="onClose" closeable close-icon-position="top-left" custom-class="popup-layout">
     <view class="close" bindtap="onClose"></view>
-    <!-- 获取用户信息 -->
-    <button class="getinfo-btn" hover-class="none" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+    <!-- 心愿卡 -->
+    <button class="getinfo-btn" hover-class="none" bindtap="onClose"></button>
     <image class="popup-image" src="../../images/layout.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
   <van-popup position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">

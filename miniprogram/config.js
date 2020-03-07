@@ -1,1 +1,1 @@
-export const API_ROOT = 'http://101.132.68.233'; 
+export const API_ROOT = 'https://www.ecocyclone.com'; 

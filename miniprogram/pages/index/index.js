@@ -78,7 +78,6 @@ class Index {
   }
   // 获取登陆
   getLogin(obj) {
-    console.log(obj)
     let _this = this;
     const params = {
       nickName: obj.nickName,
@@ -100,11 +99,25 @@ class Index {
               app.globalData.userInfoData = resGetUserInfo.data;
               // 调用商品list
               _this.getList();
+              _this.getHeart();
             })
           })
         }
       }
     })
+  }
+  async getHeart() {
+    const res = await this.ser.getUserInfo('/user/checkIn');
+
+    if (res.data) {
+      this.data.userData.totalWishCard = totalWishCard + res.data;
+      this.setData({
+        userData: this.data.userData,
+        show: true 
+      })
+    } else {
+      this.setData({ show: false });
+    }
   }
   onClose() {
     this.setData({ show: false });
@@ -161,8 +174,9 @@ class Index {
     this.setData({ showLoginLayer: false });
   }
   goHeart() {
+    console.log(this);
     wx.navigateTo({
-      url: '../heartCard/heartCard'
+      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard}`
     })
   }
   navTab(e) {

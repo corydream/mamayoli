@@ -27,9 +27,14 @@ page {
 }
 
 .swiper-item-list {
-  height          : 320rpx;
+  height          : 300rpx;
   border-radius   : 24rpx;
   background-color: #fff;
+  margin: 0 auto;
+}
+.swiper-item-image{
+  /* width: 758rpx; */
+  height: 300rpx;
 }
 
 .swiper-item {

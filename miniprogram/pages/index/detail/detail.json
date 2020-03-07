@@ -1,6 +1,10 @@
 {
-    "navigationBarTitleText": "奖品详情",
-    "usingComponents": {
-      "van-icon":"/miniprogram_npm/vant-weapp/icon/index"
-    }
+  "navigationBarTitleText": "奖品详情",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
   }
+}

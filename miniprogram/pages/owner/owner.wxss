@@ -1,0 +1,105 @@
+.user-center {
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+.avatar {
+  padding         : 112rpx 52rpx 80rpx 32rpx;
+  height          : 420rpx;
+  background-color: #fff;
+}
+
+.avatar-header {
+  padding-left   : 20rpx;
+  display        : flex;
+  justify-content: center;
+  flex-direction : column;
+}
+
+.avatar-image {
+  width        : 160rpx;
+  height       : 160rpx;
+  margin       : 0 auto;
+  border-radius: 50%;
+}
+
+.avatar-name {
+  margin-top   : 30rpx;
+  text-align   : center;
+  margin-bottom: 80rpx;
+  font-size    : 32rpx;
+  font-family  : PingFangSC-Medium, PingFang SC;
+}
+
+.center-item {
+  display        : flex;
+  justify-content: center;
+}
+
+.center-item>view:nth-child(2) {
+  margin-left : 110rpx;
+  margin-right: 138rpx;
+}
+
+.user-item {
+  display        : flex;
+  justify-content: space-between;
+  padding        : 0 30rpx;
+}
+
+.item-title {
+  font-size    : 40rpx;
+  color        : #333;
+  margin-bottom: 20rpx;
+  display      : block;
+  text-align   : center;
+}
+
+.item-ctx {
+  font-size: 28rpx;
+  color    : #666;
+}
+
+.user-ctx {
+  margin-top      : 32rpx;
+  padding         : 55rpx 30rpx 80rpx;
+  background-color: #fff;
+}
+
+.item-info {
+  color     : #333;
+  display   : block;
+  width     : 130rpx;
+  text-align: center;
+}
+
+.item-image {
+  width  : 64rpx;
+  height : 64rpx;
+  display: block;
+  margin : 0 auto 24rpx;
+}
+
+.cooperate {
+  width        : 686rpx;
+  height       : 100rpx;
+  background   : rgba(255, 255, 255, 1);
+  border-radius: 50rpx;
+  border       : 1rpx solid rgba(153, 153, 153, 1);
+  line-height  : 100rpx;
+  text-align   : center;
+  margin-top   : 100rpx;
+}
+
+.produce {
+  height    : 185rpx;
+  text-align: center;
+  font-family  : STSongti-TC-Regular, STSongti-TC;
+  font-size: 24rpx;
+}
+
+.produce-title {
+  margin-top   : 54rpx;
+  margin-bottom: 32rpx;
+  font-size    : 32rpx;
+  color        : rgba(28, 28, 28, 1);
+}

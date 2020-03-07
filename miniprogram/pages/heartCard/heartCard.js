@@ -2,12 +2,15 @@ const app = getApp()
 
 Page({
   data: {
+    cards: 0,
+    openId: ''
   },
 
   onLoad: function (options) {
-    if (app.globalData.openid) {
+    if (app.globalData.userInfoData.openId) {
       this.setData({
-        openid: app.globalData.openid
+        openId: app.globalData.userInfoData.openId,
+        cards: options.num ? options.num : cards
       })
     }
     wx.showShareMenu({
@@ -24,6 +27,11 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
+    }
+    return {
+      title: '妈妈酉礼',
+      path: '/pages/heartCard/heartCard',
+      imageUrl: '../../images/share-image.jpg'
     }
   }
 })
