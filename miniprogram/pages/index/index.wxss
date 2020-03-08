@@ -70,7 +70,7 @@ page {
 .g-image {
   width : 72rpx;
   height: 72rpx;
-  margin: 0 16rpx;
+  margin: 0 24rpx;
 }
 
 .g-title {
