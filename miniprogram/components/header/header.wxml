@@ -1,6 +1,8 @@
 <custom-component>
    <view class='outer-home'>
-      <view class="title-first">妈妈酉礼</view>
+      <view class="title-first">
+         <image class="title-image" src="../../images/logo.png" alt="" />
+      </view>
       <view class="title-second">17:00-19:00 每日福利上线</view>
       <view class="heart-layer">
          <view class="heart">

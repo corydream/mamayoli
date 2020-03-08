@@ -64,12 +64,13 @@ page {
 }
 
 .g-line {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #ddd;
 }
 
 .g-image {
   width : 72rpx;
   height: 72rpx;
+  margin: 0 24rpx;
 }
 
 .g-title {
@@ -77,6 +78,8 @@ page {
   /* font-family: PingFangSC-Medium, PingFang SC; */
   font-weight   : 500;
   display       : block;
+  color: #333;
+  /* margin-bottom: 2rpx; */
 }
 
 .g-info {
@@ -84,6 +87,7 @@ page {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   display    : block;
+  color: #666;
 }
 
 .nav {
@@ -92,6 +96,7 @@ page {
   display  : flex;
   width    : 686rpx;
   height   : 80rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
 }
 
 .nav .nav-item {
@@ -102,6 +107,7 @@ page {
 
 .nav .cur {
   color           : #333;
+  font-weight: bold;
   /* border-bottom: 2px solid #F66400; */
 }
 
@@ -117,9 +123,10 @@ page {
   width        : 686rpx;
   height       : 296rpx;
   background   : rgba(255, 255, 255, 1);
-  border-radius: 24px;
+  border-radius: 24rpx;
   display      : flex;
   margin-bottom: 32rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
 }
 
 .list .list-image {
@@ -129,6 +136,7 @@ page {
 .list .list-image image {
   width  : 306rpx;
   height : 296rpx;
+  border-radius: 24rpx 0 0 24rpx;
   display: block;
 }
 
@@ -150,6 +158,7 @@ page {
   text-overflow: ellipsis;
   white-space  : nowrap;
   margin-bottom: 20rpx;
+  font-weight: bold;
 }
 
 .list-ctx .time {
@@ -184,6 +193,9 @@ page {
   left:0;
 }
 
+.btn-btns{
+  margin: 0;
+}
 .popup-login-layout{
   width: 100%;
   height: 694rpx;

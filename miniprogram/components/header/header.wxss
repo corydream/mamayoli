@@ -1,6 +1,6 @@
 .outer-home{
     background-color: #F66400;
-    height: 350rpx;
+    height: 390rpx;
     color: #fff;
     font-size: 40rpx;
     padding: 100rpx 32rpx 0;
@@ -9,6 +9,11 @@
 .title-second{
     font-size: 20rpx;
     font-size: PingFangSC-Regular,PingFang SC;
+    margin-top: 16rpx;
+}
+.title-image{
+    width: 165rpx;
+    height: 40rpx;
 }
 .heart-layer{
     margin-top: 48rpx;
@@ -19,7 +24,7 @@
     width: 90rpx;
     height: 90rpx;
     margin-right: 16rpx;
-    vertical-align: -6rpx;
+    vertical-align: -9rpx;
 }
 .heart-layer text{
     font-size: 64rpx;
