@@ -14,7 +14,8 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "selectedColor": "#333333",
+    "selectedColor": "#f66400",
+    "color": "#666666",
     "list": [
       {
         "pagePath": "pages/index/index",

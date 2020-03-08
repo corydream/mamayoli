@@ -7,6 +7,7 @@
     line-height  : 72rpx;
     color        : #fff;
     font-size    : 28rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
 }
 
 .bottom-btn {

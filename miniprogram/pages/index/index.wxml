@@ -42,7 +42,7 @@
       <view class="adv">{{item.provider}}  赞助</view>
       <view class="title">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
-      <button class="btn" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">点击抽奖</button>
+      <button class="btn btn-btns" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">点击抽奖</button>
     </view>
   </view>
   <!-- 上传图片 -->

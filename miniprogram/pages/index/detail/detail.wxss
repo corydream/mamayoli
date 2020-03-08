@@ -16,7 +16,7 @@
 }
 
 .d-item {
-    padding: 32rpx 32rpx 64rpx;
+    padding: 32rpx 32rpx 52rpx;
 }
 
 .d-adv {
@@ -69,13 +69,13 @@
     color         : #fff;
     position      : absolute;
     top           : 60rpx;
-    right         : 80rpx;
+    right         : 72rpx;
     align-items   : flex-end;
 }
 
 .d-type-name {
     font-size    : 48rpx;
-    margin-bottom: 26rpx;
+    margin-bottom: 32rpx;
 }
 
 .d-type-btn {
