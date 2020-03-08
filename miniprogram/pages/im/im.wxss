@@ -1,10 +1,8 @@
-/* pages/databaseGuide/databaseGuide.wxss */
+.container {
+  height: 100%;
+}
 
-@import "../../style/guide.wxss";
-
-.guide .counter {
-  margin-top: 50rpx;
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
+.siwper {
+  height: 750rpx;
+  display: block
 }

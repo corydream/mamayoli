@@ -1,13 +1,53 @@
 <view class="container">
-  <!-- 简介 -->
-  <view class="guide">
-    <text class="headline">待开发</text>
-   
-  </view>
-
-  <!-- <view class="uploader">
-    <navigator url="./room/room" open-type="navigate" class="uploader-text">
-      <text>进入聊天室</text>
-    </navigator>
-  </view> -->
+  <swiper class="siwper" current="{{current}}">
+    <swiper-item>
+      <view>第1/3步：设置奖品</view>
+      <view>点击上传图片</view>
+      <view>奖品类型</view>
+      <radio-group bindchange="onPriceTypeChange">
+        <radio value="entity" checked="{{true}}">实物</radio>
+        <radio value="virtual">虚拟物品</radio>
+      </radio-group>
+      <view>奖品名称</view>
+      <input placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput"></input>
+      <view>奖品份数</view>
+      <input placeholder="0-999份" bindinput="bindPriceNumInput"></input>
+      <button bindtap="nextPage">下一步</button>
+    </swiper-item>
+    <swiper-item>
+      <view>第2/3步：设置条件</view>
+      <view>开奖条件</view>
+      <radio-group>
+        <radio checked="true">按时间自动开奖</radio>
+      </radio-group>
+      <view>开奖时间</view>
+      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+        <view class="picker">
+          当前选择: {{time}}
+        </view>
+      </picker>
+      <view>奖品发放方式</view>
+      <radio-group bindchange="onPriceProvideTypeChange">
+        <radio value="address" checked="{{true}}">按收获地址发货</radio>
+        <radio value="contract">让中奖者联系我</radio>
+      </radio-group>
+      <view>发奖人联系方式</view>
+      <input placeholder="发奖人微信id" bindinput="bindPriceContactIdInput"></input>
+      <view>说明(可选)</view>
+      <input placeholder="最多可设置200字符" bindinput="bindDetailInput"></input>
+      <button bindtap="nextPage">下一步</button>
+    </swiper-item>
+    <swiper-item>
+      <view>第3/3步：加粉设置</view>
+      <view>加粉类型</view>
+      <radio-group bindchange="onAttractingTypeChange">
+        <radio value="public" checked="true">公众号</radio>
+        <radio value="weixin">微信号</radio>
+        <radio value="app">小程序</radio>
+      </radio-group>
+      <view>公众号名称</view>
+      <input placeholder="请输入公众号名称" bindinput="bindAttractingWeiXinIdInput"></input>
+      <button bindtap="submit">提交</button>
+    </swiper-item>
+  </swiper>
 </view>
