@@ -1,8 +1,9 @@
 <view class="container">
   <swiper class="siwper" current="{{current}}">
-    <swiper-item>
+    <swiper-item class="swipper-item">
       <view>第1/3步：设置奖品</view>
-      <view>点击上传图片</view>
+      <view class="addpic" bindtap="uploadPrice" wx:if="{{!priceThumbnail}}">点击上传图片</view>
+      <image bindtap="uploadPrice" src="{{priceThumbnail}}" wx:if="{{priceThumbnail}}"></image>
       <view>奖品类型</view>
       <radio-group bindchange="onPriceTypeChange">
         <radio value="entity" checked="{{true}}">实物</radio>
@@ -11,7 +12,7 @@
       <view>奖品名称</view>
       <input placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput"></input>
       <view>奖品份数</view>
-      <input placeholder="0-999份" bindinput="bindPriceNumInput"></input>
+      <input placeholder="1-999份" bindinput="bindPriceNumInput"></input>
       <button bindtap="nextPage">下一步</button>
     </swiper-item>
     <swiper-item>
@@ -31,8 +32,8 @@
         <radio value="address" checked="{{true}}">按收获地址发货</radio>
         <radio value="contract">让中奖者联系我</radio>
       </radio-group>
-      <view>发奖人联系方式</view>
-      <input placeholder="发奖人微信id" bindinput="bindPriceContactIdInput"></input>
+      <view wx:if="{{priceProvideType!='address'}}">发奖人联系方式</view>
+      <image bindtap="uploadProvideImg" src="{{priceContactId}}" wx:if="{{priceProvideType!='address'}}">点击添加图片</image>
       <view>说明(可选)</view>
       <input placeholder="最多可设置200字符" bindinput="bindDetailInput"></input>
       <button bindtap="nextPage">下一步</button>
@@ -45,8 +46,11 @@
         <radio value="weixin">微信号</radio>
         <radio value="app">小程序</radio>
       </radio-group>
-      <view>公众号名称</view>
-      <input placeholder="请输入公众号名称" bindinput="bindAttractingWeiXinIdInput"></input>
+      <view>手机号</view>
+      <input placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
+      <image bindtap="uploadAttractingImg" src="{{attractingPic}}"></image>
+      <view>赞助方</view>
+      <input placeholder="请输入赞助方名称" bindinput="bindAttractingWeiXinIdInput"></input>
       <button bindtap="submit">提交</button>
     </swiper-item>
   </swiper>

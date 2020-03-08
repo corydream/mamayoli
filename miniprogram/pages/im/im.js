@@ -1,45 +1,195 @@
 import IndexService from './im.service';
-
+const indexService = new IndexService()
 Page({
   data: {
     current: 0,
     time: "09:00",
     priceName: "",
     priceNum: 0,
-    priceThumbnail: "",
+    priceThumbnail: "../../images/addpic.jpg",
     priceType: "entity",
     providerName: "",
     detail: "",
     lotteryTime: 0,
     attractingType: "public",
     attractingWeiXinId: "",
-    priceContactId: "",
+    priceContactId: "../../images/addpic.jpg",
     priceProvideType: "address",
-
-    // "priseList": [{
-    //   "level": "first",
-    //   "name": "elizabeth arden",
-    //   "number": 1,
-    //   "thumbnail": "https://mamayouli.oss-cn-hangzhou.aliyuncs.com/price/1.jpg",
-    //   "priceType": "entity"
-    // }],
-    // "activity": {
-    //   "banner": "https://mamayouli.oss-cn-hangzhou.aliyuncs.com/price/1.jpg",
-    //   "providerName": "yuyue",
-    //   "detail": "香水",
-    //   "lotteryTime": 1587350475000,
-    //   "attractingType": "weixin",
-    //   "attractingWeiXinId": "Data_lab",
-    //   "providerWeiXinId": "1235",
-    //   "providerWeiXinDetail": "aabbcc",
-    //   "priceProvideType": "address"
-    // }
+    attractingPic: "../../images/addpic.jpg",
   },
   nextPage: function(e) {
     this.setData({
       current: this.data.current + 1
     })
     console.log(e)
+  },
+  uploadPrice: function(e) {
+    let t = this
+    wx.chooseImage({
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(res)
+        console.log('chooseImage success, temp path is: ', tempFilePaths[0])
+        wx.showLoading({
+          title: '上传中',
+        })
+        indexService
+          .sts()
+          .then(sts => {
+            console.log(sts)
+            wx.uploadFile({
+              url: 'https://' + sts.data.host,
+              filePath: tempFilePaths[0],
+              name: 'file',
+              formData: {
+                name: tempFilePaths[0],
+                key: sts.data.dir + "/${filename}",
+                policy: sts.data.policy,
+                OSSAccessKeyId: sts.data.accessid,
+                success_action_status: "200",
+                signature: sts.data.signature,
+              },
+              success: function(res) {
+                console.log(res)
+                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
+                console.log('chooseImage success, temp path is: ', picUrl)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传成功",
+                  icon: 'success',
+                  duration: 1000
+                })
+                t.setData({
+                  priceThumbnail: picUrl
+                })
+              },
+              fail: function({
+                errMsg
+              }) {
+                console.log('upladImage fail, errMsg is: ', errMsg)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传失败",
+                  duration: 1000
+                })
+              },
+            })
+          })
+
+      }
+    })
+  },
+  uploadProvideImg: function(e) {
+    let t = this
+    wx.chooseImage({
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(res)
+        console.log('chooseImage success, temp path is: ', tempFilePaths[0])
+        wx.showLoading({
+          title: '上传中',
+        })
+        indexService
+          .sts()
+          .then(sts => {
+            console.log(sts)
+            wx.uploadFile({
+              url: 'https://' + sts.data.host,
+              filePath: tempFilePaths[0],
+              name: 'file',
+              formData: {
+                name: tempFilePaths[0],
+                key: sts.data.dir + "/${filename}",
+                policy: sts.data.policy,
+                OSSAccessKeyId: sts.data.accessid,
+                success_action_status: "200",
+                signature: sts.data.signature,
+              },
+              success: function(res) {
+                console.log(res)
+                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
+                console.log('chooseImage success, temp path is: ', picUrl)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传成功",
+                  icon: 'success',
+                  duration: 1000
+                })
+                t.setData({
+                  priceContactId: picUrl
+                })
+              },
+              fail: function({
+                errMsg
+              }) {
+                console.log('upladImage fail, errMsg is: ', errMsg)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传失败",
+                  duration: 1000
+                })
+              },
+            })
+          })
+
+      }
+    })
+  },
+  uploadAttractingImg: function(e) {
+    let t = this
+    wx.chooseImage({
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(res)
+        console.log('chooseImage success, temp path is: ', tempFilePaths[0])
+        wx.showLoading({
+          title: '上传中',
+        })
+        indexService
+          .sts()
+          .then(sts => {
+            console.log(sts)
+            wx.uploadFile({
+              url: 'https://' + sts.data.host,
+              filePath: tempFilePaths[0],
+              name: 'file',
+              formData: {
+                name: tempFilePaths[0],
+                key: sts.data.dir + "/${filename}",
+                policy: sts.data.policy,
+                OSSAccessKeyId: sts.data.accessid,
+                success_action_status: "200",
+                signature: sts.data.signature,
+              },
+              success: function(res) {
+                console.log(res)
+                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
+                console.log('chooseImage success, temp path is: ', picUrl)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传成功",
+                  icon: 'success',
+                  duration: 1000
+                })
+                t.setData({
+                  attractingPic: picUrl
+                })
+              },
+              fail: function({
+                errMsg
+              }) {
+                console.log('upladImage fail, errMsg is: ', errMsg)
+                wx.hideLoading()
+                wx.showToast({
+                  title: "上传失败",
+                  duration: 1000
+                })
+              },
+            })
+          })
+
+      }
+    })
   },
   bindTimeChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -90,6 +240,12 @@ Page({
       attractingWeiXinId: e.detail.value
     })
   },
+
+  bindProviderNameInput: function(e) {
+    this.setData({
+      providerName: e.detail.value
+    })
+  },
   submit: function(e) {
     console.log(this.data)
     new IndexService()
@@ -112,7 +268,22 @@ Page({
         }
       })
       .then(
-        res => console.log(res)
+        res => {
+          console.log(res)
+          if (res.data) {
+            wx.showToast({
+              title: "发布成功,请等待审核",
+              icon: 'success',
+              duration: 1000
+            })
+          } else {
+            wx.showToast({
+              title: "发布失败",
+              duration: 1000
+            })
+          }
+        }
+
       )
   }
 })

@@ -1,9 +1,16 @@
-.container {
-  height: 100%;
+.siwper {
+  display: flex;
+  height: 1200rpx;
+  width: 750rpx;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
 }
 
-.siwper {
-  height: 750rpx;
-  display: block;
+.swipper-item {
+  height: 100%;
   width: 750rpx;
+}
+
+.addpic{
+  height: 50rpx;
 }
