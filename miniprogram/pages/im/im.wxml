@@ -1,5 +1,5 @@
 <view class="container">
-  <swiper class="siwper" current="{{current}}">
+  <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
     <swiper-item class="swipper-item">
       <view>第1/3步：设置奖品</view>
       <view class="addpic" bindtap="uploadPrice" wx:if="{{!priceThumbnail}}">点击上传图片</view>

@@ -17,9 +17,15 @@ Page({
     priceProvideType: "address",
     attractingPic: "../../images/addpic.jpg",
   },
-  nextPage: function(e) {
+  bindSwiperChange: function(e) {
     this.setData({
-      current: this.data.current + 1
+      current: e.detail.current
+    })
+  },
+  nextPage: function(e) {
+    console.log(this.data.current)
+    this.setData({
+      current: this.data.current < 2 ? this.data.current + 1 : 2
     })
     console.log(e)
   },
