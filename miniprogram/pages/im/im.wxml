@@ -1,37 +1,51 @@
 <view class="container">
   <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
     <swiper-item class="swipper-item">
-      <view>第1/3步：设置奖品</view>
-      <view class="addpic" bindtap="uploadPrice" wx:if="{{!priceThumbnail}}">点击上传图片</view>
-      <image bindtap="uploadPrice" src="{{priceThumbnail}}" wx:if="{{priceThumbnail}}"></image>
-      <view>奖品类型</view>
-      <radio-group bindchange="onPriceTypeChange">
-        <radio value="entity" checked="{{true}}">实物</radio>
-        <radio value="virtual">虚拟物品</radio>
-      </radio-group>
-      <view>奖品名称</view>
-      <input placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput"></input>
-      <view>奖品份数</view>
-      <input placeholder="1-999份" bindinput="bindPriceNumInput"></input>
+      <view class="title">第1/3步：设置奖品</view>
+      <image mode='widthFix' bindtap="uploadPrice" src="{{priceThumbnail}}" wx:if="{{priceThumbnail}}"></image>
+      <view class="row">
+        <view class="lable">奖品类型</view>
+        <radio-group class="radio-group" bindchange="onPriceTypeChange" class="content">
+          <radio class="radio" value="entity" checked="{{true}}">实物</radio>
+          <radio class="radio" value="virtual">虚拟物品</radio>
+        </radio-group>
+      </view>
+      <view class="line"></view>
+      <view class="row">
+        <view class="lable">奖品名称 *</view>
+        <input class="content" placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput"></input>
+      </view>
+      <view class="line"></view>
+      <view class="row">
+        <view class="lable">奖品份数 *</view>
+        <input class="content" placeholder="1-999份" bindinput="bindPriceNumInput"></input>
+      </view>
+      <view class="line"></view>
       <button bindtap="nextPage">下一步</button>
     </swiper-item>
     <swiper-item>
-      <view>第2/3步：设置条件</view>
-      <view>开奖条件</view>
-      <radio-group>
-        <radio checked="true">按时间自动开奖</radio>
-      </radio-group>
-      <view>开奖时间</view>
-      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-        <view class="picker">
-          当前选择: {{time}}
-        </view>
-      </picker>
-      <view>奖品发放方式</view>
-      <radio-group bindchange="onPriceProvideTypeChange">
-        <radio value="address" checked="{{true}}">按收获地址发货</radio>
-        <radio value="contract">让中奖者联系我</radio>
-      </radio-group>
+      <view class="title">第2/3步：设置条件</view>
+      <view class="row">
+        <view class="lable">开奖条件</view>
+        <radio-group class="content">
+          <radio checked="true">按时间自动开奖</radio>
+        </radio-group>
+      </view>
+      <view class="row">
+        <view class="lable">开奖时间</view>
+        <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+          <view class="picker content">
+            当前选择: {{time}}
+          </view>
+        </picker>
+      </view>
+      <view class="row">
+        <view>奖品发放方式</view>
+        <radio-group bindchange="onPriceProvideTypeChange">
+          <radio value="address" checked="{{true}}">按收获地址发货</radio>
+          <radio value="contract">让中奖者联系我</radio>
+        </radio-group>
+      </view>
       <view wx:if="{{priceProvideType!='address'}}">发奖人联系方式</view>
       <image bindtap="uploadProvideImg" src="{{priceContactId}}" wx:if="{{priceProvideType!='address'}}">点击添加图片</image>
       <view>说明(可选)</view>
@@ -46,9 +60,9 @@
         <radio value="weixin">微信号</radio>
         <radio value="app">小程序</radio>
       </radio-group>
+      <image bindtap="uploadAttractingImg" src="{{attractingPic}}"></image>
       <view>手机号</view>
       <input placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
-      <image bindtap="uploadAttractingImg" src="{{attractingPic}}"></image>
       <view>赞助方</view>
       <input placeholder="请输入赞助方名称" bindinput="bindAttractingWeiXinIdInput"></input>
       <button bindtap="submit">提交</button>
