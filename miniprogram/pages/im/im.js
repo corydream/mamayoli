@@ -11,7 +11,7 @@ Page({
     providerName: "",
     detail: "",
     lotteryTime: 0,
-    attractingType: "public",
+    attractingType: "公众号",
     attractingWeiXinId: "",
     priceContactId: "../../images/addpic.jpg",
     priceProvideType: "address",
@@ -219,6 +219,7 @@ Page({
     })
   },
   onAttractingTypeChange: function(e) {
+    console.log('onAttractingTypeChange', e)
     console.log('onAttractingTypeChange', e.detail.value)
     this.setData({
       attractingType: e.detail.value
@@ -257,6 +258,12 @@ Page({
   },
   submit: function(e) {
     console.log(this.data)
+    let attractingType = 'weixin'
+    if (this.data.attractingType == '公众号') {
+      attractingType = 'public'
+    } else if (this.data.attractingType == '微信号') {} else {
+      attractingType = 'app'
+    }
     new IndexService()
       .add({
         priseList: [{
@@ -270,7 +277,7 @@ Page({
           "providerName": this.data.providerName,
           "detail": this.data.detail,
           "lotteryTime": 1587350475000,
-          "attractingType": this.data.attractingType,
+          "attractingType": attractingType,
           "attractingWeiXinId": this.data.attractingWeiXinId,
           "priceProvideType": this.data.priceProvideType,
           "priceContactId": this.data.priceContactId
