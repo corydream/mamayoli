@@ -2,12 +2,19 @@ import IndexService from './im.service';
 const indexService = new IndexService()
 Page({
   data: {
+    priceList: [{
+      priceType: "entity",
+      priceName: "",
+      priceThumbnail: "../../images/addpic.jpg",
+      priceNum: 0,
+      index: 0
+    }],
     current: 0,
     time: "09:00",
-    priceName: "",
-    priceNum: 0,
-    priceThumbnail: "../../images/addpic.jpg",
-    priceType: "entity",
+    // priceName: "",
+    // priceNum: 0,
+    // priceThumbnail: "../../images/addpic.jpg",
+    // priceType: "entity",
     providerName: "",
     detail: "",
     lotteryTime: 0,
@@ -16,6 +23,37 @@ Page({
     priceContactId: "../../images/addpic.jpg",
     priceProvideType: "address",
     attractingPic: "../../images/addpic.jpg",
+    priceTypeItems: [{
+        value: 'entity',
+        name: '实物',
+        checked: true
+      },
+      {
+        value: 'virtual',
+        name: '虚拟物品'
+      }
+    ]
+  },
+  addPrice(e) {
+    let len = this.data.priceList.length
+    this.data.priceList.push({
+      priceType: "entity",
+      priceName: "",
+      priceThumbnail: "../../images/addpic.jpg",
+      priceNum: 0,
+      index: len
+    })
+    this.setData({
+      priceList: this.data.priceList
+    })
+  },
+  deletePrice(e) {
+    console.log(e)
+    let index = e.currentTarget.dataset['index']
+    this.data.priceList.splice(index, 1)
+    this.setData({
+      priceList: this.data.priceList
+    })
   },
   bindSwiperChange: function(e) {
     this.setData({
@@ -24,6 +62,7 @@ Page({
   },
   nextPage: function(e) {
     console.log(this.data.current)
+    console.log(this.data)
     this.setData({
       current: this.data.current < 2 ? this.data.current + 1 : 2
     })
@@ -31,6 +70,7 @@ Page({
   },
   uploadPrice: function(e) {
     let t = this
+    let index = e.currentTarget.dataset['index']
     wx.chooseImage({
       success: function(res) {
         var tempFilePaths = res.tempFilePaths
@@ -65,8 +105,9 @@ Page({
                   icon: 'success',
                   duration: 1000
                 })
+                t.data.priceList[index].priceThumbnail = picUrl
                 t.setData({
-                  priceThumbnail: picUrl
+                  priceList: t.data.priceList
                 })
               },
               fail: function({
@@ -207,10 +248,20 @@ Page({
     })
   },
   onPriceTypeChange: function(e) {
-    console.log('onPriceTypeChange', e.detail.value)
+    let index = e.currentTarget.dataset['index']
+    this.data.priceList[index].priceType = e.detail.value;
     this.setData({
-      priceType: e.detail.value
+      priceList: this.data.priceList
     })
+    // var items = this.data.priceTypeItems;
+    // for (var i = 0; i < items.length; ++i) {
+    //   items[i].checked = items[i].value == e.detail.value
+    // }
+    // console.log('onPriceTypeChange', e.detail.value)
+    // this.setData({
+    //   priceType: e.detail.value,
+    //   priceTypeItems: items
+    // })
   },
   onPriceProvideTypeChange: function(e) {
     console.log('onPriceProvideTypeChange', e.detail.value)
@@ -226,13 +277,17 @@ Page({
     })
   },
   bindPriceNameInput: function(e) {
+    let index = e.currentTarget.dataset['index']
+    this.data.priceList[index].priceName = e.detail.value;
     this.setData({
-      priceName: e.detail.value
+      priceList: this.data.priceList
     })
   },
   bindPriceNumInput: function(e) {
+    let index = e.currentTarget.dataset['index']
+    this.data.priceList[index].priceNum = e.detail.value;
     this.setData({
-      priceNum: e.detail.value
+      priceList: this.data.priceList
     })
   },
   bindPriceContactIdInput: function(e) {
@@ -264,15 +319,21 @@ Page({
     } else if (this.data.attractingType == '微信号') {} else {
       attractingType = 'app'
     }
+    let pricemap = this.data.priceList.map(
+      p => {
+        return {
+          level: p.index,
+          name: p.priceName,
+          number: p.priceNum,
+          thumbnail: p.priceThumbnail,
+          priceType: p.priceType
+        }
+      }
+    )
+    console.log(pricemap)
     new IndexService()
       .add({
-        priseList: [{
-          "level": "first",
-          "name": this.data.priceName,
-          "number": this.data.priceNum,
-          "thumbnail": this.data.priceThumbnail,
-          "priceType": this.data.priceType
-        }],
+        priseList: pricemap,
         "activity": {
           "providerName": this.data.providerName,
           "detail": this.data.detail,
