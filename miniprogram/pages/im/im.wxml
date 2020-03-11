@@ -5,7 +5,7 @@
         <view class="title">第1/3步：设置奖品</view>
         <block wx:for="{{priceList}}">
           <image class="addpic" bindtap="uploadPrice" src="{{item.priceThumbnail}}" data-index="{{item.index}}"></image>
-          <view wx:if="{{item.index>=1}}" class="delete" bindtap="deletePrice" data-index="{{item.index}}"></view>
+          <view wx:if="{{item.index>=1}}" class="delete" bindtap="deletePrice" data-index="{{item.index}}">删除奖品</view>
           <view class="row">
             <view class="lable">奖品类型</view>
             <radio-group class="radio-group" bindchange="onPriceTypeChange" class="content" data-index="{{item.index}}">
@@ -37,33 +37,6 @@
           </view>
           <view class="line"></view>
         </block>
-        <!-- <image class="addpic"bindtap="uploadPrice"src="{{priceThumbnail}}"wx:if="{{priceThumbnail}}"></image>
-        <view class="row">
-          <view class="lable">奖品类型</view>
-          <radio-group class="radio-group"bindchange="onPriceTypeChange"class="content">
-            <view class='label1 '>
-              <label class="ui-radio {{item.checked==true?'active ':' '}}"wx:for="{{priceTypeItems}}">
-                <radio value="{{item.value}}"checked="{{item.checked}}"/>
-                <text class="text">{{item.name}}</text>
-              </label>
-            </view>
-          </radio-group>
-        </view>
-        <view class="line"></view>
-        <view class="row">
-          <view class="lable">奖品名称
-            <p class="red">*</p>
-          </view>
-          <input class="content"placeholder="奖品名称建议在10字以内"bindinput="bindPriceNameInput"></input>
-        </view>
-        <view class="line"></view>
-        <view class="row">
-          <view class="lable">奖品份数
-            <p class="red">*</p>
-          </view>
-          <input class="content"placeholder="1-999份"bindinput="bindPriceNumInput"></input>
-        </view>
-        <view class="line"></view> -->
         <view class="row">
           <text bindtap="addPrice">添加奖项</text>
         </view>
@@ -79,9 +52,10 @@
         <view class="title">第2/3步：设置条件</view>
         <view class="row">
           <view class="lable">开奖条件</view>
-          <radio-group class="content">
-            <radio checked="true">按时间自动开奖</radio>
-          </radio-group>
+          <label class="ui-radio active time">
+            <radio value="entity" checked="{{true}}" />
+            <text class="text">按时间自动开奖</text>
+          </label>
         </view>
         <view class="line"></view>
         <view class="row">
@@ -97,9 +71,18 @@
         <view class="line"></view>
         <view class="row">
           <view class="lable">奖品发放方式</view>
+
           <radio-group bindchange="onPriceProvideTypeChange">
-            <radio value="address" checked="{{true}}">按收获地址发货</radio>
-            <radio value="contract">让中奖者联系我</radio>
+            <view class='label1'>
+              <label class="ui-radio {{priceProvideType=='address'?'active':''}} provideType">
+                <radio value="address" checked="{{priceProvideType=='address' }}" />
+                <text class="text">按收获地址发货</text>
+              </label>
+              <label class="ui-radio {{priceProvideType=='contract'?'active':''}} provideType">
+                <radio value="contract" checked="{{priceProvideType=='contract' }}" />
+                <text class="text">让中奖者联系我</text>
+              </label>
+            </view>
           </radio-group>
         </view>
         <view class="line"></view>
@@ -130,9 +113,23 @@
         <view class="row">
           <view class="lable">加粉类型</view>
           <radio-group class="content" bindchange="onAttractingTypeChange">
-            <radio value="公众号" checked="true">公众号</radio>
+            <view class='label1'>
+              <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType">
+                <radio value="公众号" checked="{{priceProvideType=='公众号' }}" />
+                <text class="text">公众号</text>
+              </label>
+              <label class="ui-radio {{attractingType=='微信号'?'active':''}} attractingType">
+                <radio value="微信号" checked="{{priceProvideType=='微信号' }}" />
+                <text class="text">微信号</text>
+              </label>
+              <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType">
+                <radio value="小程序" checked="{{priceProvideType=='小程序' }}" />
+                <text class="text">小程序</text>
+              </label>
+            </view>
+            <!-- <radio value="公众号" checked="true">公众号</radio>
             <radio value="微信号">微信号</radio>
-            <radio value="小程序">小程序</radio>
+            <radio value="小程序">小程序</radio> -->
           </radio-group>
         </view>
         <view class="line"></view>

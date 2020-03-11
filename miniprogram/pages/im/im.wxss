@@ -22,10 +22,8 @@ page {
 }
 
 .delete {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 48, 0, 1);
-  float: left;
+  color: rgba(255, 48, 0, 1);
+  margin-top: 10rpx;
 }
 
 .ui-radio radio, .ui-radio checkbox {
@@ -34,30 +32,41 @@ page {
 
 .ui-radio {
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: 1px;
   width: 140rpx;
   height: 70rpx;
   text-align: center;
   white-space: nowrap;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .ui-radio.active {
   background-color: rgba(255, 48, 0, 0.08);
   color: rgba(246, 100, 0, 1);
-  border-radius: 2px;
   border: 1px solid rgba(246, 100, 0, 1);
   width: 140rpx;
   height: 70rpx;
   text-align: center;
   white-space: nowrap;
 }
+.ui-radio.active.time{
+  width: 210rpx;
+}
 
+.ui-radio.provideType{
+  width: 210rpx;
+}
+
+.ui-radio.attractingType{
+  width:120rpx;
+}
 .text {
   color: rgba(153, 153, 153, 1);
   font-weight: 400;
   line-height: 70rpx;
   font-size: 28rpx;
+
 }
 
 .ui-radio.active .text {
@@ -67,7 +76,6 @@ page {
 }
 
 .label1 {
-  margin-left: 10rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -85,12 +93,15 @@ page {
   height: 100rpx;
   width: 100%;
   display: flex;
-  background: white;
+  background: #FFFFFFFF;
+  opacity:1;
   position: fixed;
   bottom: 0px;
   margin-bottom: 0;
   font-size: 32rpx;
   align-items: flex-end;
+    z-index: 1;
+
 }
 
 .next {

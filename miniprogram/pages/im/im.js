@@ -11,10 +11,6 @@ Page({
     }],
     current: 0,
     time: "09:00",
-    // priceName: "",
-    // priceNum: 0,
-    // priceThumbnail: "../../images/addpic.jpg",
-    // priceType: "entity",
     providerName: "",
     detail: "",
     lotteryTime: 0,
@@ -23,16 +19,6 @@ Page({
     priceContactId: "../../images/addpic.jpg",
     priceProvideType: "address",
     attractingPic: "../../images/addpic.jpg",
-    priceTypeItems: [{
-        value: 'entity',
-        name: '实物',
-        checked: true
-      },
-      {
-        value: 'virtual',
-        name: '虚拟物品'
-      }
-    ]
   },
   addPrice(e) {
     let len = this.data.priceList.length
