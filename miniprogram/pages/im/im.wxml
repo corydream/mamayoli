@@ -10,11 +10,11 @@
             <view class="lable">奖品类型</view>
             <radio-group class="radio-group" bindchange="onPriceTypeChange" class="content" data-index="{{item.index}}">
               <view class='label1'>
-                <label class="ui-radio {{item.priceType=='entity'?'active':''}}">
+                <label class="ui-radio {{item.priceType=='entity'?'active':''}} left">
                   <radio value="entity" checked="{{item.priceType=='entity' }}" />
                   <text class="text">实物</text>
                 </label>
-                <label class="ui-radio {{item.priceType=='virtual'?'active':''}}">
+                <label class="ui-radio {{item.priceType=='virtual'?'active':''}} right">
                   <radio value="virtual" checked="{{item.priceType=='virtual' }}" />
                   <text class="text">虚拟物品</text>
                 </label>
@@ -62,11 +62,13 @@
           <view class="lable">开奖时间
             <p class="red">*</p>
           </view>
+          <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
+<!-- 
           <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
             <view class="picker content">
               当前选择: {{time}}
             </view>
-          </picker>
+          </picker> -->
         </view>
         <view class="line"></view>
         <view class="row">
@@ -74,12 +76,12 @@
 
           <radio-group bindchange="onPriceProvideTypeChange">
             <view class='label1'>
-              <label class="ui-radio {{priceProvideType=='address'?'active':''}} provideType">
-                <radio value="address" checked="{{priceProvideType=='address' }}" />
+              <label class="ui-radio {{priceProvideType=='address'?'active':''}} provideType left">
+                <radio value="address" checked="{{priceProvideType=='address'}}  " />
                 <text class="text">按收获地址发货</text>
               </label>
-              <label class="ui-radio {{priceProvideType=='contract'?'active':''}} provideType">
-                <radio value="contract" checked="{{priceProvideType=='contract' }}" />
+              <label class="ui-radio {{priceProvideType=='contract'?'active':''}} provideType right">
+                <radio value="contract" checked="{{priceProvideType=='contract'}}" />
                 <text class="text">让中奖者联系我</text>
               </label>
             </view>
@@ -114,15 +116,15 @@
           <view class="lable">加粉类型</view>
           <radio-group class="content" bindchange="onAttractingTypeChange">
             <view class='label1'>
-              <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType">
+              <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType left">
                 <radio value="公众号" checked="{{priceProvideType=='公众号' }}" />
                 <text class="text">公众号</text>
               </label>
-              <label class="ui-radio {{attractingType=='微信号'?'active':''}} attractingType">
+              <label class="ui-radio {{attractingType=='微信号'?'active':''}} attractingType center">
                 <radio value="微信号" checked="{{priceProvideType=='微信号' }}" />
                 <text class="text">微信号</text>
               </label>
-              <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType">
+              <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType right">
                 <radio value="小程序" checked="{{priceProvideType=='小程序' }}" />
                 <text class="text">小程序</text>
               </label>
