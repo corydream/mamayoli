@@ -113,7 +113,7 @@ class Index {
       this.data.userData.totalWishCard = totalWishCard + res.data;
       this.setData({
         userData: this.data.userData,
-        show: true 
+        show: true
       })
     } else {
       this.setData({ show: false });
@@ -168,7 +168,9 @@ class Index {
   }
   // 合作商户
   goMerchant(e) {
-
+    wx.navigateTo({
+      url: '../coopheader/coopheader'
+    })
   }
   closeHomeLoginLayout() {
     this.setData({ showLoginLayer: false });

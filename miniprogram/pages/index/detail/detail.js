@@ -16,9 +16,43 @@ class Detail {
         getWinner: false, //是否中奖
         getWinnerLayer: false, // 是否中奖弹窗
         clickLucky: false,
-        winnerList: [{
-
-        }] // 中奖者名单列表
+        winnerObj: {
+            'first':[{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            }],
+            'second':[{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            },{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            }],
+            'third':[{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            },{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            },{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            },{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            },{
+                price_name:'小蜜',
+                user_name:'Aldrich',
+                avatar_url:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
+            }]
+        } // 中奖者名单列表
     }
     ser = null;
     constructor() {
@@ -28,6 +62,7 @@ class Detail {
         this.currentId = options.id ? options.id : '2';
         this.getAwardList();
         this.getInfo();
+        this.getAwardResult();
     }
     lucky() {
         this.ser.getTodo(`/activity/lottery?id=${this.currentId}`).then(res => {

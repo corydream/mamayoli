@@ -20,7 +20,7 @@
   </view>
   <view class="swiper-view">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
-      <block wx:for="{{bannerList}}" wx:key="*this">
+      <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
           <image class="swiper-item-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         </swiper-item>
@@ -34,7 +34,15 @@
     </view>
   </view>
   <!-- 详情  list -->
-  <view class="list" wx:for="{{currentList}}" wx:key="index">
+  <view class="daily-list" wx:if="{{currentTab === 0}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+    <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <view class="list-ctx d-list-ctx">
+      <view class="adv">{{item.provider}}  赞助</view>
+      <view class="title">{{item.name}}</view>
+      <view class="time">{{item.currTime}} 自动开奖</view>
+    </view>
+  </view>
+  <view class="list" wx:if="{{currentTab === 1}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <view class="list-image">
       <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </view>
@@ -42,7 +50,7 @@
       <view class="adv">{{item.provider}}  赞助</view>
       <view class="title">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
-      <button class="btn btn-btns" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">点击抽奖</button>
+      <!-- <button class="btn btn-btns" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">{{item.hasLottery?"等待开奖":"自动抽奖"}}</button> -->
     </view>
   </view>
   <!-- 上传图片 -->

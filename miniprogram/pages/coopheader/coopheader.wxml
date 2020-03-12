@@ -1,0 +1,25 @@
+<!-- <custom-component> -->
+<view class="outer-home">
+   <view class="title-first">
+      <view class="header-block">
+         <view class="header">
+            <van-icon name="arrow-left" class="header-arrow" bindtap="back" />
+            <text class="header-header">商家合作</text>
+         </view>
+      </view>
+      <view style="background: #fff">
+         <image class="title-image" src="../../images/tuiguang1.png" alt="" style="height: 568rpx" />
+         <image class="title-image" src="../../images/tuiguang2.png" alt="" style="height: 507rpx" />
+         <image class="title-image" src="../../images/tuiguang3.png" alt="" style="height: 432rpx" />
+      </view>
+   </view>
+   <view class="bottom">
+      <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" open-type='contact' show-message-card="{{true}}" send-message-title="联系商务">
+         联系商务
+      </button>
+      <!-- <button class="bottom-btn"> -->
+         <!-- <official-account>联系商务</official-account> -->
+      <!-- </button> -->
+   </view>
+</view>
+<!-- </custom-component> -->

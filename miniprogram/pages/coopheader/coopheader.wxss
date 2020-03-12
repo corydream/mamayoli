@@ -1,0 +1,45 @@
+@import "../../style/button";
+
+.outer-home {
+    background-color: #fff;
+    color           : #fff;
+}
+
+.header {
+    height          : 64rpx;
+    line-height     : 64rpx;
+    font-family     : PingFangSC-Regular, PingFang SC;
+    text-align      : center;
+    width           : 750rpx;
+    background-color: #F66400;
+    color: #fff;
+}
+.header-block{
+    height: 164rpx;
+    width: 750rpx;
+    background-color: #F66400;
+    position: relative;
+}
+.header-header{
+    top     : 104rpx;
+    left    : 294rpx;
+    position: absolute;    
+}
+.header-arrow {
+    top     : 104rpx;
+    left    : 26rpx;
+    position: absolute;
+
+}
+
+.title-image {
+    width: 100%;
+}
+
+.bottom {
+    width         : 100%;
+    margin        : 0 auto;
+    padding-bottom: 100rpx;
+    font-size       : 40rpx;
+    background-color: #fff;
+}

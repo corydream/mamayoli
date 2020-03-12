@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/index/detail/detail",
+    "pages/index/note/note",
+    "pages/coopheader/coopheader",
     "pages/owner/owner",
     "pages/heartCard/heartCard",
     "pages/im/im"

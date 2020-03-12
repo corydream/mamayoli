@@ -1,0 +1,55 @@
+@import "../../../style/button";
+
+.note-outer {
+    font-size  : 24rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    background:#fff;
+}
+
+.label {
+    width           : 200rpx;
+    height          : 45rpx;
+    line-height     : 45rpx;
+    text-align      : center;
+    color           : #fff;
+    background-color: #F66400;
+    margin-bottom   : 40rpx;
+    font-size       : 24rpx;
+}
+
+.note-ctx {
+    padding: 0 45rpx;
+    margin-bottom: 80rpx;
+}
+
+.n-title {
+    color      : #2e2e2e;
+    font-weight: bold;
+}
+
+.n-detail {
+    color        : #666;
+    margin-bottom: 45rpx;
+}
+
+.n-second {
+    color        : #2e2e2e;
+    margin-bottom: 45rpx;
+}
+
+.n-s-text {
+    text-indent: 48rpx;
+}
+
+.bottom {
+    width           : 100%;
+    margin          : 0 auto;
+    height          : 212rpx;
+    border-top      : 1rpx solid #ccc;
+    box-shadow      : 0px 1px 0px 0px rgba(204, 204, 204, 1);
+    position        : sticky;
+    bottom          : 0;
+    left            : 0;
+    font-size       : 40rpx;
+    background-color: #fff;
+}

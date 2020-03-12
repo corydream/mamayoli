@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#F66400",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "心愿池",
+  "usingComponents": {
+    "van-icon":"/miniprogram_npm/vant-weapp/icon/index"
+  }
+}
