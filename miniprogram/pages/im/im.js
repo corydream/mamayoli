@@ -563,7 +563,7 @@ Page({
         "activity": {
           "providerName": this.data.providerName,
           "detail": this.data.detail,
-          "lotteryTime": 1587350475000,
+          "lotteryTime": this.data.lotteryTime,
           "attractingType": attractingType,
           "contactPhoneNum": this.data.contactPhoneNum,
           "priceProvideType": this.data.priceProvideType,
