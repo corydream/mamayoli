@@ -64,27 +64,24 @@ Page({
     })
     console.log(e)
   },
-  uploadPrice: function(e) {
-    let t = this
-    let index = e.currentTarget.dataset['index']
-    wx.chooseImage({
-      success: function(res) {
-        var tempFilePaths = res.tempFilePaths
-        console.log(res)
-        console.log('chooseImage success, temp path is: ', tempFilePaths[0])
-        wx.showLoading({
+  onShow(e){
+    console.log(this.data)
+    if(this.data.cropRes){
+       wx.showLoading({
           title: '上传中',
         })
+      let index = parseInt(this.data.cropIndex);
+      let t =this;
         indexService
           .sts()
           .then(sts => {
             console.log(sts)
             wx.uploadFile({
               url: 'https://' + sts.data.host,
-              filePath: tempFilePaths[0],
+              filePath: this.data.cropRes,
               name: 'file',
               formData: {
-                name: tempFilePaths[0],
+                name: this.data.cropRes,
                 key: sts.data.dir + "/${filename}",
                 policy: sts.data.policy,
                 OSSAccessKeyId: sts.data.accessid,
@@ -93,7 +90,7 @@ Page({
               },
               success: function(res) {
                 console.log(res)
-                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
+                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + t.data.cropRes.substring(t.data.cropRes.lastIndexOf('/'))
                 console.log('chooseImage success, temp path is: ', picUrl)
                 wx.hideLoading()
                 wx.showToast({
@@ -103,13 +100,19 @@ Page({
                 })
                 t.data.priceList[index].priceThumbnail = picUrl
                 t.setData({
-                  priceList: t.data.priceList
+                  priceList: t.data.priceList,
+                  cropRes:'',
+                  cropIndex:0
                 })
               },
               fail: function({
                 errMsg
               }) {
                 console.log('upladImage fail, errMsg is: ', errMsg)
+                t.setData({
+                  cropRes: '',
+                  cropIndex: 0
+                })
                 wx.hideLoading()
                 wx.showToast({
                   title: "上传失败",
@@ -121,6 +124,69 @@ Page({
           .catch(
             e => wx.hideLoading()
           )
+      this.data.priceList[this.data.cropIndex].thumbnail
+    }
+  },
+  uploadPrice: function(e) {
+    let t = this
+    let index = e.currentTarget.dataset['index']
+    wx.chooseImage({
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(res)
+        console.log('chooseImage success, temp path is: ', tempFilePaths[0])
+        wx.navigateTo({
+          url: '../cropper/cropper-example?filePath=' + tempFilePaths[0] + '&index=' + index
+        })
+        // wx.showLoading({
+        //   title: '上传中',
+        // })
+        // indexService
+        //   .sts()
+        //   .then(sts => {
+        //     console.log(sts)
+        //     wx.uploadFile({
+        //       url: 'https://' + sts.data.host,
+        //       filePath: tempFilePaths[0],
+        //       name: 'file',
+        //       formData: {
+        //         name: tempFilePaths[0],
+        //         key: sts.data.dir + "/${filename}",
+        //         policy: sts.data.policy,
+        //         OSSAccessKeyId: sts.data.accessid,
+        //         success_action_status: "200",
+        //         signature: sts.data.signature,
+        //       },
+        //       success: function(res) {
+        //         console.log(res)
+        //         let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
+        //         console.log('chooseImage success, temp path is: ', picUrl)
+        //         wx.hideLoading()
+        //         wx.showToast({
+        //           title: "上传成功",
+        //           icon: 'success',
+        //           duration: 1000
+        //         })
+        //         t.data.priceList[index].priceThumbnail = picUrl
+        //         t.setData({
+        //           priceList: t.data.priceList
+        //         })
+        //       },
+        //       fail: function({
+        //         errMsg
+        //       }) {
+        //         console.log('upladImage fail, errMsg is: ', errMsg)
+        //         wx.hideLoading()
+        //         wx.showToast({
+        //           title: "上传失败",
+        //           duration: 1000
+        //         })
+        //       },
+        //     })
+        //   })
+        //   .catch(
+        //     e => wx.hideLoading()
+        //   )
       }
     })
   },
