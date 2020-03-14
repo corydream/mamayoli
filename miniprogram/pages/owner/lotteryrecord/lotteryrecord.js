@@ -17,7 +17,7 @@ class Index {
     console.log(app.globalData);
   }
   onLoad() {
-    this.getDataList();
+    this.getDataList('running');
   }
   getUserInfo() {
     let _this = this;
@@ -29,14 +29,18 @@ class Index {
     });
 
     if (event.detail.index === 0) {
+      this.getDataList('running');
     } else if (event.detail.index === 1) {
+      this.getDataList('finish');
     } else {
+      this.getDataList('win');
     }
   }
-  getDataList() {
+  getDataList(type) {
     let params = {
       pageSize: 20,
-      pageNum: 1
+      pageIndex: 1,
+      type:type
     };
     this.ser.getList(params).then(res => {
       console.log(res);

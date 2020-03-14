@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/owner/lotteryrecord/lotteryrecord",
     "pages/index/index",
+    "pages/owner/lotteryrecord/lotteryrecord",
     "pages/owner/owner",
     "pages/index/detail/detail",
     "pages/index/note/note",
