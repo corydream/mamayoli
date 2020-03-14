@@ -18,7 +18,7 @@ Page({
     detail: "",
     lotteryTime: 0,
     attractingType: "公众号",
-    attractingWeiXinId: "",
+    contactPhoneNum: 0,
     priceContactId: "../../images/addpic.jpg",
     priceProvideType: "address",
     attractingPic: "../../images/addpic.jpg",
@@ -288,7 +288,7 @@ Page({
   },
   bindAttractingWeiXinIdInput: function(e) {
     this.setData({
-      attractingWeiXinId: e.detail.value
+      contactPhoneNum: e.detail.value
     })
   },
 
@@ -565,7 +565,7 @@ Page({
           "detail": this.data.detail,
           "lotteryTime": 1587350475000,
           "attractingType": attractingType,
-          "attractingWeiXinId": this.data.attractingWeiXinId,
+          "contactPhoneNum": this.data.contactPhoneNum,
           "priceProvideType": this.data.priceProvideType,
           "priceContactId": this.data.priceContactId
         }

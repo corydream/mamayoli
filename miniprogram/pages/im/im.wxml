@@ -109,7 +109,7 @@
           <view class="lable">赞助方名称
             <p class="red">*</p>
           </view>
-          <input class="content" placeholder="请输入赞助方名称" bindinput="bindAttractingWeiXinIdInput"></input>
+          <input class="content" placeholder="请输入赞助方名称" bindinput="bindProviderNameInput"></input>
         </view>
         <view class="line"></view>
         <view class="row">
