@@ -1,0 +1,8 @@
+.record {
+  font-size       : 32rpx;
+  font-family     : PingFangSC-Regular, PingFang SC;
+  background-color: #fff;
+}
+.tab-nav{
+  border-bottom: 1px solid #eee;
+}

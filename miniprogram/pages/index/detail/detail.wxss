@@ -117,6 +117,16 @@
     background-color: #fff;
 }
 
+.bottom-layer {
+    width           : 100%;
+    margin          : 0 auto;
+    height          : 212rpx;
+    border-top      : 1rpx solid #ccc;
+    box-shadow      : 0px 1px 0px 0px rgba(204, 204, 204, 1);
+    font-size       : 40rpx;
+    background-color: #fff;
+}
+
 .close {
     width   : 50rpx;
     height  : 50rpx;
@@ -127,21 +137,25 @@
 }
 
 /* 未中奖样式 */
-.no-award {
+.no-award,
+.award-ctx {
     padding: 64rpx 32rpx;
     color  : #333;
 }
 
-.no-award .title {
+.no-award .title,
+.award .title {
     font-size: 56rpx;
 }
 
-.no-award .sec-title {
+.no-award .sec-title,
+.award .sec-title {
     font-size: 28rpx;
     padding  : 40rpx 0 32rpx 0;
 }
 
-.no-award .text {
+.no-award .text,
+.award .text {
     padding  : 48rpx 0 32rpx 0;
     font-size: 28rpx;
 }
@@ -185,4 +199,26 @@
     height       : 100rpx;
     margin-bottom: 25rpx;
     border-radius: 50%;
+}
+
+.award-detail {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    width          : 686rpx;
+    height         : 312rpx;
+    border-radius  : 8rpx;
+    border         : 1px solid #666;
+}
+.award-detail-image{
+    border: 1px dashed #666;
+    width: 120rpx;
+    height: 120rpx;
+}
+.award-info{
+    margin-top: 24rpx;
+}
+.info-text{
+    vertical-align: 5rpx;
 }

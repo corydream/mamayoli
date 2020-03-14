@@ -64,6 +64,10 @@ class Detail {
         this.getInfo();
         this.getAwardResult();
     }
+    // 去领奖
+    goLottery(){
+
+    }
     lucky() {
         this.ser.getTodo(`/activity/lottery?id=${this.currentId}`).then(res => {
             if (res.data) {
