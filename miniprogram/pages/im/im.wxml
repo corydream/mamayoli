@@ -4,10 +4,11 @@
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第1/3步：设置奖品</view>
         <block wx:for="{{priceList}}">
-          <view class="uploadPicView addPirceView" bindtap="uploadPrice" data-index="{{item.index}}">
+        <view class="row small"></view>
+          <view class="uploadPicView" bindtap="uploadPrice" data-index="{{item.index}}">
             <image wx:if="{{!item.priceThumbnail}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
             <text wx:if="{{!item.priceThumbnail}}" class="upload text">点击添加图片</text>
-            <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}" mode="scaleToFill" class="deletePrice" src="../../images/delete.png"></image>
+            <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}"  class="deletePrice" src="../../images/delete.png"></image>
             <image class="uploadImg" mode="scaleToFill" wx:if="{{item.priceThumbnail}}" src="{{item.priceThumbnail}}"></image>
           </view>
           <view class="row">

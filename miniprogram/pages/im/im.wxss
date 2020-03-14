@@ -114,6 +114,7 @@ page {
   margin-left: 32rpx;
   color: rgba(51, 51, 51, 1);
   font-weight: 500;
+  margin-bottom: 32rpx;
 }
 
 .bottom {
@@ -147,7 +148,7 @@ page {
 }
 
 .row.small {
-  height: 100rpx;
+  height: 16rpx;
 }
 
 .red {

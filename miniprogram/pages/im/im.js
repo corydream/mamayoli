@@ -65,7 +65,7 @@ Page({
     this.data.priceList.push({
       priceType: "entity",
       priceName: "",
-      priceThumbnail: "../../images/addpic.jpg",
+      priceThumbnail: '',
       priceNum: 0,
       index: len
     })
@@ -76,6 +76,9 @@ Page({
   deletePrice(e) {
     console.log(e)
     let index = e.currentTarget.dataset['index']
+    if (index >= this.data.priceList.length){
+      index = this.data.priceList.length-1
+    }
     this.data.priceList.splice(index, 1)
     this.setData({
       priceList: this.data.priceList
