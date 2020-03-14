@@ -8,7 +8,7 @@ Page({
     priceList: [{
       priceType: "entity",
       priceName: "",
-      priceThumbnail: "../../images/addpic.jpg",
+      priceThumbnail: '',
       priceNum: 0,
       index: 0
     }],
@@ -19,9 +19,9 @@ Page({
     lotteryTime: 0,
     attractingType: "公众号",
     contactPhoneNum: 0,
-    priceContactId: "../../images/addpic.jpg",
+    priceContactId: '',
     priceProvideType: "address",
-    attractingPic: "../../images/addpic.jpg",
+    attractingPic: '',
     startDate: "请选择日期",
     multiArray: [
       ['今天', '明天', '3-2', '3-3', '3-4', '3-5'],
@@ -29,6 +29,36 @@ Page({
       [0, 10, 20]
     ],
     multiIndex: [0, 0, 0],
+  },
+  checkFirst() {
+    console.log(this.data.priceList)
+    for (let price of this.data.priceList){
+      if (!price.priceThumbnail) {
+        wx.showToast({
+          title: "请上传奖品图片",
+          icon: 'none',
+          duration: 500
+        })
+        return false
+      }
+      if (!price.priceName) {
+        wx.showToast({
+          title: "请填写奖品名称",
+          icon: 'none',
+          duration: 500
+        })
+        return false
+      }
+      if (!price.priceNum) {
+        wx.showToast({
+          title: "请填写奖品数量",
+          icon: 'none',
+          duration: 500
+        })
+        return false
+      }
+    }
+    return true
   },
   addPrice(e) {
     let len = this.data.priceList.length
@@ -57,73 +87,76 @@ Page({
     })
   },
   nextPage: function(e) {
-    console.log(this.data.current)
-    console.log(this.data)
+    let first = this.checkFirst()
+    console.log(first)
+    if (!first){
+      return
+    }
     this.setData({
       current: this.data.current < 2 ? this.data.current + 1 : 2
     })
     console.log(e)
   },
-  onShow(e){
+  onShow(e) {
     console.log(this.data)
-    if(this.data.cropRes){
-       wx.showLoading({
-          title: '上传中',
-        })
+    if (this.data.cropRes) {
+      wx.showLoading({
+        title: '上传中',
+      })
       let index = parseInt(this.data.cropIndex);
-      let t =this;
-        indexService
-          .sts()
-          .then(sts => {
-            console.log(sts)
-            wx.uploadFile({
-              url: 'https://' + sts.data.host,
-              filePath: this.data.cropRes,
-              name: 'file',
-              formData: {
-                name: this.data.cropRes,
-                key: sts.data.dir + "/${filename}",
-                policy: sts.data.policy,
-                OSSAccessKeyId: sts.data.accessid,
-                success_action_status: "200",
-                signature: sts.data.signature,
-              },
-              success: function(res) {
-                console.log(res)
-                let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + t.data.cropRes.substring(t.data.cropRes.lastIndexOf('/'))
-                console.log('chooseImage success, temp path is: ', picUrl)
-                wx.hideLoading()
-                wx.showToast({
-                  title: "上传成功",
-                  icon: 'success',
-                  duration: 1000
-                })
-                t.data.priceList[index].priceThumbnail = picUrl
-                t.setData({
-                  priceList: t.data.priceList,
-                  cropRes:'',
-                  cropIndex:0
-                })
-              },
-              fail: function({
-                errMsg
-              }) {
-                console.log('upladImage fail, errMsg is: ', errMsg)
-                t.setData({
-                  cropRes: '',
-                  cropIndex: 0
-                })
-                wx.hideLoading()
-                wx.showToast({
-                  title: "上传失败",
-                  duration: 1000
-                })
-              },
-            })
+      let t = this;
+      indexService
+        .sts()
+        .then(sts => {
+          console.log(sts)
+          wx.uploadFile({
+            url: 'https://' + sts.data.host,
+            filePath: this.data.cropRes,
+            name: 'file',
+            formData: {
+              name: this.data.cropRes,
+              key: sts.data.dir + "/${filename}",
+              policy: sts.data.policy,
+              OSSAccessKeyId: sts.data.accessid,
+              success_action_status: "200",
+              signature: sts.data.signature,
+            },
+            success: function(res) {
+              console.log(res)
+              let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + t.data.cropRes.substring(t.data.cropRes.lastIndexOf('/'))
+              console.log('chooseImage success, temp path is: ', picUrl)
+              wx.hideLoading()
+              wx.showToast({
+                title: "上传成功",
+                icon: 'success',
+                duration: 1000
+              })
+              t.data.priceList[index].priceThumbnail = picUrl
+              t.setData({
+                priceList: t.data.priceList,
+                cropRes: '',
+                cropIndex: 0
+              })
+            },
+            fail: function({
+              errMsg
+            }) {
+              console.log('upladImage fail, errMsg is: ', errMsg)
+              t.setData({
+                cropRes: '',
+                cropIndex: 0
+              })
+              wx.hideLoading()
+              wx.showToast({
+                title: "上传失败",
+                duration: 1000
+              })
+            },
           })
-          .catch(
-            e => wx.hideLoading()
-          )
+        })
+        .catch(
+          e => wx.hideLoading()
+        )
       this.data.priceList[this.data.cropIndex].thumbnail
     }
   },
@@ -138,55 +171,6 @@ Page({
         wx.navigateTo({
           url: '../cropper/cropper-example?filePath=' + tempFilePaths[0] + '&index=' + index
         })
-        // wx.showLoading({
-        //   title: '上传中',
-        // })
-        // indexService
-        //   .sts()
-        //   .then(sts => {
-        //     console.log(sts)
-        //     wx.uploadFile({
-        //       url: 'https://' + sts.data.host,
-        //       filePath: tempFilePaths[0],
-        //       name: 'file',
-        //       formData: {
-        //         name: tempFilePaths[0],
-        //         key: sts.data.dir + "/${filename}",
-        //         policy: sts.data.policy,
-        //         OSSAccessKeyId: sts.data.accessid,
-        //         success_action_status: "200",
-        //         signature: sts.data.signature,
-        //       },
-        //       success: function(res) {
-        //         console.log(res)
-        //         let picUrl = 'https://' + sts.data.host + '/' + sts.data.dir + tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'))
-        //         console.log('chooseImage success, temp path is: ', picUrl)
-        //         wx.hideLoading()
-        //         wx.showToast({
-        //           title: "上传成功",
-        //           icon: 'success',
-        //           duration: 1000
-        //         })
-        //         t.data.priceList[index].priceThumbnail = picUrl
-        //         t.setData({
-        //           priceList: t.data.priceList
-        //         })
-        //       },
-        //       fail: function({
-        //         errMsg
-        //       }) {
-        //         console.log('upladImage fail, errMsg is: ', errMsg)
-        //         wx.hideLoading()
-        //         wx.showToast({
-        //           title: "上传失败",
-        //           duration: 1000
-        //         })
-        //       },
-        //     })
-        //   })
-        //   .catch(
-        //     e => wx.hideLoading()
-        //   )
       }
     })
   },
