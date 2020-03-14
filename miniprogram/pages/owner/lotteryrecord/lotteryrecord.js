@@ -39,7 +39,7 @@ class Index {
   getDataList(type) {
     let params = {
       pageSize: 20,
-      pageNum: 1,
+      pageIndex: 1,
       type:type
     };
     this.ser.getList(params).then(res => {
