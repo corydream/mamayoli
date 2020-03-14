@@ -157,3 +157,11 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
+
+/* 复写vant-ui-css */
+.van-hairline--top-bottom:after {
+  width: 0;
+}
+.van-tab--active {
+  font-weight: bold!important;
+}

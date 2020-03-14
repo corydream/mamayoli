@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/owner/lotteryrecord/lotteryrecord",
     "pages/index/index",
-    "pages/index/detail/detail",
     "pages/owner/owner",
+    "pages/index/detail/detail",
+    "pages/index/note/note",
+    "pages/coopheader/coopheader",
     "pages/heartCard/heartCard",
     "pages/im/im"
   ],

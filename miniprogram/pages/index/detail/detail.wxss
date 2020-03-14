@@ -117,17 +117,108 @@
     background-color: #fff;
 }
 
+.bottom-layer {
+    width           : 100%;
+    margin          : 0 auto;
+    height          : 212rpx;
+    border-top      : 1rpx solid #ccc;
+    box-shadow      : 0px 1px 0px 0px rgba(204, 204, 204, 1);
+    font-size       : 40rpx;
+    background-color: #fff;
+}
+
+.close {
+    width   : 50rpx;
+    height  : 50rpx;
+    position: absolute;
+    top     : 10rpx;
+    right   : 10rpx;
+
+}
+
 /* 未中奖样式 */
-.no-award {
+.no-award,
+.award-ctx {
     padding: 64rpx 32rpx;
     color  : #333;
 }
 
-.no-award .title {
+.no-award .title,
+.award .title {
     font-size: 56rpx;
 }
 
-.no-award .sec-title {
+.no-award .sec-title,
+.award .sec-title {
     font-size: 28rpx;
     padding  : 40rpx 0 32rpx 0;
+}
+
+.no-award .text,
+.award .text {
+    padding  : 48rpx 0 32rpx 0;
+    font-size: 28rpx;
+}
+
+.no-award-list {
+    background   : rgba(244, 244, 244, 1);
+    border-radius: 16rpx;
+    border       : 1px solid #F4F4F4;
+    margin-bottom: 48rpx;
+}
+
+.no-award-name {
+    padding         : 0 24rpx;
+    height          : 72rpx;
+    line-height     : 72rpx;
+    border-radius   : 16rpx 16rpx 0 0;
+    background-color: #fff;
+    color           : #666;
+    font-size       : 28rpx;
+}
+
+.item-outer {
+    /* padding     : 0 24rpx; */
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: center;
+}
+
+.no-award-item {
+    color     : #999;
+    font-size : 24rpx;
+    width     : 171.5rpx;
+    height    : 268rpx;
+    text-align: center;
+    margin    : 0 auto;
+}
+
+.item-avatar {
+    margin-top   : 64rpx;
+    width        : 100rpx;
+    height       : 100rpx;
+    margin-bottom: 25rpx;
+    border-radius: 50%;
+}
+
+.award-detail {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    width          : 686rpx;
+    height         : 312rpx;
+    border-radius  : 8rpx;
+    border         : 1px solid #666;
+}
+.award-detail-image{
+    border: 1px dashed #666;
+    width: 120rpx;
+    height: 120rpx;
+}
+.award-info{
+    margin-top: 24rpx;
+}
+.info-text{
+    vertical-align: 5rpx;
 }

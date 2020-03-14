@@ -1,5 +1,6 @@
 /**index.wxss**/
 @import "../../style/button";
+
 page {
   background     : #f6f6f6;
   display        : flex;
@@ -28,13 +29,14 @@ page {
 
 .swiper-item-list {
   height          : 300rpx;
-  border-radius   : 24rpx;
+  border-radius   : 8rpx;
   background-color: #fff;
-  margin: 0 auto;
+  margin          : 0 auto;
 }
-.swiper-item-image{
+
+.swiper-item-image {
   /* width: 758rpx; */
-  height: 300rpx;
+  height  : 300rpx;
 }
 
 .swiper-item {
@@ -43,7 +45,7 @@ page {
 }
 
 .category {
-  border-radius   : 24rpx;
+  border-radius   : 8rpx;
   height          : 72rpx;
   width           : 638rpx;
   background-color: #fff;
@@ -74,11 +76,11 @@ page {
 }
 
 .g-title {
-  font-size     : 32rpx;
-  /* font-family: PingFangSC-Medium, PingFang SC; */
-  font-weight   : 500;
-  display       : block;
-  color: #333;
+  font-size       : 32rpx;
+  /* font-family  : PingFangSC-Medium, PingFang SC; */
+  font-weight     : 500;
+  display         : block;
+  color           : #333;
   /* margin-bottom: 2rpx; */
 }
 
@@ -87,16 +89,16 @@ page {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   display    : block;
-  color: #666;
+  color      : #666;
 }
 
 .nav {
-  color    : #666;
-  font-size: 28rpx;
-  display  : flex;
-  width    : 686rpx;
-  height   : 80rpx;
-  font-family:PingFangSC-Regular,PingFang SC;
+  color      : #666;
+  font-size  : 28rpx;
+  display    : flex;
+  width      : 686rpx;
+  height     : 80rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
 }
 
 .nav .nav-item {
@@ -107,7 +109,7 @@ page {
 
 .nav .cur {
   color           : #333;
-  font-weight: bold;
+  font-weight     : bold;
   /* border-bottom: 2px solid #F66400; */
 }
 
@@ -121,12 +123,12 @@ page {
 
 .list {
   width        : 686rpx;
-  height       : 296rpx;
+  height       : 180rpx;
   background   : rgba(255, 255, 255, 1);
-  border-radius: 24rpx;
+  border-radius: 8rpx;
   display      : flex;
   margin-bottom: 32rpx;
-  font-family:PingFangSC-Regular,PingFang SC;
+  font-family  : PingFangSC-Regular, PingFang SC;
 }
 
 .list .list-image {
@@ -134,20 +136,36 @@ page {
 }
 
 .list .list-image image {
-  width  : 306rpx;
-  height : 296rpx;
-  border-radius: 24rpx 0 0 24rpx;
-  display: block;
+  width        : 306rpx;
+  height       : 180rpx;
+  border-radius: 8rpx 0 0 8rpx;
+  display      : block;
 }
 
 .list .list-ctx {
   width  : 326rpx;
+  padding: 24rpx;
+}
+
+.daily-list {
+  width        : 686rpx;
+  height       : 586rpx;
+  background   : rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+  margin-bottom: 48rpx;
+}
+.d-image{
+  height: 366rpx;
+  width: 686rpx;
+  border-radius: 8rpx 8rpx 0 0;
+}
+.d-list-ctx{
   padding: 32rpx;
 }
 
 .list-ctx .adv {
-  color    : #f66400;
-  font-size: 20rpx;
+  color        : #f66400;
+  font-size    : 20rpx;
   margin-bottom: 8rpx;
 }
 
@@ -157,8 +175,8 @@ page {
   overflow     : hidden;
   text-overflow: ellipsis;
   white-space  : nowrap;
-  margin-bottom: 20rpx;
-  font-weight: bold;
+  margin-bottom: 16rpx;
+  font-weight  : bold;
 }
 
 .list-ctx .time {
@@ -168,59 +186,65 @@ page {
 }
 
 
-.popup-layout{
-  width: 520rpx;
-  height: 622rpx;
+.popup-layout {
+  width        : 520rpx;
+  height       : 622rpx;
   border-radius: 40rpx;
-  position: relative;
-}
-.popup-image{
-  width: 520rpx;
-  height: 622rpx;  
-}
-.close{
-  width: 100rpx;
-  height: 100rpx;
-  position: absolute;
-  top: 0;
-  left:0;
-}
-.getinfo-btn{
-  position: absolute;
-  bottom: 0;
-  width: 520rpx;
-  height: 160rpx;
-  left:0;
+  position     : relative;
 }
 
-.btn-btns{
-  margin: 0;
+.popup-image {
+  width : 520rpx;
+  height: 622rpx;
 }
-.popup-login-layout{
-  width: 100%;
-  height: 694rpx;
-  border-radius: 40rpx 40rpx 0 0;
-  position: relative;
-  padding: 0!important;
-  margin: 0;
-  overflow: hidden!important;
-}
-.popup-login-image{
-  width: 100%;
-  height: 694rpx;  
-}
-.getinfo-login-btn{
+
+.close {
+  width   : 100rpx;
+  height  : 100rpx;
   position: absolute;
-  bottom: 0;
-  width: 686rpx;
-  height: 100rpx;
-  line-height: 100rpx;
-  text-align: center;
+  top     : 0;
+  left    : 0;
+}
+
+.getinfo-btn {
+  position: absolute;
+  bottom  : 0;
+  width   : 520rpx;
+  height  : 160rpx;
+  left    : 0;
+}
+
+.btn-btns {
+  margin: 0;
+}
+
+.popup-login-layout {
+  width        : 100%;
+  height       : 694rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  position     : relative;
+  padding      : 0 !important;
+  margin       : 0;
+  overflow     : hidden !important;
+}
+
+.popup-login-image {
+  width : 100%;
+  height: 694rpx;
+}
+
+.getinfo-login-btn {
+  position     : absolute;
+  bottom       : 0;
+  width        : 686rpx;
+  height       : 100rpx;
+  line-height  : 100rpx;
+  text-align   : center;
   border-radius: 50rpx;
-  left:0;
-  right: 0;
-  bottom: 80rpx;
-  margin: auto;
-  color: #fff;
+  left         : 0;
+  right        : 0;
+  bottom       : 80rpx;
+  margin       : auto;
+  color        : #fff;
   background   : rgba(246, 100, 0, 1);
 }

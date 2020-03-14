@@ -1,0 +1,11 @@
+<view class="record">
+  <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
+    <van-tab title="待开奖" border>
+      <van-cell-group border>
+        <van-cell title="单元格" center value="去看看 >" label="q" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="已结束">已结束</van-tab>
+    <van-tab title="中奖记录">中奖记录</van-tab>
+  </van-tabs>
+</view>

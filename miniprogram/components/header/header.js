@@ -62,6 +62,11 @@ Component({
       wx.reLaunch({
         url: '/pages/index/index'
       })
+    },
+    note(){
+      wx.navigateTo({
+        url:'/pages/index/note/note'
+      })
     }
   }
 

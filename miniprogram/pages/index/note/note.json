@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "抽奖说明",
+  "usingComponents": {
+    "van-cell-group":"/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-cell":"/miniprogram_npm/vant-weapp/cell/index"
+  }
+}

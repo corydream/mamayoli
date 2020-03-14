@@ -20,13 +20,13 @@
     display: flex;
     justify-content: space-between;
 }
-.heart-layer image{
+.heart-image{
     width: 90rpx;
     height: 90rpx;
     margin-right: 16rpx;
     vertical-align: -9rpx;
 }
-.heart-layer text{
+.heart-layer .num{
     font-size: 64rpx;
 }
 .heart-layer .info{

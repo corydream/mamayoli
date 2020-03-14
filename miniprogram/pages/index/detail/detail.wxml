@@ -57,12 +57,65 @@
             来晚了，抽奖已结束
         </button> -->
     </view>
-    <van-popup position="bottom" show="{{getWinnerLayer}}" bind:close="closeWinnerLayer">
-        <view class="no-award" wx:if="{{!getWinner}}">
-            很遗憾，你未中奖~
-            <view class="no-award-list" wx:for="{{winnerList}}" wx:key="index"></view>
+    <van-popup position="bottom" show="{{getWinnerLayer}}" safe-area-inset-top="{{true}}" bind:close="closeWinnerLayer" closeable round>
+        <view class="close" bindtap="closeWinnerLayer">
+            <van-icon name="cross" />
         </view>
-        <view class="award" wx:else></view>
+        <view class="no-award" wx:if="{{!getWinner}}">
+            <view class="title">很遗憾，你未中奖~</view>
+            <view class="text">中奖者名单</view>
+            <view class="no-award-list" wx:if="{{winnerObj.first}}">
+                <view class="no-award-name">
+                    一等奖：{{winnerObj.first[0].price_name}} X {{winnerObj.first.length}}
+                </view>
+                <view class="item-outer">
+                    <view class="no-award-item" wx:for="{{winnerObj.first}}" wx:key="index">
+                        <image class="item-avatar" src="{{item.avatar_url}}" mode="aspectFit|aspectFill|widthFix" />
+                        <view class="item-name">{{item.user_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-award-list" wx:if="{{winnerObj.second}}">
+                <view class="no-award-name">
+                    二等奖：{{winnerObj.second[0].price_name}} X {{winnerObj.second.length}}
+                </view>
+                <view class="item-outer">
+                    <view class="no-award-item" wx:for="{{winnerObj.second}}" wx:key="index">
+                        <image class="item-avatar" src="{{item.avatar_url}}" mode="aspectFit|aspectFill|widthFix" />
+                        <view class="item-name">{{item.user_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-award-list" wx:if="{{winnerObj.third}}">
+                <view class="no-award-name">
+                    三等奖：{{winnerObj.third[0].price_name}} X {{winnerObj.third.length}}
+                </view>
+                <view class="item-outer">
+                    <view class="no-award-item" wx:for="{{winnerObj.third}}" wx:key="index">
+                        <image class="item-avatar" src="{{item.avatar_url}}" mode="aspectFit|aspectFill|widthFix" />
+                        <view class="item-name">{{item.user_name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="award" wx:else>
+            <view class="award-ctx">
+                <view class="title">恭喜你，中奖了</view>
+                <view class="text">你的中奖</view>
+                <view class="award-detail" bindtap="goLottery">
+                    <image class="award-detail-image" src="../../../images/go_award_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                    <view class="award-info">
+                        <text class="info-text">去领奖</text>
+                        <van-icon name="arrow" />
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-layer" wx:if="{{!currinfos.hasLottery}}">
+                <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" open-type="share">
+                    炫耀一下
+                </button>
+            </view>
+        </view>
     </van-popup>
     <van-toast id="van-toast" />
 </view>

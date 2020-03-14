@@ -6,10 +6,10 @@
       <view class="title-second">17:00-19:00 每日福利上线</view>
       <view class="heart-layer">
          <view class="heart">
-            <image src="../../images/icon_heart_gray.png" alt="" />
-            <text>{{heartNum}}</text>
+            <image class="heart-image" src="../../images/icon_heart_gray.png" alt="" />
+            <text class="num">{{heartNum}}</text>
          </view>
-         <view class="info">抽奖说明 ></view>
+         <view class="info" bindtap="note">抽奖说明 ></view>
       </view>
    </view>
 </custom-component>
