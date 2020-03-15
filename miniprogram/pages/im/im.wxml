@@ -1,11 +1,16 @@
 <view class="container">
   <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
-    <swiper-item class="swipper-item">
+    <swiper-item  catchtouchmove="stopTouchMove"  class="swipper-item">
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第1/3步：设置奖品</view>
         <block wx:for="{{priceList}}">
-          <image class="addpic" bindtap="uploadPrice" src="{{item.priceThumbnail}}" data-index="{{item.index}}"></image>
-          <view wx:if="{{item.index>=1}}" class="delete" bindtap="deletePrice" data-index="{{item.index}}">删除奖品</view>
+        <view class="row small"></view>
+          <view class="uploadPicView" bindtap="uploadPrice" data-index="{{item.index}}">
+            <image wx:if="{{!item.priceThumbnail}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
+            <text wx:if="{{!item.priceThumbnail}}" class="upload text">点击添加图片</text>
+            <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}"  class="deletePrice" src="../../images/delete.png"></image>
+            <image class="uploadImg" mode="scaleToFill" wx:if="{{item.priceThumbnail}}" src="{{item.priceThumbnail}}"></image>
+          </view>
           <view class="row">
             <view class="lable">奖品类型</view>
             <radio-group class="radio-group" bindchange="onPriceTypeChange" class="content" data-index="{{item.index}}">
@@ -33,22 +38,25 @@
             <view class="lable">奖品份数
               <p class="red">*</p>
             </view>
-            <input class="content" placeholder="1-999份" bindinput="bindPriceNumInput" data-index="{{item.index}}"></input>
+            <input class="content" placeholder="1-999份" bindinput="bindPriceNumInput" type="number" data-index="{{item.index}}"></input>
           </view>
-          <view class="line"></view>
+          <view class="line long"></view>
         </block>
         <view class="row">
-          <text bindtap="addPrice">添加奖项</text>
+          <view class="addPirce" bindtap="addPrice">
+            <image class="addPriceImg" src="../../images/add_pic.png"></image>
+            <text>添加奖项</text>
+          </view>
         </view>
-        <view class="row">
-        </view>
+        <view class="empty"></view>
+
       </scroll-view>
       <view class="bottom">
         <button class="next" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item>
-      <scroll-view class="swipper-scroll">
+    <swiper-item catchtouchmove="stopTouchMove" >
+      <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第2/3步：设置条件</view>
         <view class="row">
           <view class="lable">开奖条件</view>
@@ -63,21 +71,14 @@
             <p class="red">*</p>
           </view>
           <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
-<!-- 
-          <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-            <view class="picker content">
-              当前选择: {{time}}
-            </view>
-          </picker> -->
         </view>
         <view class="line"></view>
         <view class="row">
           <view class="lable">奖品发放方式</view>
-
           <radio-group bindchange="onPriceProvideTypeChange">
             <view class='label1'>
               <label class="ui-radio {{priceProvideType=='address'?'active':''}} provideType left">
-                <radio value="address" checked="{{priceProvideType=='address'}}  " />
+                <radio value="address" checked="{{priceProvideType=='address'}}" />
                 <text class="text">按收获地址发货</text>
               </label>
               <label class="ui-radio {{priceProvideType=='contract'?'active':''}} provideType right">
@@ -88,22 +89,27 @@
           </radio-group>
         </view>
         <view class="line"></view>
-        <view class="row" wx:if="{{priceProvideType!='address '}}">
+        <view class="row" wx:if="{{priceProvideType!='address'}}">
           <view class="lable">发奖人联系方式</view>
         </view>
-        <image class="addpic" bindtap="uploadProvideImg" src="{{priceContactId}}" wx:if="{{priceProvideType!='address '}}">点击添加图片</image>
+        <view wx:if="{{priceProvideType!='address'}}" class="uploadPicView" bindtap="uploadProvideImg">
+          <image wx:if="{{!priceContactId}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
+          <text wx:if="{{!priceContactId}}" class="upload text">点击添加二维码</text>
+          <image class="uploadImg" mode="scaleToFill" wx:if="{{priceContactId}}" src="{{priceContactId}}"></image>
+        </view>
         <view class="row">
           <view class="lable">说明(可选)</view>
         </view>
         <textarea class="detail" placeholder="最多可设置200字符~" bindinput="bindDetailInput"></textarea>
+        <view class="empty"></view>
 
       </scroll-view>
       <view class="bottom">
         <button bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item>
-      <scroll-view class="swipper-scroll">
+    <swiper-item catchtouchmove="stopTouchMove" >
+      <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第3/3步：加粉设置</view>
         <view class="row">
           <view class="lable">赞助方名称
@@ -116,7 +122,7 @@
           <view class="lable">加粉类型</view>
           <radio-group class="content" bindchange="onAttractingTypeChange">
             <view class='label1'>
-              <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType left">
+              <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType  {{attractingType=='小程序'?'left1':'left'}}">
                 <radio value="公众号" checked="{{priceProvideType=='公众号' }}" />
                 <text class="text">公众号</text>
               </label>
@@ -124,14 +130,11 @@
                 <radio value="微信号" checked="{{priceProvideType=='微信号' }}" />
                 <text class="text">微信号</text>
               </label>
-              <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType right">
+              <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType  {{attractingType=='公众号'?'right1':'right'}}">
                 <radio value="小程序" checked="{{priceProvideType=='小程序' }}" />
                 <text class="text">小程序</text>
               </label>
             </view>
-            <!-- <radio value="公众号" checked="true">公众号</radio>
-            <radio value="微信号">微信号</radio>
-            <radio value="小程序">小程序</radio> -->
           </radio-group>
         </view>
         <view class="line"></view>
@@ -139,7 +142,7 @@
           <view class="lable">手机号
             <p class="red">*</p>
           </view>
-          <input class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
+          <input  type="number" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
         </view>
         <view class="line"></view>
         <view class="row">
@@ -147,8 +150,12 @@
             <p class="red">*</p>
           </view>
         </view>
-        <image class="addpic" bindtap="uploadAttractingImg" src="{{attractingPic}}"></image>
-
+        <view class="uploadPicView detail" bindtap="uploadAttractingImg">
+          <image wx:if="{{!attractingPic}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
+          <text wx:if="{{!attractingPic}}" class="upload text">点击添加图片</text>
+          <image class="uploadImg" mode="scaleToFill" wx:if="{{attractingPic}}" src="{{attractingPic}}"></image>
+        </view>
+        <view class="empty"></view>
       </scroll-view>
       <view class="bottom">
         <button bindtap="submit">确认发布</button>
