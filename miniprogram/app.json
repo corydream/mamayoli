@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/owner/config/config",
     "pages/index/index",
     "pages/owner/lotteryrecord/lotteryrecord",
     "pages/owner/owner",
