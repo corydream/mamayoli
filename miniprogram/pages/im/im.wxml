@@ -1,6 +1,6 @@
 <view class="container">
   <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
-    <swiper-item class="swipper-item">
+    <swiper-item  catchtouchmove="stopTouchMove"  class="swipper-item">
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第1/3步：设置奖品</view>
         <block wx:for="{{priceList}}">
@@ -55,7 +55,7 @@
         <button class="next" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item>
+    <swiper-item catchtouchmove="stopTouchMove" >
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第2/3步：设置条件</view>
         <view class="row">
@@ -108,7 +108,7 @@
         <button bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item>
+    <swiper-item catchtouchmove="stopTouchMove" >
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第3/3步：加粉设置</view>
         <view class="row">

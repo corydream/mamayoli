@@ -32,7 +32,7 @@ Page({
   },
   checkFirst() {
     console.log(this.data.priceList)
-    for (let price of this.data.priceList){
+    for (let price of this.data.priceList) {
       if (!price.priceThumbnail) {
         wx.showToast({
           title: "请上传奖品图片",
@@ -73,11 +73,14 @@ Page({
       priceList: this.data.priceList
     })
   },
+  stopTouchMove(e) {
+    return false;
+  },
   deletePrice(e) {
     console.log(e)
     let index = e.currentTarget.dataset['index']
-    if (index >= this.data.priceList.length){
-      index = this.data.priceList.length-1
+    if (index >= this.data.priceList.length) {
+      index = this.data.priceList.length - 1
     }
     this.data.priceList.splice(index, 1)
     this.setData({
@@ -92,7 +95,7 @@ Page({
   nextPage: function(e) {
     let first = this.checkFirst()
     console.log(first)
-    if (!first){
+    if (!first) {
       return
     }
     this.setData({
