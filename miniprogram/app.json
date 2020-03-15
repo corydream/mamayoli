@@ -7,7 +7,8 @@
     "pages/index/note/note",
     "pages/coopheader/coopheader",
     "pages/heartCard/heartCard",
-    "pages/im/im"
+    "pages/im/im",
+    "pages/cropper/cropper-example"
   ],
   "window": {
     "navigationStyle": "default",
