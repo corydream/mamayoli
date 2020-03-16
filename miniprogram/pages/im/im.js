@@ -60,6 +60,52 @@ Page({
     }
     return true
   },
+  checkSecond() {
+    if (!this.data.lotteryTime) {
+      wx.showToast({
+        title: "请填写开奖时间",
+        icon: 'none',
+        duration: 500
+      })
+      return false
+    }
+    if (this.data.priceProvideType === 'contract' && !this.data.priceContactId) {
+      wx.showToast({
+        title: "请上传发奖人联系方式",
+        icon: 'none',
+        duration: 500
+      })
+      return false
+    }
+    return true
+  },
+  checkThird() {
+    if (!this.data.providerName) {
+      wx.showToast({
+        title: "请填写赞助方名称",
+        icon: 'none',
+        duration: 500
+      })
+      return false
+    }
+    if (!this.data.contactPhoneNum) {
+      wx.showToast({
+        title: "请输入对接人联系方式",
+        icon: 'none',
+        duration: 500
+      })
+      return false
+    }
+    if (!this.data.attractingPic) {
+      wx.showToast({
+        title: "请上传" + this.data.attractingType + "二维码图片",
+        icon: 'none',
+        duration: 500
+      })
+      return false
+    }
+    return true
+  },
   addPrice(e) {
     let len = this.data.priceList.length
     this.data.priceList.push({
@@ -93,15 +139,18 @@ Page({
     })
   },
   nextPage: function(e) {
-    let first = this.checkFirst()
-    console.log(first)
+    let first = this.data.current === 0 ? this.checkFirst() : this.checkSecond()
     if (!first) {
       return
     }
     this.setData({
       current: this.data.current < 2 ? this.data.current + 1 : 2
     })
-    console.log(e)
+  },
+  prePage: function(e) {
+    this.setData({
+      current: this.data.current - 1
+    })
   },
   onShow(e) {
     console.log(this.data)
@@ -595,6 +644,10 @@ Page({
   },
   submit: function(e) {
     console.log(this.data)
+    let check = this.checkThird()
+    if (!check) {
+      return
+    }
     let attractingType = 'weixin'
     if (this.data.attractingType == '公众号') {
       attractingType = 'public'
@@ -630,11 +683,15 @@ Page({
         res => {
           console.log(res)
           if (res.data) {
-            wx.showToast({
-              title: "发布成功,请等待审核",
-              icon: 'success',
-              duration: 1000
+            wx.redirectTo({
+              url: '/pages/im/publish/publish'
             })
+            // wx.showToast({
+            //   title: "发布成功,请等待审核",
+            //   icon: 'success',
+            //   duration: 1000
+            // })
+           
           } else {
             wx.showToast({
               title: "发布失败",

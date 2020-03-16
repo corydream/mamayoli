@@ -52,7 +52,7 @@
 
       </scroll-view>
       <view class="bottom">
-        <button class="next" bindtap="nextPage">下一步</button>
+        <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
     <swiper-item catchtouchmove="stopTouchMove" >
@@ -90,7 +90,7 @@
         </view>
         <view class="line"></view>
         <view class="row" wx:if="{{priceProvideType!='address'}}">
-          <view class="lable">发奖人联系方式</view>
+          <view class="lable">发奖人联系方式 <p class="red">*</p></view>
         </view>
         <view wx:if="{{priceProvideType!='address'}}" class="uploadPicView" bindtap="uploadProvideImg">
           <image wx:if="{{!priceContactId}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
@@ -105,7 +105,8 @@
 
       </scroll-view>
       <view class="bottom">
-        <button bindtap="nextPage">下一步</button>
+        <button class="prePage" bindtap="prePage">上一步</button>
+        <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
     <swiper-item catchtouchmove="stopTouchMove" >
@@ -123,15 +124,15 @@
           <radio-group class="content" bindchange="onAttractingTypeChange">
             <view class='label1'>
               <label class="ui-radio {{attractingType=='公众号'?'active':''}} attractingType  {{attractingType=='小程序'?'left1':'left'}}">
-                <radio value="公众号" checked="{{priceProvideType=='公众号' }}" />
+                <radio value="公众号" checked="{{attractingType=='公众号' }}" />
                 <text class="text">公众号</text>
               </label>
               <label class="ui-radio {{attractingType=='微信号'?'active':''}} attractingType center">
-                <radio value="微信号" checked="{{priceProvideType=='微信号' }}" />
+                <radio value="微信号" checked="{{attractingType=='微信号' }}" />
                 <text class="text">微信号</text>
               </label>
               <label class="ui-radio {{attractingType=='小程序'?'active':''}} attractingType  {{attractingType=='公众号'?'right1':'right'}}">
-                <radio value="小程序" checked="{{priceProvideType=='小程序' }}" />
+                <radio value="小程序" checked="{{attractingType=='小程序' }}" />
                 <text class="text">小程序</text>
               </label>
             </view>
@@ -158,6 +159,7 @@
         <view class="empty"></view>
       </scroll-view>
       <view class="bottom">
+        <button class="prePage" bindtap="prePage">上一步</button>
         <button bindtap="submit">确认发布</button>
       </view>
     </swiper-item>

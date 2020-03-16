@@ -1,0 +1,11 @@
+<!--pages/cropper/cropper-sample.wxml-->
+<view class='body'>
+
+
+  <image class="img" src="../../../images/go_award_icon.png"></image>
+  <text class="title">你已提交发布需求～</text>
+  <text class="content">奖品待后台审核后就可以发布啦</text>
+  <view class="bottom">
+    <button class="button" bindtap="create">再发起一个</button>
+  </view>
+</view>

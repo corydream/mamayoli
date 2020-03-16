@@ -11,7 +11,10 @@
     "pages/coopheader/coopheader",
     "pages/heartCard/heartCard",
     "pages/im/im",
-    "pages/cropper/cropper-example"
+    "page/im/publish/publish",
+    "pages/cropper/cropper-example",
+    "custom-tab-bar/index",
+    "pages/blank/blank"
   ],
   "window": {
     "navigationStyle": "default",
@@ -22,25 +25,26 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "selectedColor": "#f66400",
+    "custom":true,
     "color": "#666666",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "抽奖",
-        "iconPath": "images/icon_home_gray.png",
-        "selectedIconPath": "images/icon_home_light.png"
+        "iconPath": "/images/icon_home_gray.png",
+        "selectedIconPath": "/images/icon_home_light.png"
       },
       {
-        "pagePath": "pages/im/im",
+        "pagePath": "pages/blank/blank",
         "text": "发起抽奖",
-        "iconPath": "images/icon_initiate_gray.png",
-        "selectedIconPath": "images/icon_initiate_light.png"
+        "iconPath": "/images/icon_initiate_gray.png",
+        "selectedIconPath": "/images/icon_initiate_light.png"
       },
       {
         "pagePath": "pages/owner/owner",
         "text": "我的",
-        "iconPath": "images/icon_owner_gray.png",
-        "selectedIconPath": "images/icon_owner_light.png"
+        "iconPath": "/images/icon_owner_gray.png",
+        "selectedIconPath": "/images/icon_owner_light.png"
       }
     ]
   }
