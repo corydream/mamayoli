@@ -1,0 +1,15 @@
+<view class="add">
+    <view class="add-top">
+        <van-cell-group>
+            <van-field value="{{ username }}" clearable label="姓名" placeholder="请输入用户名" />
+            <van-field value="{{ password }}" label="地区" placeholder="请选择地区" clickable readonly />
+            <van-field value="{{ password }}" label="地址" placeholder="请填写详细地址" />
+            <van-field value="{{ password }}" type="number" label="邮编" placeholder="选填" />
+            <van-field value="{{ password }}" type="number" label="电话" placeholder="请填写收件人手机号" />
+        </van-cell-group>
+    </view>
+    <van-cell title="设为首选" clickable data-name="1" bindtap="defaultAddr">
+        <van-radio slot="right-icon" name="1" />
+    </van-cell>
+    <van-area area-list="{{ areaList }}" value="110101" />
+</view>

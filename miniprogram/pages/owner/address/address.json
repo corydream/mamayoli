@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "设置",
+  "navigationBarTitleText": "地址管理",
   "usingComponents": {
     "van-icon":"/miniprogram_npm/vant-weapp/icon/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",

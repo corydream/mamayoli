@@ -1,0 +1,13 @@
+<view class="add">
+    <view class="add-list">
+        <view class="a-name"></view>
+        <view class="a-tel"></view>
+        <view class="a-info"></view>
+        <view class="a-info"></view>
+        <view>首选</view>
+    </view>
+    <view class="address-btn">
+        <van-icon name="plus" />
+        新增地址
+    </view>
+</view>

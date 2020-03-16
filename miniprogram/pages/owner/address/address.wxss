@@ -1,0 +1,30 @@
+@import "../../../style/button";
+.add{
+    padding: 0 32rpx;
+    font-size: 28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    background-color: #fff;
+}
+.add-list{
+    padding: 48rpx 0;
+    border-bottom: 1px solid #ddd;
+}
+.a-name{
+    color: #3c3c3c;
+    margin-bottom: 30rpx;
+    font-weight: bold;
+}
+.a-tel{
+    margin-bottom: 10rpx;
+    font-weight: bold;
+}
+.a-info{
+    color: #999;
+    margin-bottom: 40rpx;
+}
+.address-btn{
+    height: 132rpx;
+    line-height: 132rpx;
+    text-align: center;
+
+}

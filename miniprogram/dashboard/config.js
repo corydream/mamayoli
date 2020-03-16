@@ -1,8 +1,8 @@
 //index.js
 
 //index.js
-import creatorPage from '../../utils/create';
-import ConfigRecordService from './config.service';
+// import creatorPage from '../../utils/create';
+// import ConfigRecordService from './config.service';
 
 const app = getApp()
 class Index {
@@ -18,4 +18,4 @@ class Index {
 
   
 }
-Page(creatorPage(Index));
+// Page(creatorPage(Index));

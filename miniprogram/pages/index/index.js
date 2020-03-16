@@ -6,7 +6,7 @@ import IndexService from './index.service';
 import token from '../../service/token.service';
 import { formatTime } from '../../utils/util';
 
-const app = getApp()
+const app = getApp();
 class Index {
   data = {
     logged: false,
@@ -26,28 +26,34 @@ class Index {
     dailyList: [],
     hotList: [],
     currentList: [],
-    nav: [{
-      id: 0,
-      name: '每日精选',
-      active: true
-    }, {
-      id: 1,
-      name: '热门福利',
-      active: false
-    }],
+    nav: [
+      {
+        id: 0,
+        name: '每日精选',
+        active: true
+      },
+      {
+        id: 1,
+        name: '热门福利',
+        active: false
+      }
+    ],
     currentTab: 0,
-    mock_list: [{
-      advance: '雅诗兰黛',
-      name: '雅诗兰黛粉底精华眼霜',
-      date: '03月31日',
-      time: '18:00'
-    }, {
-      advance: '雅诗兰黛',
-      name: '雅诗兰黛粉底精华眼霜',
-      date: '03月31日',
-      time: '18:00'
-    }]
-  }
+    mock_list: [
+      {
+        advance: '雅诗兰黛',
+        name: '雅诗兰黛粉底精华眼霜',
+        date: '03月31日',
+        time: '18:00'
+      },
+      {
+        advance: '雅诗兰黛',
+        name: '雅诗兰黛粉底精华眼霜',
+        date: '03月31日',
+        time: '18:00'
+      }
+    ]
+  };
   constructor() {
     this.ser = new IndexService();
   }
@@ -65,16 +71,19 @@ class Index {
       fail() {
         _this.setData({
           showLoginLayer: true
-        })
+        });
       }
-    })
+    });
   }
   // 跳转详情页
   goDetail(e) {
-    console.log(e.currentTarget.dataset.id)
+    console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
       url: `./detail/detail?id=${e.currentTarget.dataset.id}`
-    })
+    });
+  }
+  onShow() {
+    this.getList();
   }
   // 获取登陆
   getLogin(obj) {
@@ -82,29 +91,29 @@ class Index {
     const params = {
       nickName: obj.nickName,
       avatarUrl: obj.avatarUrl
-    }
+    };
     wx.login({
       success(res) {
         if (res.code) {
           //发起网络请求
           _this.ser.login({ code: res.code }).then(result => {
-            token.set(result.data)
+            token.set(result.data);
             // 更新用户信息
             _this.ser.updateInfo(params);
             // 获取用户信息
             _this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
               _this.setData({
                 userData: resGetUserInfo.data
-              })
+              });
               app.globalData.userInfoData = resGetUserInfo.data;
               // 调用商品list
               _this.getList();
               _this.getHeart();
-            })
-          })
+            });
+          });
         }
       }
-    })
+    });
   }
   async getHeart() {
     const res = await this.ser.getUserInfo('/user/checkIn');
@@ -114,7 +123,7 @@ class Index {
       this.setData({
         userData: this.data.userData,
         show: true
-      })
+      });
     } else {
       this.setData({ show: false });
     }
@@ -126,23 +135,27 @@ class Index {
     const params = {
       pageSize: 15,
       pageIndex: 1
-    }
+    };
     // banner 列表
-    const banner = await this.ser.list(Object.assign(params, { 'type': 'banner' }));
+    const banner = await this.ser.list(
+      Object.assign(params, { type: 'banner' })
+    );
 
     this.setData({
       bannerList: this._formatListData(banner.data)
-    })
+    });
 
-    //每日精选列表 
-    const daily = await this.ser.list(Object.assign(params, { 'type': 'dailySelection' }));
+    //每日精选列表
+    const daily = await this.ser.list(
+      Object.assign(params, { type: 'dailySelection' })
+    );
 
     this.dailyList = this._formatListData(daily.data);
 
-    // 热门福利
-    const hot = await this.ser.list(Object.assign(params, { 'type': 'hot' }));
+    // // 热门福利
+    // const hot = await this.ser.list(Object.assign(params, { 'type': 'hot' }));
 
-    this.hotList = this._formatListData(hot.data);
+    // this.hotList = this._formatListData(hot.data);
 
     this.setData({
       currentList: this.dailyList
@@ -150,51 +163,63 @@ class Index {
   }
   // 时间转化
   _formatListData(list) {
-    return list.map((item) => {
+    return list.map(item => {
       item.currTime = formatTime(item.lotteryTime);
       return item;
-    })
+    });
   }
   onGotUserInfo(e) {
     this.setData({
       showLoginLayer: false
-    })
+    });
     // 获取用户信息
     wx.setStorage({
-      key: "userInfo",
+      key: 'userInfo',
       data: e.detail.userInfo
-    })
+    });
     this.getLogin(e.detail.userInfo);
   }
   // 合作商户
   goMerchant(e) {
     wx.navigateTo({
       url: '../coopheader/coopheader'
-    })
+    });
   }
   closeHomeLoginLayout() {
     this.setData({ showLoginLayer: false });
   }
   goHeart() {
-    console.log(this);
     wx.navigateTo({
       url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard}`
-    })
+    });
   }
-  navTab(e) {
-    this.data.nav.map(v => v.id === e.currentTarget.dataset.index ? v.active = true : v.active = false)
+  async navTab(e) {
+    this.data.nav.map(v =>
+      v.id === e.currentTarget.dataset.index
+        ? (v.active = true)
+        : (v.active = false)
+    );
     this.setData({
       nav: this.data.nav,
       currentTab: e.currentTarget.dataset.index
-    })
+    });
     if (e.currentTarget.dataset.index) {
+      // 热门福利
+      const params = {
+        pageSize: 15,
+        pageIndex: 1
+      };
+      const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
+
+      this.hotList = this._formatListData(hot.data);
+
       this.setData({
         currentList: this.hotList
-      })
+      });
     } else {
       this.setData({
         currentList: this.dailyList
-      })
+      });
     }
   }
 }

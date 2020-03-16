@@ -2,7 +2,7 @@
 
 //index.js
 import creatorPage from '../../../utils/create';
-import ConfigRecordService from './config.service';
+import AddressRecordService from './address.service';
 
 const app = getApp()
 class Index {
@@ -10,7 +10,7 @@ class Index {
     userData:{}
   }
   constructor() {
-    this.ser = new ConfigRecordService();
+    this.ser = new AddressRecordService();
   }
   onLoad() {
     

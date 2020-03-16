@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "新增地址",
+  "usingComponents": {
+    "van-icon":"/miniprogram_npm/vant-weapp/icon/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-area": "/miniprogram_npm/vant-weapp/area/index",
+    "van-radio": "/miniprogram_npm/vant-weapp/radio/index"
+  }
+}
