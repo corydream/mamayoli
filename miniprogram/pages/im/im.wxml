@@ -160,7 +160,7 @@
       </scroll-view>
       <view class="bottom">
         <button class="prePage" bindtap="prePage">上一步</button>
-        <button bindtap="submit">确认发布</button>
+        <button  class="nextPage" bindtap="submit">确认发布</button>
       </view>
     </swiper-item>
   </swiper>
