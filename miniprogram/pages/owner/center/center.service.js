@@ -1,6 +1,6 @@
 
 import request from '../../../service/http';
-export default class LotteryRecordService {
+export default class CenterRecordService {
     
     login(param) {
         return request().post('/user/login', param)
@@ -8,7 +8,10 @@ export default class LotteryRecordService {
     updateInfo(param) {
         return request().post('/user/updateUserInfo', param)
     }
-    getList(url) {
+    getUserInfo(url) {
         return request().get(url)
+    }
+    list(param) {
+        return request().get('/activity/list', param)
     }
 }

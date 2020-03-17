@@ -1,0 +1,5 @@
+<view class="record">
+    <van-cell is-link title="奖品管理" />
+    <van-cell is-link title="数据看板" />
+    <van-cell is-link title="联系我们" />
+</view>
