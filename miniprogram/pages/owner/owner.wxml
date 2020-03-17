@@ -22,15 +22,15 @@
   <!-- 内容部分 -->
   <view class="user-ctx">
     <view class="user-item">
-      <view>
+      <view bindtap="record">
         <image class="item-image" src="../../images/gray-lottery.png" />
         <text class="item-info">抽奖记录</text>
       </view>
-      <view>
+      <view bindtap="setting">
         <image class="item-image" src="../../images/gray-config.png" />
         <text class="item-info">设置</text>
       </view>
-      <view>
+      <view bindtap="center">
         <image class="item-image" src="../../images/gray-center.png" />
         <text class="item-info">商家中心</text>
       </view>

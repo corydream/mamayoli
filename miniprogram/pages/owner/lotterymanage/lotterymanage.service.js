@@ -1,6 +1,6 @@
 
 import request from '../../../service/http';
-export default class LotteryRecordService {
+export default class LotteryManageService {
     
     login(param) {
         return request().post('/user/login', param)

@@ -2,7 +2,7 @@
 
 //index.js
 import creatorPage from '../../../utils/create';
-import LotteryRecordService from './lotteryrecord.service';
+import LotteryManageService from './lotterymanage.service';
 import token from '../../../service/token.service';
 
 const app = getApp();
@@ -21,7 +21,7 @@ class Index {
     }]
   };
   constructor() {
-    this.ser = new LotteryRecordService();
+    this.ser = new LotteryManageService();
     console.log(app.globalData);
   }
   onLoad() {
@@ -50,7 +50,7 @@ class Index {
       pageIndex: 1,
       type:type
     };
-    this.ser.getList(`/activity/myLotteryList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&type=${params.type}`).then(res => {
+    this.ser.getList(`/activity/myProvideList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&type=${params.type}`).then(res => {
       console.log(res);
       this.setData({
         // list
@@ -60,6 +60,12 @@ class Index {
   change(ev){
     wx.navigateTo({
       url:`../../index/detail/detail?id=${ev.currentTarget.dataset.id}`
+    })
+  }
+  goLottery(){
+    console.log(123)
+    wx.reLaunch({
+      url:`../../im/im`
     })
   }
 }

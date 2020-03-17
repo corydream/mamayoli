@@ -1,0 +1,34 @@
+<view class="record">
+  <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
+    <van-tab title="待审核" border>
+      <van-cell-group border>
+        <van-cell wx:for="{{list}}" title="{{item.name}}" data-id="{{item.id}}" center value="去看看 >" label="{{item.currTime}}" wx:key="index" bindtap="change" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="审核未通过">
+      <van-cell-group border>
+        <van-cell wx:for="{{list}}" title="{{item.name}}" data-id="{{item.id}}" center value="去看看 >" label="{{item.currTime}}" wx:key="index" bindtap="change" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="已发布">
+      <van-cell-group border>
+        <van-cell wx:for="{{list}}" title="{{item.name}}" data-id="{{item.id}}" center value="去看看 >" label="{{item.currTime}}" wx:key="index" bindtap="change" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="已结束">
+      <van-cell-group border>
+        <van-cell wx:for="{{list}}" title="{{item.name}}" data-id="{{item.id}}" center value="去看看 >" label="{{item.currTime}}" wx:key="index" bindtap="change" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="未发放">
+      <van-cell-group border>
+        <van-cell wx:for="{{list}}" title="{{item.name}}" data-id="{{item.id}}" center value="去看看 >" label="{{item.currTime}}" wx:key="index" bindtap="change" />
+      </van-cell-group>
+    </van-tab>
+  </van-tabs>
+  <view class="bottom">
+    <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" bindtap="goLottery">
+      发起抽奖
+    </button>
+  </view>
+</view>

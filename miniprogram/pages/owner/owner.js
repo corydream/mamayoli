@@ -32,6 +32,19 @@ class Index {
       }
     })
   }
+  record(){
+    wx.navigateTo({
+      url:'./lotteryrecord/lotteryrecord'
+    })
+  }
+  setting(){
+    wx.navigateTo({
+      url:'./config/config'
+    })
+  }
+  center(){
+
+  }
   
 }
 Page(creatorPage(Index));
