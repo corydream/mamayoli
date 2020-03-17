@@ -118,21 +118,40 @@ page {
 }
 
 .bottom {
-  height: 100rpx;
+  height: 212rpx;
   width: 100%;
   display: flex;
   background: #ffffffff;
   opacity: 1;
   position: fixed;
   bottom: 0px;
-  margin-bottom: 0;
+  box-shadow: 0px 1px 0px 0px rgba(204, 204, 204, 1);
   font-size: 32rpx;
-  align-items: flex-end;
-  z-index: 1;
 }
 
-.next {
-  align-items: flex-end;
+.nextPage {
+  width: 192rpx;
+  height: 80rpx;
+  background: rgba(246, 100, 0, 1);
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  position: absolute;
+  right: 32rpx;
+  top: 40rpx;
+  color: rgba(255, 255, 255, 1);
+}
+
+.prePage {
+  width: 192rpx;
+  color: rgba(102, 102, 102, 1);
+  height: 80rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  position: absolute;
+  left: 32rpx;
+  top: 40rpx;
 }
 
 .row {
@@ -176,7 +195,7 @@ page {
   width: calc(100% - 64rpx);
   height: 1px;
   margin-left: 32rpx;
-  border-top: solid #acc0d8 1px;
+  border-top: solid #ddd 1px;
 }
 
 .line.long {
@@ -212,7 +231,7 @@ page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(102, 102, 102, 1);
+  border: 1px solid #666;
   border-radius: 8rpx;
   position: relative;
 }
