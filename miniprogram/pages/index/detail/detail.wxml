@@ -44,7 +44,7 @@
     <!-- </scroll-view> -->
      <!-- wx:if="{{!currinfos.hasLottery}}" -->
     <view class="bottom">
-        <button class="bottom-btn" hover-class="hover-button" wx:if="{{!currinfos.hasLottery&&!clickLucky}}" lang="zh_CN" bindtap="lucky">
+        <button class="bottom-btn" hover-class="hover-button" wx:if="{{!currInfos.hasLottery&&!clickLucky}}" lang="zh_CN" bindtap="lucky">
             免费抽奖
         </button>
         <button class="bottom-share-btn" wx:else open-type="share" lang="zh_CN">分享给好友</button>

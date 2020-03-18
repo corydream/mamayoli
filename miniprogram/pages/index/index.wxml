@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
-          <image class="swiper-item-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
         </swiper-item>
       </block>
     </swiper>
@@ -30,11 +30,11 @@
   <!-- 导航  nav -->
   <view class="nav">
     <view class="nav-item" wx:for="{{nav}}" wx:key="index" data-index="{{index}}" bindtap="navTab">
-      <text class="{{item.active ? 'cur': ''}}">{{item.name}}</text>
+      <text class="{{item.id === currentTab ? 'cur': ''}}">{{item.name}}</text>
     </view>
   </view>
   <!-- 详情  list -->
-  <view class="daily-list" wx:if="{{currentTab === 0}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+  <view class="daily-list" hidden="{{currentTab === 1}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="list-ctx d-list-ctx">
       <view class="adv">{{item.provider}}  赞助</view>
@@ -42,7 +42,7 @@
       <view class="time">{{item.currTime}} 自动开奖</view>
     </view>
   </view>
-  <view class="list" wx:if="{{currentTab === 1}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+  <view class="list" hidden="{{currentTab === 0}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <view class="list-image">
       <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </view>

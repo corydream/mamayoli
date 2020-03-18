@@ -26,7 +26,6 @@ Component({
   attached() {},
   methods: {
     switchTab(e) {
-      console.log(e)
       const data = e.currentTarget.dataset
       if (data.index == 1) {
         wx.navigateTo({
@@ -41,6 +40,7 @@ Component({
       this.setData({
         selected: data.index
       })
+      console.log(data.index)
     }
   }
 })

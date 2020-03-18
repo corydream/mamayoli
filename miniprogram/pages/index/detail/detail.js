@@ -63,6 +63,7 @@ class Detail {
         this.getAwardList();
         this.getInfo();
         this.getAwardResult();
+        console.log(this.data.clickLucky)
     }
     // 去领奖
     goLottery(){
@@ -124,7 +125,8 @@ class Detail {
             // console.log(res.data)
             this.setData({
                 currInfos: res.data,
-                currentId: res.data.id
+                currentId: res.data.id,
+                clickLucky: false
             });
             this.currentId = res.data.id;
             // this.lucky(res.data.id);
@@ -151,8 +153,10 @@ class Detail {
     getInfo() {
         this.ser.getTodo(`/activity/detail?id=${this.currentId}`).then(res => {
             res.data.currTime = formatTime(res.data.lotteryTime);
+            console.log(res.data.hasLottery)
             this.setData({
-                currInfos: res.data
+                currInfos: res.data,
+                clickLucky: false
             });
         })
     }

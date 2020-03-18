@@ -84,6 +84,9 @@ class Index {
   }
   onShow() {
     this.getList();
+    this.setData({
+      currentTab:0
+    })
   }
   // 获取登陆
   getLogin(obj) {
