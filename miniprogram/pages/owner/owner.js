@@ -9,14 +9,35 @@ import { formatTime } from '../../utils/util';
 const app = getApp()
 class Index {
   data = {
-    userData:{}
+    userData:{},
+    dataObj:{}
   }
   constructor() {
     this.ser = new OwnerService();
-    console.log(app.globalData)
+    
   }
   onLoad() {
     this.getUserInfo();
+    this.getData();
+  }
+  onShow(){
+    this.getData();
+    console.log(app.globalData.userInfoData)
+//     lotteryTimes: 36
+// nickName: "DDDDDDesignBuff"
+// openId: "oF6sp41J2F_dPezCL8a5S7-KOxbY"
+// phoneNum: null
+// province: null
+// realName: null
+// status: null
+// totalWishCard: 36
+// unionId: null
+// winTimes: 14
+  }
+  getData(){
+    this.setData({
+      dataObj:app.globalData.userInfoData
+    })
   }
   getUserInfo(){
     let _this = this;
@@ -43,7 +64,9 @@ class Index {
     })
   }
   center(){
-
+    wx.navigateTo({
+      url:'./center/center'
+    })
   }
   
 }

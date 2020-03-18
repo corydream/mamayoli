@@ -6,15 +6,15 @@
     </view>
     <view class="center-item">
       <view>
-        <text class="item-title">101</text>
+        <text class="item-title">{{dataObj.totalWishCard}}</text>
         <text class="item-ctx">累计收集心愿</text>
       </view>
       <view>
-        <text class="item-title">56</text>
+        <text class="item-title">{{dataObj.lotteryTimes}}</text>
         <text class="item-ctx">抽奖次数</text>
       </view>
       <view>
-        <text class="item-title">0</text>
+        <text class="item-title">{{dataObj.winTimes}}</text>
         <text class="item-ctx">中奖情况</text>
       </view>
     </view>

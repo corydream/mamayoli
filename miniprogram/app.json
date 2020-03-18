@@ -1,14 +1,14 @@
 {
   "pages": [
+    "pages/owner/owner",
+    "pages/index/detail/detail",
     "pages/index/index",
-    "pages/owner/lotterymanage/lotterymanage",
     "pages/owner/lotteryrecord/lotteryrecord",
+    "pages/owner/center/center",
+    "pages/owner/lotterymanage/lotterymanage",
     "pages/owner/address/add/add",
     "pages/owner/address/address",
     "pages/owner/config/config",
-    "pages/owner/center/center",
-    "pages/owner/owner",
-    "pages/index/detail/detail",
     "pages/index/note/note",
     "pages/coopheader/coopheader",
     "pages/heartCard/heartCard",

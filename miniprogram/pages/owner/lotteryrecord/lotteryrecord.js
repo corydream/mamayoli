@@ -4,6 +4,7 @@
 import creatorPage from '../../../utils/create';
 import LotteryRecordService from './lotteryrecord.service';
 import token from '../../../service/token.service';
+import { formatTime } from '../../../utils/util';
 
 const app = getApp();
 class Index {
@@ -30,6 +31,12 @@ class Index {
   getUserInfo() {
     let _this = this;
   }
+  _formatListData(list) {
+    return list.map(item => {
+      item.currTime = formatTime(item.lotteryTime);
+      return item;
+    });
+  }
   onChange(event) {
     // wx.showToast({
     //   title: `切换到标签 ${event.detail.index + 1}`,
@@ -46,14 +53,13 @@ class Index {
   }
   getDataList(type) {
     let params = {
-      pageSize: 20,
+      pageSize: 200,
       pageIndex: 1,
       type:type
     };
     this.ser.getList(`/activity/myLotteryList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&type=${params.type}`).then(res => {
-      console.log(res);
       this.setData({
-        // list
+        list: this._formatListData(res.data)
       });
     });
   }

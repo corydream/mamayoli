@@ -10,7 +10,7 @@ export function formatTime(date) {
   const day = dates.getDate();
 
   const hour = dates.getHours();
-  const minute = dates.getMinutes();
+  const minute = dates.getMinutes() == '0'?"00":dates.getMinutes();
   const second = dates.getSeconds();
 
   return `${month}月${day}日  ${hour}:${minute}`

@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
-          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail"/>
         </swiper-item>
       </block>
     </swiper>
