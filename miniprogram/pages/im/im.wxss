@@ -12,7 +12,9 @@ page {
   width: 100%;
   justify-content: center;
 }
-
+/* .swipper-item{
+  pointer-events: none
+} */
 .swipper-scroll {
   background: white;
   height: 100%;

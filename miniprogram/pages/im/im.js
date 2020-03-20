@@ -29,9 +29,10 @@ Page({
       [0, 10, 20]
     ],
     multiIndex: [0, 0, 0],
+    top_num: 0,
+    touchStart: {}
   },
   checkFirst() {
-    console.log(this.data.priceList)
     for (let price of this.data.priceList) {
       if (!price.priceThumbnail) {
         wx.showToast({
@@ -119,8 +120,32 @@ Page({
       priceList: this.data.priceList
     })
   },
+
   stopTouchMove(e) {
-    return false;
+    console.log('onSWipperMove', e, this.data.top_num)
+    let y = e.touches[0].clientY - this.data.touchStart.clientY
+    this.setData({
+      top_num: this.data.top_num - y > 0 ? this.data.top_num - y : 0
+    })
+    return true
+    // if (e.target.offsetLeft<e.target.offsetTop){
+    //   return true;
+    // }
+
+    // return false;
+  },
+  bindtouchmove(e) {
+    console.log("bindtouchmove", e)
+    // this.setData({
+    //   top_num: this.data.top_num + e.target.offsetTop
+    // })
+  },
+  bindtouchstart(e) {
+    console.log("bindtouchstart", e)
+    this.setData({
+      touchStart: e.touches[0]
+    })
+    return true
   },
   deletePrice(e) {
     console.log(e)
@@ -134,9 +159,25 @@ Page({
     })
   },
   bindSwiperChange: function(e) {
-    this.setData({
-      current: e.detail.current
-    })
+    if(e.detail.source!='touch'){
+      return
+    }
+    let swipe = e.detail.current;
+    console.log(e)
+    if (!this.checkFirst() && swipe == 1) {
+      this.setData({
+        current: 0
+      })
+    } else if (!this.checkSecond() && swipe == 2) {
+      this.setData({
+        current: 1
+      })
+    } else {
+      this.setData({
+        current: e.detail.current
+      })
+    }
+
   },
   nextPage: function(e) {
     let first = this.data.current === 0 ? this.checkFirst() : this.checkSecond()
@@ -691,7 +732,7 @@ Page({
             //   icon: 'success',
             //   duration: 1000
             // })
-           
+
           } else {
             wx.showToast({
               title: "发布失败",

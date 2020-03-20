@@ -1,14 +1,14 @@
 <view class="container">
-  <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
-    <swiper-item  catchtouchmove="stopTouchMove"  class="swipper-item">
-      <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
+  <swiper class="siwper"  current="{{current}}" bindchange="bindSwiperChange">
+    <swiper-item    class="swipper-item">
+      <scroll-view  scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第1/3步：设置奖品</view>
         <block wx:for="{{priceList}}">
-        <view class="row small"></view>
+          <view class="row small"></view>
           <view class="uploadPicView" bindtap="uploadPrice" data-index="{{item.index}}">
             <image wx:if="{{!item.priceThumbnail}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
             <text wx:if="{{!item.priceThumbnail}}" class="upload text">点击添加图片</text>
-            <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}"  class="deletePrice" src="../../images/delete.png"></image>
+            <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}" class="deletePrice" src="../../images/delete.png"></image>
             <image class="uploadImg" mode="scaleToFill" wx:if="{{item.priceThumbnail}}" src="{{item.priceThumbnail}}"></image>
           </view>
           <view class="row">
@@ -55,7 +55,7 @@
         <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item catchtouchmove="stopTouchMove" >
+    <swiper-item >
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第2/3步：设置条件</view>
         <view class="row">
@@ -90,7 +90,9 @@
         </view>
         <view class="line"></view>
         <view class="row" wx:if="{{priceProvideType!='address'}}">
-          <view class="lable">发奖人联系方式 <p class="red">*</p></view>
+          <view class="lable">发奖人联系方式
+            <p class="red">*</p>
+          </view>
         </view>
         <view wx:if="{{priceProvideType!='address'}}" class="uploadPicView" bindtap="uploadProvideImg">
           <image wx:if="{{!priceContactId}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
@@ -109,7 +111,7 @@
         <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item catchtouchmove="stopTouchMove" >
+    <swiper-item >
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第3/3步：加粉设置</view>
         <view class="row">
@@ -143,7 +145,7 @@
           <view class="lable">手机号
             <p class="red">*</p>
           </view>
-          <input  type="number" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
+          <input type="number" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
         </view>
         <view class="line"></view>
         <view class="row">
@@ -160,7 +162,7 @@
       </scroll-view>
       <view class="bottom">
         <button class="prePage" bindtap="prePage">上一步</button>
-        <button  class="nextPage" bindtap="submit">确认发布</button>
+        <button class="nextPage" bindtap="submit">确认发布</button>
       </view>
     </swiper-item>
   </swiper>
