@@ -109,6 +109,14 @@ Page({
   },
   addPrice(e) {
     let len = this.data.priceList.length
+    if(len>=3){
+      wx.showToast({
+        title: "最多只能添加3个奖品",
+        icon: 'none',
+        duration: 500
+      })
+      return
+    }
     this.data.priceList.push({
       priceType: "entity",
       priceName: "",
