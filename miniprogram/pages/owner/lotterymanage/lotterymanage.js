@@ -40,11 +40,11 @@ class Index {
     if (event.detail.index === 0) {
       this.getDataList('audit');
     } else if (event.detail.index === 1) {
-      this.getDataList('finish');
+      this.getDataList('progress');
     } else if(event.detail.index === 2) {
       this.getDataList('finish');
     }else if(event.detail.index === 3) {
-      this.getDataList('finish');
+      this.getDataList('auditFailed');
     }else if(event.detail.index === 4) {
       this.getDataList('finish');
     }
@@ -56,9 +56,11 @@ class Index {
       type:type
     };
     this.ser.getList(`/activity/myProvideList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&type=${params.type}`).then(res => {
-      this.setData({
-        list: this._formatListData(res.data)
-      });
+        if(res && res.data){
+          this.setData({
+            list: this._formatListData(res.data)
+          });
+        }
     });
   }
   change(ev){

@@ -7,7 +7,7 @@
     line-height  : 72rpx;
     color        : #fff;
     font-size    : 28rpx;
-    font-family:PingFangSC-Medium,PingFang SC;
+    font-family  : PingFangSC-Medium, PingFang SC;
 }
 
 .bottom-btn {
@@ -51,4 +51,15 @@
 
 .end-hover-button {
     background-color: #444;
+}
+
+.contact-button {
+    width   : 750rpx;
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    height: 80rpx;
+}
+.help-btn{
+    position: relative;
 }

@@ -2,4 +2,11 @@
 
 .add-top{
     margin-bottom: 32rpx;
+    position: relative;
+}
+.picker-area{
+    position: absolute;
+    top: 160rpx;
+    left: 0;
+    color: #333;
 }

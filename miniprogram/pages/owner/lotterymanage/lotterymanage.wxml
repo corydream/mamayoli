@@ -20,11 +20,11 @@
         <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
       </van-cell-group>
     </van-tab>
-    <van-tab title="未发放">
+    <!-- <van-tab title="未发放">
       <van-cell-group border>
         <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="查看中奖者名单" label="{{item.currTime}}" wx:key="index" bindtap="change" />
       </van-cell-group>
-    </van-tab>
+    </van-tab> -->
   </van-tabs>
   <view class="bottom">
     <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" bindtap="goLottery">

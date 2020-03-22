@@ -1,4 +1,6 @@
 <view class="record">
-    <van-cell is-link title="地址管理" link-type="navigateTo" url="/pages/dashboard/index" />
-    <van-cell is-link title="帮助中心" />
+    <van-cell is-link title="地址管理" link-type="navigateTo" url="/pages/owner/address/address" />
+    <van-cell is-link class="help-btn" title="帮助中心">
+        <button class='contact-button' open-type='contact'></button>
+    </van-cell>
 </view>
