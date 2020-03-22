@@ -35,7 +35,7 @@ page {
 }
 
 .swiper-item-image {
-  /* width: 758rpx; */
+  width: 686rpx;
   height  : 300rpx;
 }
 

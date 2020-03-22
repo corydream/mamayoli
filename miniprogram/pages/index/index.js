@@ -77,16 +77,17 @@ class Index {
   }
   // 跳转详情页
   goDetail(e) {
-    console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
       url: `./detail/detail?id=${e.currentTarget.dataset.id}`
     });
   }
   onShow() {
-    this.getList();
-    this.setData({
-      currentTab:0
-    })
+    this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
+      this.setData({
+        userData: resGetUserInfo.data
+      });
+      this.getList();
+    });
   }
   // 获取登陆
   getLogin(obj) {
@@ -111,12 +112,22 @@ class Index {
               app.globalData.userInfoData = resGetUserInfo.data;
               // 调用商品list
               _this.getList();
-              _this.getHeart();
+              _this.showHeart(resGetUserInfo.data.lastCheckInTime);
+              // _this.getHeart();
             });
           });
         }
       }
     });
+  }
+  showHeart(time) {
+    const currTime = Date.now();
+    console.log(time, currTime - 24 * 3600 * 1000);
+    if (currTime - 24 * 3600 * 1000 > time) {
+      this.setData({ show: true });
+    } else {
+      this.setData({ show: false });
+    }
   }
   async getHeart() {
     const res = await this.ser.getUserInfo('/user/checkIn');
@@ -156,13 +167,13 @@ class Index {
     this.dailyList = this._formatListData(daily.data);
 
     // // 热门福利
-    // const hot = await this.ser.list(Object.assign(params, { 'type': 'hot' }));
+    const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
 
-    // this.hotList = this._formatListData(hot.data);
+    this.hotList = this._formatListData(hot.data);
 
     this.setData({
-      currentList: this.dailyList
-    })
+      currentList: this.currentTab === 0 ? this.dailyList : this.hotList
+    });
   }
   // 时间转化
   _formatListData(list) {
@@ -193,7 +204,7 @@ class Index {
   }
   goHeart() {
     wx.navigateTo({
-      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard}`
+      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard - this.data.userData.lotteryTimes}`
     });
   }
   async navTab(e) {

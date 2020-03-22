@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/owner/address/add/add",
+    "pages/index/index",
+    "pages/index/detail/detail",
     "pages/owner/address/address",
     "pages/owner/config/config",
     "pages/owner/owner",
-    "pages/index/detail/detail",
     "pages/owner/lotteryrecord/lotteryrecord",
     "pages/owner/center/center",
     "pages/owner/lotterymanage/lotterymanage",

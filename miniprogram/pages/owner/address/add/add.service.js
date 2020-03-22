@@ -2,8 +2,8 @@
 import request from '../../../../service/http';
 export default class AddRecordService {
     
-    login(param) {
-        return request().post('/user/login', param)
+    add(param) {
+        return request().post('/address/add', param)
     }
     updateInfo(param) {
         return request().post('/user/updateUserInfo', param)

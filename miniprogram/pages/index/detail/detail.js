@@ -77,30 +77,37 @@ class Detail {
     this.ser = new DetailService();
   }
   onLoad(options) {
-    this.currentId = options.id ? options.id : '2';
+    this.currentId = options.id ? options.id : '123';
+    console.log(options);
     this.getAwardList();
     this.getInfo();
     this.getAwardResult();
-    console.log(this.data.clickLucky);
   }
+  // onShow(){
+  //   this.checkLottery();
+  // }
   // 去领奖
   goLottery() {}
   lucky() {
-      let _this = this;
+    let _this = this;
     wx.requestSubscribeMessage({
       tmplIds: ['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'],
       success(res) {
-        _this.ser.getTodo(`/activity/lottery?id=${_this.currentId}`).then(res => {
-          if (res.data) {
-            _this.setData({
-              clickLucky: true
-            });
-          }
-          _this.setData({
-            activeResult: res.code
-          });
+        _this.checkLottery();
+      }
+    });
+  }
+  checkLottery() {
+    let _this = this;
+    _this.ser.getTodo(`/activity/lottery?id=${_this.currentId}`).then(res => {
+      if (res.data) {
+        _this.setData({
+          clickLucky: true
         });
       }
+      _this.setData({
+        activeResult: res.code
+      });
     });
   }
   // 关闭弹窗
@@ -135,10 +142,10 @@ class Detail {
       title: '妈妈酉礼',
       path: `/pages/detail/detail?id=${this.currentId}`,
       imageUrl: '../../../images/share-image.jpg'
-    };  
-}
-  onReachBottom(){
-    console.log(e)
+    };
+  }
+  onReachBottom() {
+    console.log(e);
   }
   onPullDownRefresh(e) {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
@@ -176,7 +183,7 @@ class Detail {
   getInfo() {
     this.ser.getTodo(`/activity/detail?id=${this.currentId}`).then(res => {
       res.data.currTime = formatTime(res.data.lotteryTime);
-      console.log(res.data.hasLottery);
+      console.log(res.data,123);
       this.setData({
         currInfos: res.data,
         clickLucky: false
@@ -205,6 +212,9 @@ class Detail {
   getAwardResult() {
     this.ser.getTodo(`/activity/winnerList?id=${this.currentId}`).then(res => {
       console.log(res);
+      this.setData({
+        winnerObj: res.data
+      })
     });
   }
 }

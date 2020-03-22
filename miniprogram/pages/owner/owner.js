@@ -22,22 +22,17 @@ class Index {
   }
   onShow(){
     this.getData();
-    console.log(app.globalData.userInfoData)
-//     lotteryTimes: 36
-// nickName: "DDDDDDesignBuff"
-// openId: "oF6sp41J2F_dPezCL8a5S7-KOxbY"
-// phoneNum: null
-// province: null
-// realName: null
-// status: null
-// totalWishCard: 36
-// unionId: null
-// winTimes: 14
   }
   getData(){
-    this.setData({
-      dataObj:app.globalData.userInfoData
-    })
+    this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
+      this.setData({
+        dataObj: resGetUserInfo.data
+      });
+      // this.getList();
+    });
+    // this.setData({
+    //   dataObj:app.globalData.userInfoData
+    // })
   }
   getUserInfo(){
     let _this = this;

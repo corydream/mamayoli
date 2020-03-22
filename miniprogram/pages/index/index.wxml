@@ -1,6 +1,6 @@
 <!-- index.wxml -->
 <view class="container">
-  <my-component style="width:100%" heartNum='{{userData.totalWishCard}}' />
+  <my-component style="width:100%" heartNum='{{userData.totalWishCard? userData.totalWishCard - userData.lotteryTimes: 0}}' />
   <view class="category">
     <view class="g-left" bindtap="goHeart">
       <image class="g-image" src="../../images/icon 领心愿卡.png" />
@@ -37,7 +37,7 @@
   <view class="daily-list" hidden="{{currentTab === 1}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="list-ctx d-list-ctx">
-      <view class="adv">{{item.provider}}  赞助</view>
+      <view class="adv">{{item.providerName}}  赞助</view>
       <view class="title">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
     </view>
@@ -47,7 +47,7 @@
       <image class="" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="list-ctx">
-      <view class="adv">{{item.provider}}  赞助</view>
+      <view class="adv">{{item.providerName}}  赞助</view>
       <view class="title">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
       <!-- <button class="btn btn-btns" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">{{item.hasLottery?"等待开奖":"自动抽奖"}}</button> -->
@@ -65,7 +65,7 @@
   <van-popup show="{{ show }}" bind:close="onClose" closeable close-icon-position="top-left" custom-class="popup-layout">
     <view class="close" bindtap="onClose"></view>
     <!-- 心愿卡 -->
-    <button class="getinfo-btn" hover-class="none" bindtap="onClose"></button>
+    <button class="getinfo-btn" hover-class="none" bindtap="getHeart"></button>
     <image class="popup-image" src="../../images/layout.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
   <van-popup position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">
