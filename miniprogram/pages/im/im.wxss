@@ -163,13 +163,19 @@ page {
   justify-content: left;
   align-items: center;
 }
-
+.smallrow{
+  width: 100%;
+  height: 66rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 .row.big {
   height: 160rpx;
 }
 
 .row.small {
-  height: 16rpx;
+  height: 32rpx;
 }
 
 .red {
@@ -233,7 +239,7 @@ page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #666;
+  border: 1px solid #999999;
   border-radius: 8rpx;
   position: relative;
 }
@@ -276,7 +282,7 @@ page {
   height: 360rpx;
   width: calc(100% - 96rpx);
   text-align: left;
-  border: solid #acc0d8 1px;
+  border: solid #999999 1px;
   padding: 16rpx;
   margin-left: 32rpx;
   margin-right: 32rpx;
@@ -289,4 +295,7 @@ page {
   background: #f4f5f6;
   width: 100%;
   height: 300rpx;
+}
+.empty.small{
+  height: 48rpx;
 }

@@ -1,9 +1,10 @@
 <view class="container">
-  <swiper class="siwper"  current="{{current}}" bindchange="bindSwiperChange">
-    <swiper-item    class="swipper-item">
-      <scroll-view  scroll-x="false" scroll-y="true" class="swipper-scroll">
+  <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
+    <swiper-item class="swipper-item">
+      <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第1/3步：设置奖品</view>
-        <block wx:for="{{priceList}}">
+        <block wx:for="{{priceList}}" data-index="{{item.index}}">
+          <view wx:if="{{index!=0}}"  class="empty small"></view>
           <view class="row small"></view>
           <view class="uploadPicView" bindtap="uploadPrice" data-index="{{item.index}}">
             <image wx:if="{{!item.priceThumbnail}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
@@ -48,14 +49,19 @@
             <text>添加奖项</text>
           </view>
         </view>
-        <view class="empty"></view>
+        <view class="empty small"></view>
+        <view class="row">
+          <view class="lable">说明(可选)</view>
+        </view>
+        <textarea class="detail" placeholder="最多可设置200字符~" bindinput="bindDetailInput"></textarea>
+        <view class="empty big"></view>
 
       </scroll-view>
       <view class="bottom">
         <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item >
+    <swiper-item>
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第2/3步：设置条件</view>
         <view class="row">
@@ -99,10 +105,7 @@
           <text wx:if="{{!priceContactId}}" class="upload text">点击添加二维码</text>
           <image class="uploadImg" mode="scaleToFill" wx:if="{{priceContactId}}" src="{{priceContactId}}"></image>
         </view>
-        <view class="row">
-          <view class="lable">说明(可选)</view>
-        </view>
-        <textarea class="detail" placeholder="最多可设置200字符~" bindinput="bindDetailInput"></textarea>
+
         <view class="empty"></view>
 
       </scroll-view>
@@ -111,7 +114,7 @@
         <button class="nextPage" bindtap="nextPage">下一步</button>
       </view>
     </swiper-item>
-    <swiper-item >
+    <swiper-item>
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
         <view class="title">第3/3步：加粉设置</view>
         <view class="row">

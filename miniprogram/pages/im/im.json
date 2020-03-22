@@ -3,5 +3,6 @@
   "navigationStyle": "default",
   "navigationBarTextStyle": "black",
   "usingComponents": {
-  }
+  },
+  "disableScroll": true
 }
