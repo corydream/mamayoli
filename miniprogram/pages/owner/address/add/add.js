@@ -10,7 +10,6 @@ class Index {
   data = {
     addressObj: {},
     areaList: [],
-    radio: '1',
     region: '110101',
     customItem: '全部',
     show: false,
@@ -19,9 +18,9 @@ class Index {
     city:'北京市',
     area:'东城区',
     detail:'',
-    zip_code:'',
+    zipCode:'',
     isFirst:false,
-    phone_num:'',
+    phoneNum:'',
     allProv:''
   };
   constructor() {
@@ -36,16 +35,9 @@ class Index {
     this.setData({ show: true });
   }
   onClick(event) {
-    const { name } = event.currentTarget.dataset.name;
-    console.log(name)
+    this.data.isFirst =!this.data.isFirst;
     this.setData({
-      radio: name
-    });
-  }
-  onChange(event) {
-    console.log(event)
-    this.setData({
-      radio: event.currentTarget.dataset.name
+      isFirst: this.data.isFirst
     });
   }
   closePop() {
@@ -60,20 +52,21 @@ class Index {
     });
   }
   submit(){
-    console.log(this.data)
     const params = {
       name: this.data.name,
       province:'北京市',
       city:'北京市',
       area:'东城区',
       detail:this.data.detail,
-      zip_code:this.data.zip_code,
-      isFirst:false,
-      phone_num:this.data.phone_num
+      zipCode:this.data.zipCode,
+      isFirst: this.data.isFirst,
+      phoneNum:this.data.phoneNum
     };
     this.ser.add(params).then(res=>{
       if(res){
-
+        wx.navigateTo({
+          url:'../../address/address'
+        })
       }
     })
   }
@@ -84,10 +77,10 @@ class Index {
     this.data.detail = e.detail;
   }
   addZip(e){
-    this.data.zip_code = e.detail;
+    this.data.zipCode = e.detail;
   }
   addPhone(e){
-    this.data.phone_num = e.detail;
+    this.data.phoneNum = e.detail;
   }
   changeValue(e){  
     this.data.province = e.detail.values[0].name;

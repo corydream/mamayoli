@@ -2,20 +2,20 @@
    <view class="label" style="position:sticky">参与抽奖</view>
    <view class="note-ctx">
       <view class="n-title">Q：平台抽奖规则？</view>
-      <view class="n-detail">【妈妈酉礼】平台抽奖用户可以在福利发起方在发布抽奖的7天内进行抽奖活动，活动时间截止该奖项停止抽奖。</view>
+      <view class="n-detail">【Mama有礼】平台抽奖用户可以在福利发起方在发布抽奖的7天内进行抽奖活动，活动时间截止该奖项停止抽奖。</view>
       <view class="n-title">Q：中奖了但未收到福利奖品？</view>
       <view class="n-detail">
-         A：【妈妈酉礼】福利奖品由品牌福利活动发起方发放，请确保中奖人本人满足抽奖方的要求说明，并对确保地址在有效期内准确填写；如遇到虚假抽奖，可点击抽奖页面下方【投诉】进行福利抽奖活动投诉。
+         A：【Mama有礼】福利奖品由品牌福利活动发起方发放，请确保中奖人本人满足抽奖方的要求说明，并对确保地址在有效期内准确填写；如遇到虚假抽奖，可点击抽奖页面下方【投诉】进行福利抽奖活动投诉。
       </view>
       <view class="n-title">Q：福利奖品真实性</view>
       <view class="n-second">
-         <view>A：福利奖品由【妈妈酉礼】官方发起的，我们保证由官方品质渠道正品采购提供；</view>
+         <view>A：福利奖品由【Mama有礼】官方发起的，我们保证由官方品质渠道正品采购提供；</view>
          <view class="n-s-text">福利奖品由品牌官方发起的，平台会进行合作审核，标注“官方活动”；</view>
          <view class="n-s-text">福利奖品由发起人发起的，平台将协同妈妈用户共同监督，促进福利抽奖环境公平真实。</view>
       </view>
       <view class="n-title">Q：运费问题</view>
       <view class="n-detail">
-         <view>A：福利奖品由【妈妈酉礼】官方发起的，部分地区包邮，部分地区不包邮；</view>
+         <view>A：福利奖品由【Mama有礼】官方发起的，部分地区包邮，部分地区不包邮；</view>
          <view class="n-s-text">福利奖品由品牌发起人发起的福利抽奖，以发起人制定规则为准，请同发起人协商；</view>
          <view class="n-s-text">温馨提示非品牌官方发起活动，请谨慎对待，因轻信他人产生的损失平台项目组不负责。</view>
       </view>
@@ -27,11 +27,11 @@
       <view class="n-title">Q：福利抽奖规则？</view>
       <view class="n-detail">A：当前版本，项目组仅支持定时开奖，设定开奖时间的范围7个自然日内，到达时间自动开奖</view>
       <view class="n-title">Q：让发起的抽奖上首页推广合作，获得更多关注？</view>
-      <view class="n-detail">A：请关注公众号【妈妈酉礼】，点击底部菜单【更多服务】—【推广合作】，购买后可上首页，其他可直接联系项目组成员。</view>
+      <view class="n-detail">A：请关注公众号【Mama有礼】，点击底部菜单【更多服务】—【推广合作】，购买后可上首页，其他可直接联系项目组成员。</view>
       <view class="n-title">Q：公众号使用小程序发抽奖？</view>
-      <view class="n-second">A：【妈妈酉礼】支持小程序嵌入到公众号中进行抽奖，请联系客服进行沟通。</view>
+      <view class="n-second">A：【Mama有礼】支持小程序嵌入到公众号中进行抽奖，请联系客服进行沟通。</view>
       <view class="n-title">Q：内定中奖名额？</view>
-      <view class="n-detail">A：【妈妈酉礼】是一个公平公正的抽奖平台，所有抽奖的中奖者都是系统随机选择。</view>
+      <view class="n-detail">A：【Mama有礼】是一个公平公正的抽奖平台，所有抽奖的中奖者都是系统随机选择。</view>
    </view>
    <view class="bottom">
       <button class="bottom-btn" hover-class="hover-button" open-type="contact" lang="zh_CN">

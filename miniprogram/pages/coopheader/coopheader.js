@@ -32,7 +32,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '妈妈酉礼',
+      title: 'Mama有礼',
       path: '/pages/heartCard/heartCard',
       imageUrl: '../../images/share-image.jpg'
     }

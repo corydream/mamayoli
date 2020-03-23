@@ -38,7 +38,7 @@
     <button class="cooperate">商务合作</button>
   </view>
   <view class="produce">
-    <view class="produce-title">触雪出品</view>
-    <view>妈妈酉礼</view>
+    <!-- <view class="produce-title">触雪出品</view> -->
+    <view>Mama有礼</view>
   </view>
 </view>

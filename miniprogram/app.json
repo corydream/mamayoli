@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/owner/address/add/add",
     "pages/index/index",
     "pages/index/detail/detail",
     "pages/owner/address/address",
+    "pages/owner/address/add/add",
     "pages/owner/config/config",
     "pages/owner/owner",
     "pages/owner/lotteryrecord/lotteryrecord",

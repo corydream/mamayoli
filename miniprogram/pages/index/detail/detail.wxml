@@ -16,7 +16,7 @@
         </view>
         <view class="d-time">
             <text>{{currInfos.currTime}} 自动开奖</text>
-            <button class="d-share" open-type="share" hover-class="none">分享</button>
+            <button class="d-share" open-type="share" hover-class="none">↗  分享</button>
         </view>
     </view>
     <view class="d-flow">

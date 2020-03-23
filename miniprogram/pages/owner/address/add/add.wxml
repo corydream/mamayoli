@@ -4,18 +4,13 @@
             <van-field value="{{ name }}" clearable label="姓名" placeholder="请输入用户名" bind:change="addName"/>
             <van-field value="{{ allProv }}" label="地区" placeholder="请选择地区" readonly bindtap="area"/>
             <van-field value="{{ detail }}" label="地址" placeholder="请填写详细地址" bind:change="addDetail"/>
-            <van-field value="{{ zip_code }}" type="number" label="邮编" placeholder="选填" bind:change="addZip"/>
-            <van-field value="{{ phone_num }}" type="number" label="电话" placeholder="请填写收件人手机号" bind:change="addPhone"/>
+            <van-field value="{{ zipCode }}" type="number" label="邮编" placeholder="选填" bind:change="addZip"/>
+            <van-field value="{{ phoneNum }}" type="number" label="电话" placeholder="请填写收件人手机号" bind:change="addPhone"/>
         </van-cell-group>
     </view>
-    <van-radio-group value="{{ radio }}" bind:change="onChange">
-    <van-cell title="设为首选" clickable data-name="1"  bind:click="onClick">
-        <van-radio slot="right-icon" name="1" />
+    <van-cell title="设为首选" clickable bind:click="onClick">
+      <radio class="checkbox" checked="{{isFirst}}"/>
     </van-cell>
-     <van-cell title="单选框 2" clickable data-name="2" bind:click="onClick">
-       <van-radio slot="right-icon" name="2" />
-    </van-cell>
-    </van-radio-group>
     <van-popup position="bottom" show="{{ show }}" custom-class="popup-login-layout">
         <van-area area-list="{{ areaList }}" value="{{region}}" bind:confirm="closeConfirm" bind:cancel="closePop" bind:change="changeValue" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"/>
     </van-popup>

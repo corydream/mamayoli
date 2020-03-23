@@ -139,7 +139,7 @@ class Detail {
   // 自定义转发样式
   onShareAppMessage(e) {
     return {
-      title: '妈妈酉礼',
+      title: 'Mama有礼',
       path: `/pages/detail/detail?id=${this.currentId}`,
       imageUrl: '../../../images/share-image.jpg'
     };

@@ -1,10 +1,10 @@
 <view class="add">
-    <view class="add-list">
-        <view class="a-name bold">古力娜扎</view>
-        <view class="a-tel bold">18858581234</view>
-        <view class="a-info">浙江省 杭州市 余杭区</view>
-        <view class="a-info a-info-bottom">文一西路 阿里巴巴西溪园区8号楼</view>
-        <view class="a-first bold">设为首选</view>
+    <view class="add-list" wx:for="{{addressList}}" wx:key="index">
+        <view class="a-name bold">{{item.name}}</view>
+        <view class="a-tel bold">{{item.phoneNum}}</view>
+        <view class="a-info">{{item.province}} {{item.city}} {{item.area}}</view>
+        <view class="a-info a-info-bottom">{{item.detail}}</view>
+        <view class="a-first bold" bindtap="onchange" data-item="{{item}}"><radio class="checkbox" checked="{{item.isFirst}}"/>设为首选</view>
     </view>
     <view class="address-btn bold" bindtap="add">
         <van-icon name="plus"  style="vertical-align: -2px;"/>
