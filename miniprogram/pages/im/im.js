@@ -725,7 +725,8 @@ Page({
           "attractingType": attractingType,
           "contactPhoneNum": this.data.contactPhoneNum,
           "priceProvideType": this.data.priceProvideType,
-          "priceContactId": this.data.priceContactId
+          "priceContactId": this.data.priceContactId,
+          "attractingPic": this.data.attractingPic
         }
       })
       .then(
