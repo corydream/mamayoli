@@ -8,9 +8,9 @@
          </view>
       </view>
       <view style="background: #fff">
-         <image class="title-image" src="../../images/tuiguang1.png" alt="" style="height: 568rpx" />
-         <image class="title-image" src="../../images/tuiguang2.png" alt="" style="height: 507rpx" />
-         <image class="title-image" src="../../images/tuiguang3.png" alt="" style="height: 432rpx" />
+         <image class="title-image" src="../../images/tuiguang4.png" alt="" style="height: 789rpx" />
+         <image class="title-image" src="../../images/tuiguang5.png" alt="" style="height: 900rpx" />
+         <!-- <image class="title-image" src="../../images/tuiguang3.png" alt="" style="height: 432rpx" /> -->
       </view>
    </view>
    <view class="bottom">

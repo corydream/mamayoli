@@ -33,7 +33,7 @@
     background   : #fff;
     border       : 1rpx solid rgba(246, 100, 0, 1);
     border-radius: 50rpx;
-    margin-top   : 60rpx;
+    margin-top   : 40rpx;
     font-family  : PingFangSC-Medium, PingFang SC;
 }
 

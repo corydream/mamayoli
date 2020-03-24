@@ -16,60 +16,7 @@ class Detail {
     getWinnerLayer: false, // 是否中奖弹窗
     clickLucky: false,
     winnerObj: {
-      first: [
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        }
-      ],
-      second: [
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        },
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        }
-      ],
-      third: [
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        },
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        },
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        },
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        },
-        {
-          price_name: '小蜜',
-          user_name: 'Aldrich',
-          avatar_url:
-            'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er78quMksXX4WUXibJoqErKOwAGnww7GKTsllicRuS7Y2guYLEziaVovR16gkrjkMZjsKWgFHYcqEj2w/132'
-        }
-      ]
+
     } // 中奖者名单列表
   };
   ser = null;
@@ -183,7 +130,6 @@ class Detail {
   getInfo() {
     this.ser.getTodo(`/activity/detail?id=${this.currentId}`).then(res => {
       res.data.currTime = formatTime(res.data.lotteryTime);
-      console.log(res.data,123);
       this.setData({
         currInfos: res.data,
         clickLucky: false
@@ -211,7 +157,6 @@ class Detail {
   // 获得中奖结果
   getAwardResult() {
     this.ser.getTodo(`/activity/winnerList?id=${this.currentId}`).then(res => {
-      console.log(res);
       this.setData({
         winnerObj: res.data
       })

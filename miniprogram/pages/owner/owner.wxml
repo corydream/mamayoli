@@ -35,10 +35,10 @@
         <text class="item-info">商家中心</text>
       </view>
     </view>
-    <button class="cooperate">商务合作</button>
+    <button class="cooperate" bindtap="coop">商家合作</button>
   </view>
   <view class="produce">
     <!-- <view class="produce-title">触雪出品</view> -->
-    <view>Mama有礼</view>
+    <!-- <view>Mama有礼</view> -->
   </view>
 </view>

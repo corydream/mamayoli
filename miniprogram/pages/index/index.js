@@ -82,6 +82,11 @@ class Index {
     });
   }
   onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      });
+    }
     this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
       this.setData({
         userData: resGetUserInfo.data
@@ -131,12 +136,11 @@ class Index {
   }
   async getHeart() {
     const res = await this.ser.getUserInfo('/user/checkIn');
-
     if (res.data) {
-      this.data.userData.totalWishCard = totalWishCard + res.data;
+      this.data.userData.totalWishCard = this.data.userData.totalWishCard + res.data;
       this.setData({
         userData: this.data.userData,
-        show: true
+        show: false
       });
     } else {
       this.setData({ show: false });
@@ -172,7 +176,7 @@ class Index {
     this.hotList = this._formatListData(hot.data);
 
     this.setData({
-      currentList: this.currentTab === 0 ? this.dailyList : this.hotList
+      currentList: this.data.currentTab === 0 ? this.dailyList : this.hotList
     });
   }
   // 时间转化
@@ -204,7 +208,8 @@ class Index {
   }
   goHeart() {
     wx.navigateTo({
-      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard - this.data.userData.lotteryTimes}`
+      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard -
+        this.data.userData.lotteryTimes}`
     });
   }
   async navTab(e) {
@@ -217,24 +222,25 @@ class Index {
       nav: this.data.nav,
       currentTab: e.currentTarget.dataset.index
     });
+    const params = {
+      pageSize: 15,
+      pageIndex: 1
+    };
     if (e.currentTarget.dataset.index) {
       // 热门福利
-      const params = {
-        pageSize: 15,
-        pageIndex: 1
-      };
       const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
-
       this.hotList = this._formatListData(hot.data);
-
       this.setData({
         currentList: this.hotList
       });
     } else {
+      const daily = await this.ser.list(Object.assign(params, { type: 'dailySelection' }));
+      this.dailyList = this._formatListData(daily.data);
       this.setData({
         currentList: this.dailyList
       });
     }
+    // this.getList();
   }
 }
 Page(creatorPage(Index));

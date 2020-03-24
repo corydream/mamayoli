@@ -27,6 +27,9 @@ Component({
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset
+      this.setData({
+        selected: data.index
+      })
       if (data.index == 1) {
         wx.navigateTo({
           url: '/pages/im/im'
@@ -37,10 +40,6 @@ Component({
       wx.switchTab({
         url
       })
-      this.setData({
-        selected: data.index
-      })
-      console.log(data.index)
     }
   }
 })

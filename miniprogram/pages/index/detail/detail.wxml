@@ -9,7 +9,7 @@
     > -->
     <image class="detail-header" src="{{currInfos.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="d-item">
-        <view class="d-adv">{{currInfos.provider}}  赞助</view>
+        <view class="d-adv">{{currInfos.providerName}}  赞助</view>
         <view class="d-item-item" wx:for="{{awardList}}" wx:key="index">
             <view class="d-level" wx:if="{{awardList.length>1}}">{{item.levelName}}</view>
             <view class="d-tit">{{item.name}} X {{item.number}}</view>
@@ -25,19 +25,16 @@
         <image wx:if="{{currInfos.attractingType == 'public'}}" class="d-image" src="../../../images/number_flow.png" />
         <image wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-image" src="../../../images/account_flow.png" />
         <view class="d-type">
-            <view class="d-type-name">{{currInfos.name}}</view>
-            <view wx:if="{{currInfos.attractingType == 'app'}}" data-type="xcx" class="d-type-btn" bindtap="attractType">
-                去体验
-                <van-icon class="van-icons" name="arrow" color="#fff" size="32rpx" />
+            <view class="d-type-name">{{currInfos.providerName}}</view>
+            <view wx:if="{{currInfos.attractingType == 'app'}}" data-type="xcx" class="d-type-btn d-type-btn1" bindtap="attractType">
+                 <image src="../../../images/button1-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </view>
-            <button wx:if="{{currInfos.attractingType == 'public'}}" data-type="gzh" class="d-type-btn" open-type='contact' show-message-card="{{true}}" send-message-title="233" send-message-path="当前分享路径">
-                去了解
-                <van-icon class="van-icons" name="arrow" color="#fff" size="32rpx" />
-            </button>
-            <button wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-type-btn" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="当前分享路径">
-                加好友
-                <van-icon class="van-icons" name="plus" color="#fff" size="32rpx" />
-            </button>
+            <view wx:if="{{currInfos.attractingType == 'public'}}" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="233" send-message-path="当前分享路径">
+                <image src="../../../images/button2-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            </view>
+            <view wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="当前分享路径">
+                <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            </view>
         </view>
     </view>
     <view class="d-ctx">{{currInfos.detail}}</view>

@@ -22,6 +22,16 @@ class Index {
   }
   onShow(){
     this.getData();
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2
+      });
+    }
+  }
+  coop(){
+    wx.navigateTo({
+      url: '../coopheader/coopheader'
+    });
   }
   getData(){
     this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {

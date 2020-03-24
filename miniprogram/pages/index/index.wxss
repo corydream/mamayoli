@@ -2,7 +2,7 @@
 @import "../../style/button";
 
 page {
-  background     : #f6f6f6;
+  /* background     : #f66400; */
   display        : flex;
   flex-direction : column;
   justify-content: flex-start;
@@ -12,7 +12,6 @@ page {
 .container {
   display       : flex;
   flex-direction: column;
-
 }
 
 .header {
@@ -247,4 +246,7 @@ page {
   margin       : auto;
   color        : #fff;
   background   : rgba(246, 100, 0, 1);
+}
+.buttom-block{
+  height: 80rpx;
 }

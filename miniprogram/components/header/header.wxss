@@ -1,9 +1,9 @@
 .outer-home{
     background-color: #F66400;
-    height: 390rpx;
+    height: 170rpx;
     color: #fff;
     font-size: 40rpx;
-    padding: 100rpx 32rpx 0;
+    padding: 16rpx 32rpx 34rpx;
     font-family:SourceHanSansCN-Bold,SourceHanSansCN;
 }
 .title-second{
@@ -16,7 +16,6 @@
     height: 40rpx;
 }
 .heart-layer{
-    margin-top: 48rpx;
     display: flex;
     justify-content: space-between;
 }

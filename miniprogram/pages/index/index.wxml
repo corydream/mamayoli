@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
-          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail"/>
+          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail" />
         </swiper-item>
       </block>
     </swiper>
@@ -62,6 +62,8 @@
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
   </view> -->
+  <view class="buttom-block"></view>
+    
   <van-popup show="{{ show }}" bind:close="onClose" closeable close-icon-position="top-left" custom-class="popup-layout">
     <view class="close" bindtap="onClose"></view>
     <!-- 心愿卡 -->
