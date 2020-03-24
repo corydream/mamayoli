@@ -718,14 +718,15 @@ Page({
     new IndexService()
       .add({
         priseList: pricemap,
-        activity: {
-          providerName: this.data.providerName,
-          detail: this.data.detail,
-          lotteryTime: this.data.lotteryTime,
-          attractingType: attractingType,
-          contactPhoneNum: this.data.contactPhoneNum,
-          priceProvideType: this.data.priceProvideType,
-          priceContactId: this.data.priceContactId
+        "activity": {
+          "providerName": this.data.providerName,
+          "detail": this.data.detail,
+          "lotteryTime": this.data.lotteryTime,
+          "attractingType": attractingType,
+          "contactPhoneNum": this.data.contactPhoneNum,
+          "priceProvideType": this.data.priceProvideType,
+          "priceContactId": this.data.priceContactId,
+          "attractingPic": this.data.attractingPic
         }
       })
       .then(res => {
