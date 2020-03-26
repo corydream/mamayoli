@@ -116,10 +116,10 @@ class Detail {
   attractType(e) {
     // 打开小程序
     wx.navigateToMiniProgram({
-      appId: this.currInfos.providerAppId,
-      path: this.currInfos.providerAppPath,
+      appId: this.data.currInfos.attractingAppId,
+      path: this.data.currInfos.attractingAppPath,
       extraData: {
-        id: this.currInfos.id
+        id: this.data.currInfos.id
       },
       envVersion: 'develop',
       success(res) {

@@ -1,8 +1,8 @@
 @import "../../../style/button";
 
 .note-outer {
-    font-size  : 24rpx;
-    font-family: PingFangSC-Semibold, PingFang SC;
+    font-size  : 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
     background:#fff;
 }
 
@@ -14,12 +14,13 @@
     color           : #fff;
     background-color: #F66400;
     margin-bottom   : 40rpx;
-    font-size       : 24rpx;
+    font-size       : 30rpx;
 }
 
 .note-ctx {
-    padding: 0 45rpx;
+    padding: 0 43rpx 0 47rpx;
     margin-bottom: 80rpx;
+    line-height: 48rpx;
 }
 
 .n-title {

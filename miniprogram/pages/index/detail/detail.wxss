@@ -79,7 +79,7 @@
 }
 
 .d-type-btn {
-    width        : 200rpx;
+    width        : 230rpx;
     height       : 72rpx;
 }
 .d-type-btn1{
@@ -103,7 +103,7 @@
     font-weight: 400;
     color      : rgba(102, 102, 102, 1);
     line-height: 48rpx;
-    padding    : 0 32rpx 100rpx;
+    padding    : 48rpx 32rpx 100rpx;
 
 }
 

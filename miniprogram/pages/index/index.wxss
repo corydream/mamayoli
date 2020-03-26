@@ -122,7 +122,7 @@ page {
 
 .list {
   width        : 686rpx;
-  height       : 180rpx;
+  height       : 296rpx;
   background   : rgba(255, 255, 255, 1);
   border-radius: 8rpx;
   display      : flex;
@@ -136,7 +136,7 @@ page {
 
 .list .list-image image {
   width        : 306rpx;
-  height       : 180rpx;
+  height       : 296rpx;
   border-radius: 8rpx 0 0 8rpx;
   display      : block;
 }
@@ -248,5 +248,6 @@ page {
   background   : rgba(246, 100, 0, 1);
 }
 .buttom-block{
-  height: 80rpx;
+  height: 180rpx;
+  background:#f4f4f4;
 }

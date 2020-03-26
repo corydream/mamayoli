@@ -26,15 +26,15 @@
         <image wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-image" src="../../../images/account_flow.png" />
         <view class="d-type">
             <view class="d-type-name">{{currInfos.providerName}}</view>
-            <view wx:if="{{currInfos.attractingType == 'app'}}" data-type="xcx" class="d-type-btn d-type-btn1" bindtap="attractType">
+            <button wx:if="{{currInfos.attractingType == 'app'}}"  hover-class="none" data-type="xcx" class="d-type-btn d-type-btn1" bindtap="attractType">
                  <image src="../../../images/button1-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </view>
-            <view wx:if="{{currInfos.attractingType == 'public'}}" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="233" send-message-path="当前分享路径">
+            </button>
+            <button wx:if="{{currInfos.attractingType == 'public'}}" hover-class="none" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="公众号">
                 <image src="../../../images/button2-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </view>
-            <view wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="当前分享路径">
+            </button>
+            <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="微信">
                 <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </view>
+            </button>
         </view>
     </view>
     <view class="d-ctx">{{currInfos.detail}}</view>
