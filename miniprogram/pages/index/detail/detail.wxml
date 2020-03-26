@@ -29,10 +29,10 @@
             <button wx:if="{{currInfos.attractingType == 'app'}}"  hover-class="none" data-type="xcx" class="d-type-btn d-type-btn1" bindtap="attractType">
                  <image src="../../../images/button1-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </button>
-            <button wx:if="{{currInfos.attractingType == 'public'}}" hover-class="none" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="公众号">
+            <button wx:if="{{currInfos.attractingType == 'public'}}" hover-class="none" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
                 <image src="../../../images/button2-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </button>
-            <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="微信">
+            <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
                 <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </button>
         </view>
