@@ -25,16 +25,18 @@ class Detail {
   }
   onLoad(options) {
     this.currentId = options.id ? options.id : '123';
-    console.log(options);
     this.getAwardList();
     this.getInfo();
-    this.getAwardResult();
   }
   // onShow(){
   //   this.checkLottery();
   // }
   // 去领奖
-  goLottery() {}
+  goLottery() {
+    wx.navigateTo({
+      url: '../../owner/address/address'
+    });
+  }
   lucky() {
     let _this = this;
     wx.requestSubscribeMessage({
@@ -64,20 +66,23 @@ class Detail {
     });
   }
   // 查看是否中奖
-  findLotteryRes(e) {
-    this.setData({
-      getWinnerLayer: true
-    });
+  findLotteryRes(e) { 
     this.ser.getTodo(`/activity/isWinner?id=${this.currentId}`).then(res => {
+      console.log(res)
       if (res.data) {
         this.setData({
-          getWinner: true
+          getWinner: true,
         });
       } else {
         this.setData({
-          getWinner: false
+          getWinner: false,
         });
         this.getAwardResult();
+      }
+      if(this.data.currInfos.status === 'done'){
+        this.setData({
+          getWinnerLayer: true
+        });
       }
     });
   }
@@ -116,7 +121,7 @@ class Detail {
   attractType(e) {
     // 打开小程序
     wx.navigateToMiniProgram({
-      appId: this.data.currInfos.attractingAppId,
+      appId: this.data.currInfos.providerName == '美盈严选'?"wx33937497a1a8a074":this.data.currInfos.attractingAppId,
       path: this.data.currInfos.attractingAppPath,
       extraData: {
         id: this.data.currInfos.id
@@ -135,6 +140,7 @@ class Detail {
         clickLucky: false
       });
     });
+    this.findLotteryRes();
   }
   getAwardList(ids) {
     this.ser

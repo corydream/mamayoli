@@ -10,7 +10,7 @@ Page({
     if (app.globalData.userInfoData.openId) {
       this.setData({
         openId: app.globalData.userInfoData.openId,
-        cards: options.num ? options.num : cards
+        cards: options.num ? options.num : this.data.cards
       })
     }
     wx.showShareMenu({

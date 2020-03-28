@@ -215,7 +215,7 @@
     border         : 1px solid #666;
 }
 .award-detail-image{
-    border: 1px dashed #666;
+    /* border: 1px dashed #666; */
     width: 120rpx;
     height: 120rpx;
 }

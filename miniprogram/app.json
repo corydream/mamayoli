@@ -18,6 +18,9 @@
     "custom-tab-bar/index",
     "pages/blank/blank"
   ],
+  "navigateToMiniProgramAppIdList":[
+    "wx33937497a1a8a074"
+  ],
   "window": {
     "navigationStyle": "default",
     "backgroundTextStyle": "light",

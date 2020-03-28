@@ -2,22 +2,22 @@
   <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
     <van-tab title="待审核" border>
       <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
+        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
       </van-cell-group>
     </van-tab>
     <van-tab title="审核未通过">
       <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
+        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
       </van-cell-group>
     </van-tab>
     <van-tab title="已发布">
       <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
+        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
       </van-cell-group>
     </van-tab>
     <van-tab title="已结束">
       <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
+        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" />
       </van-cell-group>
     </van-tab>
     <!-- <van-tab title="未发放">

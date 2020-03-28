@@ -31,13 +31,19 @@
 }
 
 .center-item {
-  display        : flex;
-  justify-content: center;
+  padding-right: 10rpx;
+}
+.center-item>view{
+  display: inline-block;
+}
+
+.center-item>view:nth-child(1) {
+  margin-left: 10rpx;
 }
 
 .center-item>view:nth-child(2) {
-  margin-left : 110rpx;
-  margin-right: 138rpx;
+  margin-left: 104rpx;
+  margin-right: 153rpx; 
 }
 
 .user-item {

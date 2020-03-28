@@ -11,15 +11,7 @@ class Index {
   data = {
     userData: {},
     active: 0,
-    list: [{
-      id:2,
-      priceName:'data',
-      currTime:'04月10日 18:00 自动开奖',
-    },{
-      id:3,
-      priceName:'data1',
-      currTime:'04月10日 18:00 自动开奖'
-    }]
+    list: []
   };
   constructor() {
     this.ser = new LotteryManageService();
@@ -53,9 +45,9 @@ class Index {
     let params = {
       pageSize: 200,
       pageIndex: 1,
-      type:type
+      status:type
     };
-    this.ser.getList(`/activity/myProvideList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&type=${params.type}`).then(res => {
+    this.ser.getList(`/activity/myProvideList?pageSize=${params.pageSize}&pageIndex=${params.pageIndex}&status=${params.status}`).then(res => {
         if(res && res.data){
           this.setData({
             list: this._formatListData(res.data)

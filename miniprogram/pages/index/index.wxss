@@ -251,3 +251,6 @@ page {
   height: 180rpx;
   background:#f4f4f4;
 }
+.gray-color{
+  background-color: #ccc;
+}

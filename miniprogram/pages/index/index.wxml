@@ -50,7 +50,7 @@
       <view class="adv">{{item.providerName}}  赞助</view>
       <view class="title">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
-      <button class="btn btn-btns" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">{{item.hasLottery?"等待开奖":"自动抽奖"}}</button>
+      <button class="btn btn-btns {{item.hasLottery?'gray-color':''}}" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">{{item.hasLottery?"等待开奖":"免费抽奖"}}</button>
     </view>
   </view>
   <!-- 上传图片 -->
