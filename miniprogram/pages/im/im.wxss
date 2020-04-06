@@ -128,7 +128,7 @@ page {
   position: fixed;
   bottom: 0px;
   z-index: 10000;
-  border-top: 1px  solid #CCCCCC;
+  border-top: 1px  solid #EEEEEE;
   font-size: 32rpx;
 }
 
@@ -136,7 +136,7 @@ page {
   width: 240rpx;
   height: 96rpx;
   background: rgba(246, 100, 0, 1);
-  border-radius: 40rpx;
+  border-radius: 45rpx;
   font-size: 32rpx;
   position: absolute;
   line-height: 96rpx;
