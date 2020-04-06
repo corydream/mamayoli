@@ -5,15 +5,14 @@ var currentHours = date.getHours();
 var currentMinute = date.getMinutes();
 Page({
   data: {
-    priceList: [
-      {
-        priceType: 'entity',
-        priceName: '',
-        priceThumbnail: '',
-        priceNum: 0,
-        index: 0
-      }
-    ],
+    priceList: [{
+      priceType: 'entity',
+      priceName: '',
+      priceThumbnail: '',
+      priceNum: 0,
+      index: 0
+    }],
+    detailPics: [],
     current: 0,
     time: '09:00',
     providerName: '',
@@ -33,6 +32,14 @@ Page({
     multiIndex: [0, 0, 0],
     top_num: 0,
     touchStart: {}
+  },
+  onLoad() {
+    this.setData({
+      contactPhoneNum: wx.getStorageSync('contactPhoneNum'),
+      providerName: wx.getStorageSync('providerName'),
+      priceContactId: wx.getStorageSync('priceContactId'),
+      priceProvideType: wx.getStorageSync('priceProvideType') ? wx.getStorageSync('priceProvideType') : 'address'
+    })
   },
   checkFirst() {
     for (let price of this.data.priceList) {
@@ -141,17 +148,9 @@ Page({
       top_num: this.data.top_num - y > 0 ? this.data.top_num - y : 0
     });
     return true;
-    // if (e.target.offsetLeft<e.target.offsetTop){
-    //   return true;
-    // }
-
-    // return false;
   },
   bindtouchmove(e) {
     console.log('bindtouchmove', e);
-    // this.setData({
-    //   top_num: this.data.top_num + e.target.offsetTop
-    // })
   },
   bindtouchstart(e) {
     console.log('bindtouchstart', e);
@@ -171,6 +170,18 @@ Page({
       priceList: this.data.priceList
     });
   },
+  deleteDetail(e) {
+    console.log(e);
+    let index = e.currentTarget.dataset['index'];
+    if (index >= this.data.detailPics.length) {
+      index = this.data.detailPics.length - 1;
+    }
+    this.data.detailPics.splice(index, 1);
+    this.setData({
+      detailPics: this.data.detailPics
+    });
+
+  },
   bindSwiperChange: function(e) {
     if (e.detail.source != 'touch') {
       return;
@@ -181,9 +192,9 @@ Page({
       this.setData({
         current: 0
       });
-    } else if (!this.checkSecond() && swipe == 2) {
+    } else if (!this.checkSecond() && swipe == 3) {
       this.setData({
-        current: 1
+        current: 2
       });
     } else {
       this.setData({
@@ -192,13 +203,18 @@ Page({
     }
   },
   nextPage: function(e) {
-    let first =
-      this.data.current === 0 ? this.checkFirst() : this.checkSecond();
-    if (!first) {
+    let check =true;
+    if (this.data.current === 0){
+      check =this.checkFirst();
+    }
+    if(this.data.current===2){
+      check = this.checkSecond();
+    }
+    if (!check) {
       return;
     }
     this.setData({
-      current: this.data.current < 2 ? this.data.current + 1 : 2
+      current: this.data.current < 3 ? this.data.current + 1 : 3
     });
   },
   prePage: function(e) {
@@ -252,7 +268,9 @@ Page({
                 cropIndex: 0
               });
             },
-            fail: function({ errMsg }) {
+            fail: function({
+              errMsg
+            }) {
               console.log('upladImage fail, errMsg is: ', errMsg);
               t.setData({
                 cropRes: '',
@@ -279,11 +297,78 @@ Page({
         console.log(res);
         console.log('chooseImage success, temp path is: ', tempFilePaths[0]);
         wx.navigateTo({
-          url:
-            '../cropper/cropper-example?filePath=' +
+          url: '../cropper/cropper-example?filePath=' +
             tempFilePaths[0] +
             '&index=' +
             index
+        });
+      }
+    });
+  },
+  uploadDetail(e) {
+    this.uploadImage(
+      res => {
+        this.data.detailPics.push(res)
+        this.setData({
+          detailPics: this.data.detailPics
+        })
+      }
+    )
+  },
+  uploadImage(callback) {
+    wx.chooseImage({
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths;
+        console.log(res);
+        console.log('chooseImage success, temp path is: ', tempFilePaths[0]);
+        wx.showLoading({
+          title: '上传中'
+        });
+        indexService.sts().then(sts => {
+          console.log(sts);
+          wx.uploadFile({
+            url: 'https://' + sts.data.host,
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              name: tempFilePaths[0],
+              key: sts.data.dir + '/${filename}',
+              policy: sts.data.policy,
+              OSSAccessKeyId: sts.data.accessid,
+              success_action_status: '200',
+              signature: sts.data.signature
+            },
+            success: function(res) {
+              console.log(res);
+              let picUrl =
+                'https://' +
+                sts.data.host +
+                '/' +
+                sts.data.dir +
+                tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'));
+              console.log('chooseImage success, temp path is: ', picUrl);
+              wx.hideLoading();
+              wx.showToast({
+                title: '上传成功',
+                icon: 'success',
+                duration: 1000
+              });
+              callback(picUrl)
+              // t.setData({
+              // priceContactId: picUrl
+              // });
+            },
+            fail: function({
+              errMsg
+            }) {
+              console.log('upladImage fail, errMsg is: ', errMsg);
+              wx.hideLoading();
+              wx.showToast({
+                title: '上传失败',
+                duration: 1000
+              });
+            }
+          });
         });
       }
     });
@@ -331,7 +416,9 @@ Page({
                 priceContactId: picUrl
               });
             },
-            fail: function({ errMsg }) {
+            fail: function({
+              errMsg
+            }) {
               console.log('upladImage fail, errMsg is: ', errMsg);
               wx.hideLoading();
               wx.showToast({
@@ -387,7 +474,9 @@ Page({
                 attractingPic: picUrl
               });
             },
-            fail: function({ errMsg }) {
+            fail: function({
+              errMsg
+            }) {
               console.log('upladImage fail, errMsg is: ', errMsg);
               wx.hideLoading();
               wx.showToast({
@@ -414,7 +503,6 @@ Page({
     });
   },
   onPriceProvideTypeChange: function(e) {
-    console.log('onPriceProvideTypeChange', e.detail.value);
     this.setData({
       priceProvideType: e.detail.value
     });
@@ -701,8 +789,7 @@ Page({
     let attractingType = 'weixin';
     if (this.data.attractingType == '公众号') {
       attractingType = 'public';
-    } else if (this.data.attractingType == '微信号') {
-    } else {
+    } else if (this.data.attractingType == '微信号') {} else {
       attractingType = 'app';
     }
     let pricemap = this.data.priceList.map(p => {
@@ -726,20 +813,32 @@ Page({
           "contactPhoneNum": this.data.contactPhoneNum,
           "priceProvideType": this.data.priceProvideType,
           "priceContactId": this.data.priceContactId,
-          "attractingPic": this.data.attractingPic
+          "attractingPic": this.data.attractingPic,
+          "detailPics":this.data.detailPics.join(',')
         }
       })
       .then(res => {
         console.log(res);
+        wx.setStorage({
+          key: 'contactPhoneNum',
+          data: this.data.contactPhoneNum,
+        })
+        wx.setStorage({
+          key: 'providerName',
+          data: this.data.providerName,
+        })
+        wx.setStorage({
+          key: 'priceContactId',
+          data: this.data.priceContactId,
+        })
+        wx.setStorage({
+          key: 'priceProvideType',
+          data: this.data.priceProvideType,
+        })
         if (res.data) {
           wx.redirectTo({
             url: '/pages/im/publish/publish'
           });
-          // wx.showToast({
-          //   title: "发布成功,请等待审核",
-          //   icon: 'success',
-          //   duration: 1000
-          // })
         } else {
           wx.showToast({
             title: '发布失败',
