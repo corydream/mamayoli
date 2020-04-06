@@ -128,7 +128,7 @@
         <view wx:if="{{priceProvideType!='address'}}" class="uploadPicView" bindtap="uploadProvideImg">
           <image wx:if="{{!priceContactId}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
           <text wx:if="{{!priceContactId}}" class="upload text">点击添加二维码</text>
-          <image class="uploadImg" mode="scaleToFill" wx:if="{{priceContactId}}" src="{{priceContactId}}"></image>
+          <image class="uploadImg" mode="widthFix" wx:if="{{priceContactId}}" src="{{priceContactId}}"></image>
         </view>
 
         <view class="empty"></view>
@@ -182,10 +182,10 @@
             <p class="red">*</p>
           </view>
         </view>
-        <view class="uploadPicView detail" bindtap="uploadAttractingImg">
+        <view class="uploadPicView" style="height:{{attractingPic?'auto':'366rpx;'}}" bindtap="uploadAttractingImg">
           <image wx:if="{{!attractingPic}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
           <text wx:if="{{!attractingPic}}" class="upload text">点击添加图片</text>
-          <image class="uploadImg" mode="scaleToFill" wx:if="{{attractingPic}}" src="{{attractingPic}}"></image>
+          <image class="uploadImg" mode="widthFix" wx:if="{{attractingPic}}" src="{{attractingPic}}"></image>
         </view>
         <view class="empty"></view>
       </scroll-view>
