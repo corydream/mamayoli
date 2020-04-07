@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/index/detail/detail",
+    "pages/index/index",
     "pages/owner/address/address",
     "pages/owner/address/add/add",
     "pages/owner/config/config",
+    "pages/index/share/share",
     "pages/owner/owner",
     "pages/owner/lotteryrecord/lotteryrecord",
     "pages/owner/center/center",

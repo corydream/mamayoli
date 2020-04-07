@@ -3,24 +3,25 @@
 .note-outer {
     font-size  : 30rpx;
     font-family: PingFangSC-Regular, PingFang SC;
-    background:#fff;
+    background : #fff;
 }
 
 .label {
     width           : 200rpx;
-    height          : 45rpx;
-    line-height     : 45rpx;
+    height          : 64rpx;
+    line-height     : 64rpx;
     text-align      : center;
     color           : #fff;
     background-color: #F66400;
-    margin-bottom   : 40rpx;
-    font-size       : 30rpx;
+    margin-bottom   : 32rpx;
+    font-size       : 32rpx;
+    border-radius   : 0px 8px 8px 0px;
 }
 
 .note-ctx {
-    padding: 0 43rpx 0 47rpx;
+    padding      : 0 43rpx 0 47rpx;
     margin-bottom: 80rpx;
-    line-height: 48rpx;
+    line-height  : 48rpx;
 }
 
 .n-title {

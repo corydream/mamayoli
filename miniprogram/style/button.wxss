@@ -1,7 +1,7 @@
 .btn {
     width        : 176rpx;
     height       : 72rpx;
-    background   : rgba(246, 100, 0, 1);
+    background   : linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
     border-radius: 40rpx;
     text-align   : center;
     line-height  : 72rpx;
@@ -11,34 +11,43 @@
 }
 
 .bottom-btn {
+    width        : 450rpx;
+    height       : 96rpx;
+    line-height  : 96rpx;
+    text-align   : center;
+    color        : #fff;
+    font-size    : 40rpx;
+    border-radius: 100rpx;
+    font-family  : PingFangSC-Medium, PingFang SC;
+    padding      : 0;
+    margin       : 0;
+}
+
+.bottom-btn-active {
+    background: linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
+}
+
+.bottom-share-btn {
+    background: #ccc;
+}
+
+.old-button {
     width        : 686rpx;
     height       : 100rpx;
     line-height  : 100rpx;
     text-align   : center;
     color        : #fff;
     font-size    : 40rpx;
-    background   : rgba(246, 100, 0, 1);
-    border-radius: 50rpx;
-    margin-top   : 60rpx;
+    border-radius: 100rpx;
+    background   : #f66400;
     font-family  : PingFangSC-Medium, PingFang SC;
-}
-
-.bottom-share-btn {
-    width        : 684rpx;
-    height       : 98rpx;
-    line-height  : 98rpx;
-    text-align   : center;
-    color        : rgba(246, 100, 0, 1);
-    font-size    : 40rpx;
-    background   : #fff;
-    border       : 1rpx solid rgba(246, 100, 0, 1);
-    border-radius: 50rpx;
-    margin-top   : 40rpx;
-    font-family  : PingFangSC-Medium, PingFang SC;
+    padding      : 0;
+    margin-left       : 32rpx;
+    margin-top: 40rpx;
 }
 
 .hover-button {
-    background: rgba(207, 76, 0, 1);
+    background: #ED4100;
 }
 
 .after-button {
@@ -58,8 +67,32 @@
     position: absolute;
     top     : 0;
     left    : 0;
-    height: 80rpx;
+    height  : 80rpx;
 }
-.help-btn{
+
+.help-btn {
     position: relative;
+}
+
+.heart-btn {
+    width        : 360rpx;
+    height       : 72rpx;
+    background   : linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
+    border-radius: 36rpx;
+    line-height  : 72rpx;
+    text-align   : center;
+    font-size    : 28rpx;
+    font-weight  : 500;
+    position     : absolute;
+    bottom       : 165rpx;
+    color        : #fff;
+    left         : 40rpx;
+}
+
+.close-layout-btn {
+    width   : 50rpx;
+    height  : 50rpx;
+    position: absolute;
+    bottom  : 10rpx;
+    left    : 200rpx;
 }

@@ -11,17 +11,45 @@
     <view class="d-item">
         <view class="d-adv">{{currInfos.providerName}}  赞助</view>
         <view class="d-item-item" wx:for="{{awardList}}" wx:key="index">
-            <view class="d-level" wx:if="{{awardList.length>1}}">{{item.levelName}}</view>
-            <view class="d-tit">{{item.name}} X {{item.number}}</view>
+            <view class="d-tit">{{item.levelName}}：{{item.name}} X {{item.number}}</view>
         </view>
         <view class="d-time">
             <text>{{currInfos.currTime}} 自动开奖</text>
-            <button class="d-share" open-type="share" hover-class="none">↗  分享</button>
+            <!-- <button class="d-share" open-type="share" hover-class="none">↗  分享</button> -->
+        </view>
+        <view class="d-avatar-outer">
+            <image class="d-avatar-item" wx:for="{{currInfos.lotteryList}}" src="{{item.avatarUrl}}" alt="" srcset=""/>
+            <view class="d-avatar-text"><text wx:if="{{currInfos.lotteryList&& currInfos.lotteryList.length>5}}">...</text>已有{{currInfos.lotteryNum}}人参与抽奖</view>
         </view>
     </view>
-    <view class="d-flow">
-        <!-- {{currInfos.attractingType}} -->
-        <image wx:if="{{currInfos.attractingType == 'app'}}" class="d-image" src="../../../images/xcx_flow.png" />
+    <view class="d-flow" wx:if="{{currInfos.attractingType == 'app'}}">
+        <view class="d-flow-left">
+            <image class="d-flow-img" src="../../../images/0404/smallapp.png" />
+            <view class="d-flow-text">{{currInfos.providerName}}</view>
+        </view>
+        <button hover-class="btn-green-hover" data-type="xcx" class="d-btn-origin btn-green" bindtap="attractType">
+            去体验
+        </button>
+    </view>
+    <view class="d-flow" wx:if="{{currInfos.attractingType == 'public'}}">
+        <view class="d-flow-left">
+            <image class="d-flow-img" src="../../../images/0404/gongzhonghao.png" />
+            <view class="d-flow-text">{{currInfos.providerName}}</view>
+        </view>
+        <button data-type="gzh" class="d-btn-origin btn-blue" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
+            去看看
+        </button>
+    </view>
+    <view class="d-flow" wx:if="{{currInfos.attractingType == 'weixin'}}">
+        <view class="d-flow-left">
+            <image class="d-flow-img" src="../../../images/0404/wechat.png" />
+            <view class="d-flow-text">{{currInfos.providerName}}</view>
+        </view>
+        <button hover-class="btn-green-hover" class="d-btn-origin btn-green" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
+            加好友
+        </button>
+    </view>
+    <!-- <image wx:if="{{currInfos.attractingType == 'app'}}" class="d-image" src="../../../images/xcx_flow.png" />
         <image wx:if="{{currInfos.attractingType == 'public'}}" class="d-image" src="../../../images/number_flow.png" />
         <image wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-image" src="../../../images/account_flow.png" />
         <view class="d-type">
@@ -35,24 +63,65 @@
             <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
                 <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </button>
-        </view>
-    </view>
+        </view> -->
     <view class="d-ctx">{{currInfos.detail}}</view>
     <!-- </scroll-view> -->
     <!-- wx:if="{{!currinfos.hasLottery}}" -->
     <view class="bottom" wx:if="{{currInfos.status == 'done'}}">
-        <button class="bottom-btn end-button" hover-class="end-hover-button" lang="zh_CN" bindtap="findLotteryRes">
-            已结束，查看中奖结果
-        </button>
-        <button wx:if="{{activeResult == -2}}" class="bottom-btn after-button" hover-class="none" lang="zh_CN">
-            来晚了，抽奖已结束
-        </button>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'app'}}" bindtap="attractType">
+            <image class="go-exp-btn-img" src="../../../images/0404/greysmallapp.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">去体验</view>
+        </view>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'public'}}">
+            <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'public'}}" src="../../../images/0404/graygongzhonghao.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">去看看</view>
+            <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+        </view>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'weixin'}}">
+            <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'weixin'}}" src="../../../images/0404/graywechat.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">加好友</view>
+            <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+        </view>
+        <view class="go-exp-btn go-share-btn">
+            <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <view class="go-exp-btn-text">分享</view>
+            <button hover-class="none" class="btn-click-right" open-type="share"></button>
+        </view>
+        <view>
+            <button class="bottom-btn end-button" hover-class="end-hover-button" lang="zh_CN" bindtap="findLotteryRes">
+                查看中奖结果
+            </button>
+            <button wx:if="{{activeResult == -2}}" class="bottom-btn after-button" hover-class="none" lang="zh_CN">
+                来晚了，抽奖已结束
+            </button>
+        </view>
     </view>
     <view class="bottom" wx:else>
-        <button class="bottom-btn" hover-class="hover-button" wx:if="{{!currInfos.hasLottery&&!clickLucky}}" lang="zh_CN" bindtap="lucky">
-            点击抽奖
-        </button>
-        <button class="bottom-share-btn" wx:else open-type="share" lang="zh_CN">分享给好友</button>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'app'}}" bindtap="attractType">
+            <image class="go-exp-btn-img" src="../../../images/0404/greysmallapp.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">去体验</view>
+        </view>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'public'}}">
+            <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'public'}}" src="../../../images/0404/graygongzhonghao.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">去看看</view>
+            <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+        </view>
+        <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'weixin'}}">
+            <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'weixin'}}" src="../../../images/0404/graywechat.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+            <view class="go-exp-btn-text">加好友</view>
+            <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+        </view>
+        <view class="go-exp-btn go-share-btn">
+            <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <view class="go-exp-btn-text">分享</view>
+            <button hover-class="none" class="btn-click-right" open-type="share"></button>
+        </view>
+        <view>
+            <button class="bottom-btn-active bottom-btn" hover-class="hover-button" wx:if="{{!currInfos.hasLottery&&!clickLucky}}" lang="zh_CN" bindtap="lucky">
+                点击抽奖
+            </button>
+            <button class="bottom-share-btn bottom-btn" wx:else lang="zh_CN">已抽奖，等待开奖</button>
+        </view>
     </view>
     <van-popup position="bottom" show="{{getWinnerLayer}}" safe-area-inset-top="{{true}}" bind:close="closeWinnerLayer" closeable round>
         <view class="close" bindtap="closeWinnerLayer">
@@ -99,20 +168,27 @@
             <view class="award-ctx">
                 <view class="title">恭喜你，中奖了</view>
                 <view class="text">你的中奖</view>
-                <view class="award-detail" bindtap="goLottery">
+                <view class="detail" wx:for="{{awardList}}">{{item.name}} x {{item.number}}</view>
+                  
+                <!-- <view class="award-detail" bindtap="goLottery">
                     <image class="award-detail-image" src="../../../images/go_award_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
                     <view class="award-info">
                         <text class="info-text">去领奖</text>
                         <van-icon name="arrow" />
                     </view>
-                </view>
+                </view> -->
             </view>
-            <view class="bottom-layer" wx:if="{{!currinfos.hasLottery}}">
+            <!-- <view class="bottom-layer" wx:if="{{!currinfos.hasLottery}}">
                 <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" open-type="share">
                     炫耀一下
                 </button>
-            </view>
+            </view> -->
         </view>
     </van-popup>
     <van-toast id="van-toast" />
+    <van-popup show="{{ show }}" custom-class="popup-layout">
+        <view class="close-layout-btn" bindtap="close"></view>
+        <button class="heart-btn" hover-class="hover-linear-btn" bindtap="loadData">去抽奖</button>
+        <image class="popup-image" src="../../../images/0404/popup3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    </van-popup>
 </view>

@@ -62,21 +62,19 @@
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
   </view> -->
-  <view class="buttom-block"></view>
-    
-  <van-popup show="{{ show }}" bind:close="onClose" closeable close-icon-position="top-left" custom-class="popup-layout">
-    <view class="close" bindtap="onClose"></view>
+  <view class="bottom-block"></view>
+  <van-popup show="{{ show }}"  custom-class="popup-layout">
     <!-- 心愿卡 -->
-    <button class="getinfo-btn" hover-class="none" bindtap="getHeart"></button>
-    <image class="popup-image" src="../../images/layout.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <view class="close-layout-btn" bindtap="close"></view>
+    <button class="heart-btn" hover-class="hover-linear-btn" bindtap="getHeart">开心收下</button>
+    <image class="popup-image" src="../../images/0404/popup2.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
-  <van-popup position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">
-    <view class="close" bindtap="closeHomeLoginLayout"></view>
+  <van-popup close-on-click-overlay="{{false}}" position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">
     <!-- 获取用户信息 -->
-    <button class="getinfo-login-btn" hover-class="none" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+    <button class="getinfo-login-btn" hover-class="hover-linear-btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
       马上登录
     </button>
-    <image class="popup-login-image" src="../../images/home_login.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <image class="popup-login-image" src="../../images/0404/homepopup.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
   <!-- showLoginLayer -->
 </view>

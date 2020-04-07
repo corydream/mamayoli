@@ -1,6 +1,6 @@
 <view class="record">
     <van-cell is-link title="奖品管理" link-type="navigateTo" url="../lotterymanage/lotterymanage" />
-    <van-cell is-link title="数据看板" />
+    <!-- <van-cell is-link title="数据看板" /> -->
     <van-cell is-link class="help-btn" title="联系我们">
         <button class='contact-button' open-type='contact'></button>
     </van-cell>

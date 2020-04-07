@@ -1,22 +1,41 @@
-//app.js
 App({
-  onLaunch: function () {
 
-    if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
-    } else {
-      wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
-        traceUser: true,
-      })
-    }
+  /** 全局store */
+  globalData: {
+    userInfoData: {},
+    _tabbar:false,
+    data:{}
+  },
 
-    this.globalData = {
-      userInfoData: {}
-    }
-  }
-})
+  /** 监听函数的对象数组 */
+  watchBack: function (value) {  //这里的value 就是 app.js 中 watch 方法中的 set, 返回整个 globalData
+    this.setData({
+      _tabbar: value._tabbar
+    });
+  },
+
+  /** 监听列表 */
+  watchingKeys: [ ],
+
+  /** 初始化 */
+  init: function( ) {
+    // 全局数据
+  },
+
+  /** watch函数 */
+  watch: function (method) {
+    var obj = this.globalData;
+    Object.defineProperty(obj, "data", {  //这里的 data 对应 上面 globalData 中的 data
+      configurable: true,
+      enumerable: true,
+      set: function (value) {  //动态赋值，传递对象，为 globalData 中对应变量赋值
+        this._tabbar = value._tabbar;
+        method(value);
+      },
+      get: function () {  //获取全局变量值，直接返回全部
+        return this.globalData;
+      }
+    })
+  },
+
+});
