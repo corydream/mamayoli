@@ -239,6 +239,8 @@ page {
   width: calc(100% - 64rpx);
   height: 366rpx;
   margin-left: 32rpx;
+  position: relative;
+
   display: flex;
   background: #F4F4F4;
   flex-direction: column;

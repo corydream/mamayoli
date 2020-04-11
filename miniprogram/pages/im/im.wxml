@@ -2,7 +2,6 @@
   <swiper class="siwper" current="{{current}}" bindchange="bindSwiperChange">
     <swiper-item class="swipper-item">
       <scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
-
         <block wx:for="{{priceList}}" data-index="{{item.index}}">
           <view wx:if="{{index!=0}}" class="empty small"></view>
           <view class="row">
@@ -36,7 +35,7 @@
             <view class="lable">奖品名称
               <p class="red">*</p>
             </view>
-            <input class="content" placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput" data-index="{{item.index}}"></input>
+            <input class="content"  maxlength="10" placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput" data-index="{{item.index}}"></input>
           </view>
           <view class="line"></view>
           <view class="row">
@@ -64,7 +63,7 @@
         <view class="row">
           <view class="lable">奖品说明(可选)</view>
         </view>
-        <textarea class="detail" placeholder="最多可设置200字符~" bindinput="bindDetailInput"></textarea>
+        <textarea class="detail" maxlength="500" placeholder="最多可设置500字符~" bindinput="bindDetailInput"></textarea>
         <view class="row">
           <view class="lable">奖品详情(可选)</view>
         </view>
@@ -147,7 +146,7 @@
           <view class="lable">赞助方名称
             <p class="red">*</p>
           </view>
-          <input value="{{providerName}}" class="content" placeholder="请输入赞助方名称" bindinput="bindProviderNameInput"></input>
+          <input  maxlength="20" value="{{providerName}}" class="content" placeholder="请输入赞助方名称" bindinput="bindProviderNameInput"></input>
         </view>
         <view class="line"></view>
         <view class="row">
@@ -174,7 +173,7 @@
           <view class="lable">手机号
             <p class="red">*</p>
           </view>
-          <input type="number" value="{{contactPhoneNum}}" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
+          <input type="number" maxlength="20" value="{{contactPhoneNum}}" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
         </view>
         <view class="line"></view>
         <view class="row">
