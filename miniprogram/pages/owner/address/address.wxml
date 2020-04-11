@@ -1,5 +1,5 @@
 <view class="add">
-    <view class="add-list" wx:for="{{addressList}}" wx:key="index">
+    <view class="add-list" wx:for="{{addressList}}" wx:key="index"  data-id="{{item.id}}" bindtap="selectAddr">
         <view class="a-name bold">{{item.name}}</view>
         <view class="a-tel bold">{{item.phoneNum}}</view>
         <view class="a-info">{{item.province}} {{item.city}} {{item.area}}</view>

@@ -14,5 +14,7 @@
     <van-popup position="bottom" show="{{ show }}" custom-class="popup-login-layout">
         <van-area area-list="{{ areaList }}" value="{{region}}" bind:confirm="closeConfirm" bind:cancel="closePop" bind:change="changeValue" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"/>
     </van-popup>
-    <button class="bottom-btn end-button b-btn" hover-class="end-hover-button" lang="zh_CN" bindtap="submit">保 存</button>
+    <view class="center">
+           <button class="bottom-btn end-button b-btn" hover-class="end-hover-button" lang="zh_CN" bindtap="submit">保 存</button> 
+    </view>
 </view>

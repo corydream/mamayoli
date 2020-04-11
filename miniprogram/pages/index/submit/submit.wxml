@@ -1,0 +1,13 @@
+<view class="note-outer">
+   <view class="note-ctx">
+      <image class="ctx-img" src="../../../images/0404/gift.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+      <text class="ctx-title">你已提交领奖信息</text>
+      <text class="ctx-text">请耐心等待商家发奖</text>
+   </view>
+     
+   <view class="bottom">
+      <button class="old-button" hover-class="hover-button" lang="zh_CN" bindtap="nextLottery">
+         继续抽奖
+      </button>
+   </view>
+</view>

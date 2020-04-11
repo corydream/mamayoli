@@ -14,3 +14,9 @@
     margin-top: 100rpx;
     color: #fff;
 }
+.center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}

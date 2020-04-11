@@ -16,7 +16,7 @@ class Index {
     indicatorDots: true,
     vertical: false,
     autoplay: true,
-    interval: 2000,
+    interval: 5000,
     duration: 500,
     show: false,
     ser: null,
@@ -172,17 +172,21 @@ class Index {
     const daily = await this.ser.list(
       Object.assign(params, { type: 'dailySelection' })
     );
-
-    this.dailyList = this._formatListData(daily.data);
-
-    // // 热门福利
     const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
-
-    this.hotList = this._formatListData(hot.data);
-
+    // this.dailyList = this._orderByLottery(this._formatListData(daily.data));
+     
     this.setData({
-      currentList: this.data.currentTab === 0 ? this.dailyList : this.hotList
-    });
+      dailyList:this._orderByLottery(this._formatListData(daily.data)),
+      hotList:this._orderByLottery(this._formatListData(hot.data))
+    })
+    // // 热门福利
+    
+
+    // this.hotList = this._orderByLottery(this._formatListData(hot.data));
+
+    // this.setData({
+    //   currentList: this.data.currentTab === 0 ? this.dailyList : this.hotList
+    // });
   }
   // 时间转化
   _formatListData(list) {
@@ -190,6 +194,17 @@ class Index {
       item.currTime = formatTime(item.lotteryTime);
       return item;
     });
+  }
+  _orderByLottery(list){
+    const newArr = [];
+    list.map(item=>{
+      if(item.hasLottery){
+        newArr.push(item);
+      }else{
+        newArr.unshift(item);
+      }
+    })
+    return newArr;
   }
   onGotUserInfo(e) {
     this.setData({

@@ -42,8 +42,8 @@
     background   : #f66400;
     font-family  : PingFangSC-Medium, PingFang SC;
     padding      : 0;
-    margin-left       : 32rpx;
-    margin-top: 40rpx;
+    margin-left  : 32rpx;
+    margin-top   : 40rpx;
 }
 
 .hover-button {
@@ -95,4 +95,19 @@
     position: absolute;
     bottom  : 10rpx;
     left    : 200rpx;
+}
+
+.addr-btn {
+    width        : 686rpx;
+    height       : 100rpx;
+    border-radius: 50rpx;
+    line-height  : 100rpx;
+    text-align   : center;
+    color        : #fff;
+    font-size    : 40rpx;
+    font-weight  : 500;
+    margin       : 0 32rpx;
+}
+.addr-btn-active{
+    background-color: #F66400;
 }

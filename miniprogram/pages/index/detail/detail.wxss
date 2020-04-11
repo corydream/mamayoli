@@ -43,29 +43,34 @@
     align-items    : center;
     color          : #999;
     font-size      : 24rpx;
-    margin-bottom: 40rpx;
+    margin-bottom  : 40rpx;
 }
-.d-avatar-outer{
-    display:flex;
-    color: #999;
+
+.d-avatar-outer {
+    display  : flex;
+    color    : #999;
     font-size: 24rpx;
 }
-.d-avatar-item{
-    display: flex;
-    width: 40rpx;
-    height: 40rpx;
+
+.d-avatar-item {
+    display      : flex;
+    width        : 40rpx;
+    height       : 40rpx;
     border-radius: 50%;
-    margin-left: -10rpx;
-    line-height: 40rpx;
+    margin-left  : -10rpx;
+    line-height  : 40rpx;
 }
-.d-avatar-item:first-child{
+
+.d-avatar-item:first-child {
     margin-left: 0;
 }
-.d-avatar-text{
-    height: 40rpx;
+
+.d-avatar-text {
+    height     : 40rpx;
     line-height: 40rpx;
     margin-left: 8rpx;
 }
+
 .d-share {
     color    : #333;
     margin   : 0;
@@ -79,6 +84,16 @@
     margin: 0 auto;
 }
 
+.d-adv-image {
+    width  : 686rpx;
+    padding: 0 32rpx;
+}
+
+.d-adv-image image {
+    width  : 686rpx;
+    display: block;
+}
+
 .d-flow {
     display        : flex;
     justify-content: space-between;
@@ -86,7 +101,7 @@
     height         : 150rpx;
     border-top     : 1px solid #eee;
     border-bottom  : 1px solid #eee;
-    margin        : 0 32rpx;
+    margin         : 0 32rpx;
     align-items    : center;
 }
 
@@ -198,41 +213,54 @@
     padding         : 28rpx 32rpx 56rpx 0;
     display         : flex;
 }
-.go-exp-btn{
-    border-right: 1rpx solid #eee;
-    width: 128rpx;
-    display: flex;
-    flex-direction: column;
+
+.go-exp-btn-outer {
+    width : 128rpx;
+    height: 96rpx;
+}
+
+.go-exp-btn {
+    border-right   : 1rpx solid #eee;
+    width          : 128rpx;
+    height         : 96rpx;
+    display        : flex;
+    flex-direction : column;
     justify-content: space-between;
-    align-items: center;
-    position: relative;
+    align-items    : center;
+    position       : relative;
 }
-.btn-click-left{
-    position:absolute;
-    width: 128rpx;
-    top:0;
-    left:0;
-    height: 96rpx;
+
+.btn-click-left {
+    position: absolute;
+    width   : 128rpx;
+    top     : 0;
+    left    : 0;
+    height  : 96rpx;
 }
-.btn-click-right{
-    position:absolute;
-    height: 96rpx;
-    width: 140rpx;
-    top:0;
-    left:0;
+
+.btn-click-right {
+    position: absolute;
+    height  : 96rpx;
+    width   : 140rpx;
+    top     : 0;
+    left    : 0;
 }
-.go-exp-btn-img{
-    width: 44rpx;
+
+.go-exp-btn-img {
+    width : 44rpx;
     height: 44rpx;
 }
-.go-exp-btn-text{
-    color: #666660;
+
+.go-exp-btn-text {
+    color    : #666660;
     font-size: 24rpx;
 }
-.go-share-btn{
-    width: 140rpx;
+
+.go-share-btn {
+    width       : 140rpx;
     border-right: none;
 }
+
 .bottom-layer {
     width           : 100%;
     margin          : 0 auto;
@@ -245,17 +273,18 @@
 
 /* 弹窗 */
 .popup-layout {
+    width           : 440rpx;
+    height          : 741rpx;
+    position        : relative;
+    background-color: transparent !important;
+    overflow        : hidden;
+    top             : 548rpx !important;
+}
+
+.popup-image {
     width : 440rpx;
     height: 741rpx;
-    position     : relative;
-    background-color: transparent!important;
-    overflow: hidden;
-    top: 548rpx!important;
-  } 
-  .popup-image {
-    width : 440rpx;
-    height: 741rpx;
-  }
+}
 
 /* 未中奖样式 */
 .no-award,
@@ -275,16 +304,19 @@
     padding  : 40rpx 0 32rpx 0;
 }
 
-.no-award .text,
-.award .text {
+.no-award .text {
     padding  : 48rpx 0 32rpx 0;
     font-size: 28rpx;
 }
 
-.award .detail{
-    font-size: 28rpx;
-    color:#666;
-    margin-top: 16rpx;
+.award .text {
+    padding-top: 48rpx;
+}
+
+.award .detail {
+    font-size    : 28rpx;
+    color        : #666;
+    margin-top   : 16rpx;
     margin-bottom: 50rpx;
 }
 
@@ -331,25 +363,104 @@
 
 .award-detail {
     display        : flex;
-    flex-direction : column;
-    justify-content: center;
+    justify-content: space-between;
     align-items    : center;
     width          : 686rpx;
-    height         : 312rpx;
-    border-radius  : 8rpx;
-    border         : 1px solid #666;
+    height         : 88rpx;
 }
 
 .award-detail-image {
     /* border: 1px dashed #666; */
-    width    : 120rpx;
-    height   : 120rpx;
+    width    : 88rpx;
+    height   : 88rpx;
 }
 
 .award-info {
-    margin-top: 24rpx;
+    width: 194rpx;
 }
+
+.award-detail-btn {
+    height       : 82rpx;
+    border-radius: 44rpx;
+    border       : 3rpx solid rgba(246, 100, 0, 1);
+    line-height  : 82rpx;
+    color        : #F66400;
+    text-align   : center;
+}
+
 
 .info-text {
     vertical-align: 5rpx;
+}
+
+/* 轮播 */
+.swiper-item-list {
+    height          : 400rpx;
+    background-color: #fff;
+    margin          : 0 auto;
+}
+
+.swiper-item-image {
+    width : 750rpx;
+    height: 400rpx;
+}
+
+swiper {
+    height: 400rpx;
+}
+
+/* 配送信息 */
+.send-addr {
+    height          : 168rpx;
+    padding         : 0 50rpx 0 32rpx;
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+    font-size       : 28rpx;
+    background-color: #F4F5F6;
+}
+
+.send-addr .addr-title {
+    color: #333;
+}
+
+.send-addr .addr-text {
+    color: #666;
+}
+
+.bottom-addr {
+    background-color: #F4F5F6;
+    padding-bottom  : 48rpx;
+}
+
+.popup-login-layout {
+    width           : 100%;
+    height          : 877rpx;
+    border-radius   : 40rpx 40rpx 0 0;
+    position        : relative;
+    padding         : 0 !important;
+    margin          : 0;
+    overflow        : hidden !important;
+    background-color: transparent !important;
+}
+
+.popup-login-image {
+    width : 100%;
+    height: 877rpx;
+}
+
+.getinfo-login-btn {
+    position     : absolute;
+    bottom       : 0;
+    width        : 686rpx;
+    height       : 100rpx;
+    line-height  : 100rpx;
+    text-align   : center;
+    border-radius: 50rpx;
+    left         : 0;
+    right        : 0;
+    bottom       : 80rpx;
+    margin       : auto;
+    color        : #fff;
+    background   : linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
 }

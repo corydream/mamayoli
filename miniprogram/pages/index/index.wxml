@@ -19,7 +19,7 @@
     </view>
   </view>
   <view class="swiper-view">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
+    <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
           <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail" />
@@ -28,29 +28,41 @@
     </swiper>
   </view>
   <!-- 导航  nav -->
-  <view class="nav">
+  <!-- <view class="nav">
     <view class="nav-item" wx:for="{{nav}}" wx:key="index" data-index="{{index}}" bindtap="navTab">
       <text class="{{item.id === currentTab ? 'cur': ''}}">{{item.name}}</text>
     </view>
+  </view> -->
+  <view class="nav">
+    <view class="nav-item">
+      <text class="cur">每日精选</text>
+    </view>
   </view>
   <!-- 详情  list -->
-  <view class="daily-list" hidden="{{currentTab === 1}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+  <view class="daily-list" wx:for="{{dailyList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="list-ctx d-list-ctx">
-      <view class="adv">{{item.providerName}}  赞助</view>
-      <view class="title">{{item.name}}</view>
+      <view class="adv ellpsis">{{item.providerName}}  赞助</view>
+      <view class="title ellpsis">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
     </view>
   </view>
-  <view class="list" hidden="{{currentTab === 0}}" wx:for="{{currentList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+  <view class="nav">
+    <view class="nav-item">
+      <text class="cur">热门福利</text>
+    </view>
+  </view>
+  <view class="list" wx:for="{{hotList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <view class="list-image">
       <image class="" src="{{item.thumbnail}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="list-ctx">
-      <view class="adv">{{item.providerName}}  赞助</view>
-      <view class="title">{{item.name}}</view>
+      <view class="adv ellpsis">{{item.providerName}}  赞助</view>
+      <view class="title ellpsis">{{item.name}}</view>
       <view class="time">{{item.currTime}} 自动开奖</view>
-      <button class="btn btn-btns {{item.hasLottery?'gray-color':''}}" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">{{item.hasLottery?"等待开奖":"免费抽奖"}}</button>
+      <button class="btn btn-btns {{item.hasLottery?'gray-color':''}}" hover-class="hover-button" data-id="{{item.id}}" lang="zh_CN" bindtap="goDetail">
+        {{item.hasLottery?"等待开奖":"免费抽奖"}}
+      </button>
     </view>
   </view>
   <!-- 上传图片 -->
@@ -63,7 +75,7 @@
     </view>
   </view> -->
   <view class="bottom-block"></view>
-  <van-popup show="{{ show }}"  custom-class="popup-layout">
+  <van-popup show="{{ show }}" custom-class="popup-layout">
     <!-- 心愿卡 -->
     <view class="close-layout-btn" bindtap="close"></view>
     <button class="heart-btn" hover-class="hover-linear-btn" bindtap="getHeart">开心收下</button>

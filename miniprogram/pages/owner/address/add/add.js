@@ -21,15 +21,28 @@ class Index {
     zipCode:'',
     isFirst:false,
     phoneNum:'',
-    allProv:''
+    allProv:'',
+    productId:''
   };
   constructor() {
     this.ser = new AddRecordService();
   }
-  onLoad() {
+  onLoad(options) {
+    this.getId(options);
     this.setData({
       areaList: area
     });
+  }
+  onShow(options){
+    this.getId(options);
+  }
+
+  getId(options){
+    if(options && options.productId){
+      this.setData({
+        productId:options.productId
+      })
+    }
   }
   area() {
     this.setData({ show: true });
@@ -52,11 +65,12 @@ class Index {
     });
   }
   submit(){
+    console.log(123)
     const params = {
       name: this.data.name,
-      province:'北京市',
-      city:'北京市',
-      area:'东城区',
+      province:this.data.province,
+      city:this.data.city,
+      area: this.data.area,
       detail:this.data.detail,
       zipCode:this.data.zipCode,
       isFirst: this.data.isFirst,
@@ -65,7 +79,7 @@ class Index {
     this.ser.add(params).then(res=>{
       if(res){
         wx.navigateTo({
-          url:'../../address/address'
+          url:`../../address/address?productId=${this.data.productId}`
         })
       }
     })

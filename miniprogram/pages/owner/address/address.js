@@ -8,16 +8,33 @@ const app = getApp();
 class Index {
   data = {
     userData: {},
-    addressList: []
+    addressList: [],
+    productId:''
   };
   constructor() {
     this.ser = new AddressRecordService();
   }
-  onLoad() {
+  onLoad(options) {
+    this.getId(options);
     this.getAddress();
   }
-  onShow() {
+  onShow(options) {
+    this.getId(options);
     this.getAddress();
+  }
+  getId(options){
+    if(options && options.productId){
+      this.setData({
+        productId:options.productId
+      })
+    }
+  }
+  selectAddr(e){
+    if(this.data.productId){
+      wx.navigateTo({
+        url: `/pages/index/detail/detail?id=${this.data.productId}&addrId=${e.currentTarget.dataset.id}`
+      });  
+    }
   }
   async getAddress() {
     const res = await this.ser.getTodo('/address/list');
@@ -27,7 +44,7 @@ class Index {
   }
   add() {
     wx.navigateTo({
-      url: './add/add'
+      url: `./add/add?productId=${this.data.productId}`
     });
   }
   onchange(e) {

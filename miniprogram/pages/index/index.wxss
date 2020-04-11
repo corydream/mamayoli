@@ -3,11 +3,22 @@
 
 page {
   /* background     : #f66400; */
-  display        : flex;
-  flex-direction : column;
-  justify-content: flex-start;
-  font-family    : PingFangSC-Medium, PingFang SC;
-  background: #f1f2f6;
+  display           : flex;
+  flex-direction    : column;
+  justify-content   : flex-start;
+  font-family       : PingFangSC-Medium, PingFang SC;
+  background        : #f1f2f6;
+}
+
+.ellpsis {
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  white-space  : nowrap;
+}
+
+
+swiper {
+  height: 320rpx;
 }
 
 .container {
@@ -22,21 +33,22 @@ page {
 }
 
 .swiper-view {
-  margin: 0 32px;
+  margin: 0 32rpx 32rpx;
   width : calc(100% - 64rpx);
-  height: 360rpx;
+  height: 320rpx;
 }
 
 .swiper-item-list {
-  height          : 300rpx;
+  height          : 320rpx;
   border-radius   : 8rpx;
   background-color: #fff;
   margin          : 0 auto;
 }
 
 .swiper-item-image {
-  width: 686rpx;
-  height  : 300rpx;
+  width  : 686rpx;
+  height : 320rpx;
+  display: block;
 }
 
 .swiper-item {
@@ -47,7 +59,7 @@ page {
 .category {
   border-radius   : 8rpx;
   height          : 72rpx;
-  width           : 638rpx;
+  width           : 650rpx;
   background-color: #fff;
   margin-top      : -76rpx;
   margin-bottom   : 32rpx;
@@ -93,18 +105,19 @@ page {
 }
 
 .nav {
-  color      : #666;
-  font-size  : 28rpx;
-  display    : flex;
-  width      : 686rpx;
-  height     : 80rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
+  color         : #666;
+  display       : flex;
+  font-size     : 32rpx;
+  width         : 686rpx;
+  /* height     : 80rpx; */
+  margin-bottom : 16rpx;
+  font-family   : PingFangSC-Regular, PingFang SC;
 }
 
 .nav .nav-item {
-  margin-right: 30rpx;
-  width       : 112rpx;
-  position    : relative;
+  margin-right   : 30rpx;
+  /* width       : 112rpx; */
+  position       : relative;
 }
 
 .nav .cur {
@@ -113,13 +126,13 @@ page {
   /* border-bottom: 2px solid #F66400; */
 }
 
-.nav .cur:after {
+/* .nav .cur:after {
   content : '_____';
   position: absolute;
   top     : 14rpx;
   left    : 20rpx;
   color   : #f66400;
-}
+} */
 
 .list {
   width        : 686rpx;
@@ -152,14 +165,16 @@ page {
   height       : 586rpx;
   background   : rgba(255, 255, 255, 1);
   border-radius: 8rpx;
-  margin-bottom: 48rpx;
+  margin-bottom: 32rpx;
 }
-.d-image{
-  height: 366rpx;
-  width: 686rpx;
+
+.d-image {
+  height       : 366rpx;
+  width        : 686rpx;
   border-radius: 8rpx 8rpx 0 0;
 }
-.d-list-ctx{
+
+.d-list-ctx {
   padding: 24rpx 32rpx 32rpx;
 }
 
@@ -167,7 +182,7 @@ page {
   color        : #f66400;
   font-size    : 28rpx;
   margin-bottom: 12rpx;
-  font-weight: bold;
+  font-weight  : bold;
 }
 
 .list-ctx .title {
@@ -184,18 +199,18 @@ page {
   font-size    : 24rpx;
   color        : #999;
   margin-bottom: 24rpx;
-  font-family:PingFangSC-Regular,PingFang SC;
+  font-family  : PingFangSC-Regular, PingFang SC;
 }
 
 
 .popup-layout {
-  width : 440rpx;
-  height: 741rpx;
+  width           : 440rpx;
+  height          : 741rpx;
   /* border-radius: 40rpx; */
-  position     : relative;
-  background-color: transparent!important;
-  overflow: hidden;
-  top: 548rpx!important;
+  position        : relative;
+  background-color: transparent !important;
+  overflow        : hidden;
+  top             : 548rpx !important;
 }
 
 .popup-image {
@@ -224,14 +239,14 @@ page {
 }
 
 .popup-login-layout {
-  width        : 100%;
-  height       : 877rpx;
-  border-radius: 40rpx 40rpx 0 0;
-  position     : relative;
-  padding      : 0 !important;
-  margin       : 0;
-  overflow     : hidden !important;
-  background-color: transparent!important;
+  width           : 100%;
+  height          : 877rpx;
+  border-radius   : 40rpx 40rpx 0 0;
+  position        : relative;
+  padding         : 0 !important;
+  margin          : 0;
+  overflow        : hidden !important;
+  background-color: transparent !important;
 }
 
 .popup-login-image {
@@ -252,12 +267,15 @@ page {
   bottom       : 80rpx;
   margin       : auto;
   color        : #fff;
-  background:linear-gradient(360deg,rgba(251,0,0,1) 0%,rgba(246,100,0,1) 100%);
+  background   : linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
 }
-.bottom-block{
-  height: 180rpx;
-  background:#f4f4f4;
+
+.bottom-block {
+  height    : 160rpx;
+  width     : 100%;
+  background: #f4f4f4;
 }
-.gray-color{
+
+.gray-color {
   background: #ccc;
 }

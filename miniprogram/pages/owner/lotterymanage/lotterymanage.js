@@ -15,7 +15,6 @@ class Index {
   };
   constructor() {
     this.ser = new LotteryManageService();
-    console.log(app.globalData);
   }
   onLoad() {
     this.getDataList('audit');
@@ -32,11 +31,11 @@ class Index {
     if (event.detail.index === 0) {
       this.getDataList('audit');
     } else if (event.detail.index === 1) {
-      this.getDataList('progress');
-    } else if(event.detail.index === 2) {
-      this.getDataList('finish');
-    }else if(event.detail.index === 3) {
       this.getDataList('auditFailed');
+    } else if(event.detail.index === 2) {
+      this.getDataList('progress');
+    }else if(event.detail.index === 3) {
+      this.getDataList('finish');
     }else if(event.detail.index === 4) {
       this.getDataList('finish');
     }

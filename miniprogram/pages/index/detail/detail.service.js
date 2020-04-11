@@ -11,4 +11,14 @@ export default class DetailService {
     getLottery(url) {
         return request().get(url)
     }
+
+    login(param) {
+        return request().post('/user/login', param)
+    }
+    updateInfo(param) {
+        return request().post('/user/updateUserInfo', param)
+    }
+    getUserInfo(url) {
+        return request().get(url)
+    }
 }
