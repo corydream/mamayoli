@@ -58,10 +58,24 @@ Page({
           duration: 500
         });
         return false;
+      }else if (price.priceName.length>20){
+        wx.showToast({
+          title: '奖品名称过长',
+          icon: 'none',
+          duration: 500
+        });
+        return false;
       }
       if (!price.priceNum) {
         wx.showToast({
           title: '请填写奖品数量',
+          icon: 'none',
+          duration: 500
+        });
+        return false;
+      }else if (price.priceNum>999 || price.priceNum<1){
+        wx.showToast({
+          title: '奖品数量无效',
           icon: 'none',
           duration: 500
         });
@@ -292,6 +306,7 @@ Page({
     let t = this;
     let index = e.currentTarget.dataset['index'];
     wx.chooseImage({
+      count:1,
       success: function(res) {
         var tempFilePaths = res.tempFilePaths;
         console.log(res);
@@ -306,17 +321,25 @@ Page({
     });
   },
   uploadDetail(e) {
+    if (this.data.detailPics.length>6){
+      wx.showToast({
+        title: '图片数量超限'
+      })
+      return
+    }
     this.uploadImage(
       res => {
         this.data.detailPics.push(res)
         this.setData({
           detailPics: this.data.detailPics
         })
-      }
+      }, 
+      6 - this.data.detailPics.length
     )
   },
-  uploadImage(callback) {
+  uploadImage(callback,count=1) {
     wx.chooseImage({
+      count:count,
       success: function(res) {
         var tempFilePaths = res.tempFilePaths;
         console.log(res);
@@ -324,51 +347,57 @@ Page({
         wx.showLoading({
           title: '上传中'
         });
-        indexService.sts().then(sts => {
+        indexService.sts()
+        .then(sts => {
           console.log(sts);
-          wx.uploadFile({
-            url: 'https://' + sts.data.host,
-            filePath: tempFilePaths[0],
-            name: 'file',
-            formData: {
-              name: tempFilePaths[0],
-              key: sts.data.dir + '/${filename}',
-              policy: sts.data.policy,
-              OSSAccessKeyId: sts.data.accessid,
-              success_action_status: '200',
-              signature: sts.data.signature
-            },
-            success: function(res) {
-              console.log(res);
-              let picUrl =
-                'https://' +
-                sts.data.host +
-                '/' +
-                sts.data.dir +
-                tempFilePaths[0].substring(tempFilePaths[0].lastIndexOf('/'));
-              console.log('chooseImage success, temp path is: ', picUrl);
-              wx.hideLoading();
-              wx.showToast({
-                title: '上传成功',
-                icon: 'success',
-                duration: 1000
-              });
-              callback(picUrl)
-              // t.setData({
-              // priceContactId: picUrl
-              // });
-            },
-            fail: function({
-              errMsg
-            }) {
-              console.log('upladImage fail, errMsg is: ', errMsg);
-              wx.hideLoading();
-              wx.showToast({
-                title: '上传失败',
-                duration: 1000
-              });
-            }
-          });
+          for(let i in tempFilePaths){
+            wx.uploadFile({
+              url: 'https://' + sts.data.host,
+              filePath: tempFilePaths[i],
+              name: 'file',
+              formData: {
+                name: tempFilePaths[i],
+                key: sts.data.dir + '/${filename}',
+                policy: sts.data.policy,
+                OSSAccessKeyId: sts.data.accessid,
+                success_action_status: '200',
+                signature: sts.data.signature
+              },
+              success: function (res) {
+                console.log(res);
+                let picUrl =
+                  'https://' +
+                  sts.data.host +
+                  '/' +
+                  sts.data.dir +
+                  tempFilePaths[i].substring(tempFilePaths[i].lastIndexOf('/'));
+                console.log('chooseImage success, temp path is: ', picUrl);
+                if (i === tempFilePaths.length-1){
+                  wx.hideLoading();
+                }
+                wx.showToast({
+                  title: '上传成功',
+                  icon: 'success',
+                  duration: 1000
+                });
+                callback(picUrl)
+                // t.setData({
+                // priceContactId: picUrl
+                // });
+              },
+              fail: function ({
+                errMsg
+              }) {
+                console.log('upladImage fail, errMsg is: ', errMsg);
+                wx.hideLoading();
+                wx.showToast({
+                  title: '上传失败',
+                  duration: 1000
+                });
+              }
+            });
+          }
+          
         });
       }
     });

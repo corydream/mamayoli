@@ -76,8 +76,11 @@
             <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
                 <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
             </button>
+        </view>
+    </view>
+    <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
         </view> -->
-    <view class="d-ctx">{{currInfos.detail}}</view>
+    <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
     <view class="d-adv-image" wx:if="{{currInfos.detailPics}}">
         <image wx:for="{{currInfos.detailPics}}" wx:key="index" src="{{item}}" mode="widthFix" lazy-load="false" />
     </view>
