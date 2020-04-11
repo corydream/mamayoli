@@ -37,7 +37,7 @@
             </button>
         </view>
     </view>
-    <view class="d-ctx">{{currInfos.detail}}</view>
+    <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
     <!-- </scroll-view> -->
     <!-- wx:if="{{!currinfos.hasLottery}}" -->
     <view class="bottom" wx:if="{{currInfos.status == 'done'}}">
