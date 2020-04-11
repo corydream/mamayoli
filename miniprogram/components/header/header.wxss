@@ -3,7 +3,7 @@
     height: 170rpx;
     color: #fff;
     font-size: 40rpx;
-    padding: 16rpx 32rpx 34rpx;
+    padding: 0 32rpx 34rpx;
     font-family:SourceHanSansCN-Bold,SourceHanSansCN;
 }
 .title-second{

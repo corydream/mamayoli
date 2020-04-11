@@ -32,8 +32,8 @@ Page({
       console.log(res.target)
     }
     return {
-      title: 'Mama有礼',
-      path: '/pages/heartCard/heartCard',
+      title: 'MaMa有礼',
+      path: '/pages/index/index',
       imageUrl: '../../images/share-image.jpg'
     }
   }

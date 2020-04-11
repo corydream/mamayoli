@@ -9,6 +9,7 @@ class Detail {
     page_index: 1,
     total_count: 0,
     currentId: '2',
+    show:false, // 显示弹窗
     currInfos: {},
     awardList: [],
     activeResult: '',
@@ -24,13 +25,14 @@ class Detail {
     this.ser = new DetailService();
   }
   onLoad(options) {
-    this.currentId = options.id ? options.id : '123';
+    this.currentId = options.id ? options.id : '193';
     this.getAwardList();
     this.getInfo();
   }
   // onShow(){
   //   this.checkLottery();
   // }
+  
   // 去领奖
   goLottery() {
     wx.navigateTo({
@@ -43,6 +45,9 @@ class Detail {
       tmplIds: ['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'],
       success(res) {
         _this.checkLottery();
+        _this.setData({
+          show:true
+        })
       }
     });
   }
@@ -58,6 +63,11 @@ class Detail {
         activeResult: res.code
       });
     });
+  }
+  close(){
+    this.setData({
+      show: false
+    }); 
   }
   // 关闭弹窗
   closeWinnerLayer() {
@@ -91,9 +101,9 @@ class Detail {
   // 自定义转发样式
   onShareAppMessage(e) {
     return {
-      title: 'Mama有礼',
-      path: `/pages/detail/detail?id=${this.currentId}`,
-      imageUrl: '../../../images/share-image.jpg'
+      title: 'MaMa有礼',
+      path: `/pages/index/detail/detail?id=${this.currentId}`,
+      imageUrl: this.data.currInfos.thumbnail
     };
   }
   onReachBottom() {
@@ -102,6 +112,12 @@ class Detail {
   onPullDownRefresh(e) {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     //模拟加载
+    this.loadData();
+    wx.hideNavigationBarLoading(); //完成停止加载
+    wx.stopPullDownRefresh(); //停止下拉刷新
+  }
+  // 上滑刷新
+  loadData(){
     this.ser.getTodo(`/activity/next?id=${this.currentId}`).then(res => {
       res.data.currTime = formatTime(res.data.lotteryTime);
       // console.log(res.data)
@@ -113,8 +129,7 @@ class Detail {
       this.currentId = res.data.id;
       // this.lucky(res.data.id);
       this.getAwardList(res.data.id);
-      wx.hideNavigationBarLoading(); //完成停止加载
-      wx.stopPullDownRefresh(); //停止下拉刷新
+      this.setData({show:false})
     });
   }
   // 点击推广的类别
@@ -135,6 +150,7 @@ class Detail {
   getInfo() {
     this.ser.getTodo(`/activity/detail?id=${this.currentId}`).then(res => {
       res.data.currTime = formatTime(res.data.lotteryTime);
+      res.data.lotteryList = res.data.lotteryList.slice(0,5);
       this.setData({
         currInfos: res.data,
         clickLucky: false
@@ -155,6 +171,7 @@ class Detail {
             v.levelName = '三等奖';
           }
         });
+        console.log(res.data)
         this.setData({
           awardList: res.data
         });

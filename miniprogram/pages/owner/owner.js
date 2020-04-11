@@ -6,37 +6,36 @@ import OwnerService from './owner.service';
 import token from '../../service/token.service';
 import { formatTime } from '../../utils/util';
 
-const app = getApp()
+const app = getApp();
 class Index {
   data = {
-    userData:{},
-    dataObj:{}
-  }
+    userData: {},
+    dataObj: {},
+  };
   constructor() {
     this.ser = new OwnerService();
-    
   }
   onLoad() {
     this.getUserInfo();
     this.getData();
   }
-  onShow(){
+  onShow() {
     this.getData();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 2
+        selected: 2,
       });
     }
   }
-  coop(){
+  coop() {
     wx.navigateTo({
-      url: '../coopheader/coopheader'
+      url: '../coopheader/coopheader',
     });
   }
-  getData(){
-    this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
+  getData() {
+    this.ser.getUserInfo('/user/getUserInfo').then((resGetUserInfo) => {
       this.setData({
-        dataObj: resGetUserInfo.data
+        dataObj: resGetUserInfo.data,
       });
       // this.getList();
     });
@@ -44,35 +43,36 @@ class Index {
     //   dataObj:app.globalData.userInfoData
     // })
   }
-  getUserInfo(){
+  getUserInfo() {
     let _this = this;
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          console.log(res.data)
+          _this.getTabBar().setData({
+            tabbar: true,
+          });
           _this.setData({
-            userData:res.data
-          })
+            userData: res.data,
+          });
         }
-      }
-    })
+      },
+    });
   }
-  record(){
+  record() {
     wx.navigateTo({
-      url:'./lotteryrecord/lotteryrecord'
-    })
+      url: './lotteryrecord/lotteryrecord',
+    });
   }
-  setting(){
+  setting() {
     wx.navigateTo({
-      url:'./config/config'
-    })
+      url: './config/config',
+    });
   }
-  center(){
+  center() {
     wx.navigateTo({
-      url:'./center/center'
-    })
+      url: './center/center',
+    });
   }
-  
 }
 Page(creatorPage(Index));

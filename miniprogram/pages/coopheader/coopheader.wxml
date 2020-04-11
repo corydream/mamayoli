@@ -14,7 +14,7 @@
       </view>
    </view>
    <view class="bottom">
-      <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" open-type='contact' show-message-card="{{true}}" send-message-title="联系商务">
+      <button class="old-button" hover-class="hover-button" lang="zh_CN" open-type='contact' show-message-card="{{true}}" send-message-title="联系商务">
          联系商务
       </button>
       <!-- <button class="bottom-btn"> -->

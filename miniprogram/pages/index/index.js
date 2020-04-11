@@ -57,15 +57,19 @@ class Index {
   constructor() {
     this.ser = new IndexService();
   }
+
   onLoad() {
     let _this = this;
-    // 获取用户登录信息
+    // 获取用户登录信息 读取缓存
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
           _this.setData({ showLoginLayer: false });
           _this.getLogin(res.data);
+          _this.getTabBar().setData({
+            tabbar: true
+          })
         }
       },
       fail() {
@@ -127,7 +131,7 @@ class Index {
   }
   showHeart(time) {
     const currTime = Date.now();
-    console.log(time, currTime - 24 * 3600 * 1000);
+    console.log(time, currTime - 24 * 3600 * 1000- time);
     if (currTime - 24 * 3600 * 1000 > time) {
       this.setData({ show: true });
     } else {
@@ -137,7 +141,8 @@ class Index {
   async getHeart() {
     const res = await this.ser.getUserInfo('/user/checkIn');
     if (res.data) {
-      this.data.userData.totalWishCard = this.data.userData.totalWishCard + res.data;
+      this.data.userData.totalWishCard =
+        this.data.userData.totalWishCard + res.data;
       this.setData({
         userData: this.data.userData,
         show: false
@@ -146,7 +151,7 @@ class Index {
       this.setData({ show: false });
     }
   }
-  onClose() {
+  close() {
     this.setData({ show: false });
   }
   async getList() {
@@ -190,6 +195,9 @@ class Index {
     this.setData({
       showLoginLayer: false
     });
+    this.getTabBar().setData({
+      tabbar: true
+    })
     // 获取用户信息
     wx.setStorage({
       key: 'userInfo',
@@ -234,7 +242,9 @@ class Index {
         currentList: this.hotList
       });
     } else {
-      const daily = await this.ser.list(Object.assign(params, { type: 'dailySelection' }));
+      const daily = await this.ser.list(
+        Object.assign(params, { type: 'dailySelection' })
+      );
       this.dailyList = this._formatListData(daily.data);
       this.setData({
         currentList: this.dailyList

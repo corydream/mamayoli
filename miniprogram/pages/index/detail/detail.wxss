@@ -20,14 +20,15 @@
 }
 
 .d-adv {
-    color    : #f66400;
-    font-size: 28rpx;
+    color         : #f66400;
+    font-size     : 28rpx;
+    padding-bottom: 12rpx;
 }
 
 .d-tit {
     color         : #333;
-    font-size     : 40rpx;
-    padding-bottom: 10rpx 0 20rpx;
+    font-size     : 32rpx;
+    padding-bottom: 12rpx;
 }
 
 .d-level {
@@ -42,8 +43,29 @@
     align-items    : center;
     color          : #999;
     font-size      : 24rpx;
+    margin-bottom: 40rpx;
 }
-
+.d-avatar-outer{
+    display:flex;
+    color: #999;
+    font-size: 24rpx;
+}
+.d-avatar-item{
+    display: flex;
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    margin-left: -10rpx;
+    line-height: 40rpx;
+}
+.d-avatar-item:first-child{
+    margin-left: 0;
+}
+.d-avatar-text{
+    height: 40rpx;
+    line-height: 40rpx;
+    margin-left: 8rpx;
+}
 .d-share {
     color    : #333;
     margin   : 0;
@@ -58,9 +80,64 @@
 }
 
 .d-flow {
-    display       : flex;
-    flex-direction: column;
-    position      : relative;
+    display        : flex;
+    justify-content: space-between;
+    position       : relative;
+    height         : 150rpx;
+    border-top     : 1px solid #eee;
+    border-bottom  : 1px solid #eee;
+    margin        : 0 32rpx;
+    align-items    : center;
+}
+
+.d-flow-left {
+    display    : flex;
+    align-items: center;
+}
+
+.d-flow-img {
+    width       : 72rpx;
+    height      : 72rpx;
+    margin-right: 16rpx;
+}
+
+.d-flow-text {
+    font-size: 28rpx;
+    color    : #333;
+}
+
+.d-btn-origin {
+    width        : 154rpx;
+    height       : 66rpx;
+    border-radius: 40px;
+    line-height  : 66rpx;
+    text-align   : center;
+    font-size    : 32rpx;
+    background   : #fff;
+    margin       : 0;
+    padding      : 0;
+}
+
+.btn-green {
+    border: 3rpx solid #35BF53;
+    color : #35BF53;
+}
+
+.btn-green-hover {
+    border    : 3rpx solid #35BF53;
+    background: #35BF53;
+    color     : #fff;
+}
+
+.btn-blue {
+    border: 3rpx solid #2991ED;
+    color : #2991ED;
+}
+
+.btn-blue-hover {
+    border    : 3rpx solid #2991ED;
+    background: #2991ED;
+    color     : #fff;
 }
 
 .d-type {
@@ -79,16 +156,19 @@
 }
 
 .d-type-btn {
-    width        : 230rpx;
-    height       : 72rpx;
+    width : 230rpx;
+    height: 72rpx;
 }
-.d-type-btn1{
+
+.d-type-btn1 {
     background-image: url("../../../images/button1-detail.png") no-repeat top center;
 }
-.d-type-btn2{
+
+.d-type-btn2 {
     background-image: url("../../../images/button2-detail.png") no-repeat top center;
 }
-.d-type-btn3{
+
+.d-type-btn3 {
     background-image: url("../../../images/button3-detail.png") no-repeat top center;
 }
 
@@ -103,23 +183,56 @@
     font-weight: 400;
     color      : rgba(102, 102, 102, 1);
     line-height: 48rpx;
-    padding    : 48rpx 32rpx 100rpx;
+    padding    : 40rpx 32rpx;
 
 }
 
 .bottom {
     width           : 100%;
-    margin          : 0 auto;
-    height          : 212rpx;
-    border-top      : 1rpx solid #ccc;
-    box-shadow      : 0px 1px 0px 0px rgba(204, 204, 204, 1);
+    height          : 96rpx;
     position        : fixed;
     bottom          : 0;
     left            : 0;
     font-size       : 40rpx;
     background-color: #fff;
+    padding         : 28rpx 32rpx 56rpx 0;
+    display         : flex;
 }
-
+.go-exp-btn{
+    border-right: 1rpx solid #eee;
+    width: 128rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.btn-click-left{
+    position:absolute;
+    width: 128rpx;
+    top:0;
+    left:0;
+    height: 96rpx;
+}
+.btn-click-right{
+    position:absolute;
+    height: 96rpx;
+    width: 140rpx;
+    top:0;
+    left:0;
+}
+.go-exp-btn-img{
+    width: 44rpx;
+    height: 44rpx;
+}
+.go-exp-btn-text{
+    color: #666660;
+    font-size: 24rpx;
+}
+.go-share-btn{
+    width: 140rpx;
+    border-right: none;
+}
 .bottom-layer {
     width           : 100%;
     margin          : 0 auto;
@@ -130,14 +243,19 @@
     background-color: #fff;
 }
 
-.close {
-    width   : 50rpx;
-    height  : 50rpx;
-    position: absolute;
-    top     : 10rpx;
-    right   : 10rpx;
-
-}
+/* 弹窗 */
+.popup-layout {
+    width : 440rpx;
+    height: 741rpx;
+    position     : relative;
+    background-color: transparent!important;
+    overflow: hidden;
+    top: 548rpx!important;
+  } 
+  .popup-image {
+    width : 440rpx;
+    height: 741rpx;
+  }
 
 /* 未中奖样式 */
 .no-award,
@@ -161,6 +279,13 @@
 .award .text {
     padding  : 48rpx 0 32rpx 0;
     font-size: 28rpx;
+}
+
+.award .detail{
+    font-size: 28rpx;
+    color:#666;
+    margin-top: 16rpx;
+    margin-bottom: 50rpx;
 }
 
 .no-award-list {
@@ -214,14 +339,17 @@
     border-radius  : 8rpx;
     border         : 1px solid #666;
 }
-.award-detail-image{
+
+.award-detail-image {
     /* border: 1px dashed #666; */
-    width: 120rpx;
-    height: 120rpx;
+    width    : 120rpx;
+    height   : 120rpx;
 }
-.award-info{
+
+.award-info {
     margin-top: 24rpx;
 }
-.info-text{
+
+.info-text {
     vertical-align: 5rpx;
 }

@@ -165,3 +165,7 @@ page {
 .van-tab--active {
   font-weight: bold!important;
 }
+/* hover样式，统一 */
+.hover-linear-btn{
+  background:#ED4100;
+}

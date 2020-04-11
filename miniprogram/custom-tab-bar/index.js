@@ -1,5 +1,7 @@
+let app = getApp();
 Component({
   data: {
+    tabbar:false,
     selected: 0,
     color: "#666666",
     selectedColor: "#f66400",
@@ -22,6 +24,16 @@ Component({
         "selectedIconPath": "/images/icon_owner_light.png"
       }
     ]
+  },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () { 
+      console.log(this.data.tabbar)
+    },
+    hide: function () {
+      console.log(this.data.tabbar)
+     },
+    resize: function () { },
   },
   attached() {},
   methods: {

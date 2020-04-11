@@ -41,7 +41,7 @@ class Index {
       console.log(res.target);
     }
     return {
-      title: 'Mama有礼',
+      title: 'MaMa有礼',
       path: '/pages/heartCard/heartCard',
       imageUrl: '../../images/share-image.jpg'
     };
