@@ -23,7 +23,6 @@ class Index {
   };
   constructor() {
     this.ser = new LotteryRecordService();
-    console.log(app.globalData);
   }
   onLoad() {
     this.getDataList('running');

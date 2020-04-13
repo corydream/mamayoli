@@ -30,13 +30,13 @@ class Index {
       {
         id: 0,
         name: '每日精选',
-        active: true
+        active: true,
       },
       {
         id: 1,
         name: '热门福利',
-        active: false
-      }
+        active: false,
+      },
     ],
     currentTab: 0,
     mock_list: [
@@ -44,15 +44,15 @@ class Index {
         advance: '雅诗兰黛',
         name: '雅诗兰黛粉底精华眼霜',
         date: '03月31日',
-        time: '18:00'
+        time: '18:00',
       },
       {
         advance: '雅诗兰黛',
         name: '雅诗兰黛粉底精华眼霜',
         date: '03月31日',
-        time: '18:00'
-      }
-    ]
+        time: '18:00',
+      },
+    ],
   };
   constructor() {
     this.ser = new IndexService();
@@ -68,32 +68,32 @@ class Index {
           _this.setData({ showLoginLayer: false });
           _this.getLogin(res.data);
           _this.getTabBar().setData({
-            tabbar: true
-          })
+            tabbar: true,
+          });
         }
       },
       fail() {
         _this.setData({
-          showLoginLayer: true
+          showLoginLayer: true,
         });
-      }
+      },
     });
   }
   // 跳转详情页
   goDetail(e) {
     wx.navigateTo({
-      url: `./detail/detail?id=${e.currentTarget.dataset.id}`
+      url: `./detail/detail?id=${e.currentTarget.dataset.id}`,
     });
   }
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 0
+        selected: 0,
       });
     }
-    this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
+    this.ser.getUserInfo('/user/getUserInfo').then((resGetUserInfo) => {
       this.setData({
-        userData: resGetUserInfo.data
+        userData: resGetUserInfo.data,
       });
       this.getList();
     });
@@ -103,35 +103,37 @@ class Index {
     let _this = this;
     const params = {
       nickName: obj.nickName,
-      avatarUrl: obj.avatarUrl
+      avatarUrl: obj.avatarUrl,
     };
     wx.login({
       success(res) {
         if (res.code) {
           //发起网络请求
-          _this.ser.login({ code: res.code }).then(result => {
+          _this.ser.login({ code: res.code }).then((result) => {
             token.set(result.data);
             // 更新用户信息
             _this.ser.updateInfo(params);
             // 获取用户信息
-            _this.ser.getUserInfo('/user/getUserInfo').then(resGetUserInfo => {
-              _this.setData({
-                userData: resGetUserInfo.data
+            _this.ser
+              .getUserInfo('/user/getUserInfo')
+              .then((resGetUserInfo) => {
+                _this.setData({
+                  userData: resGetUserInfo.data,
+                });
+                app.globalData.userInfoData = resGetUserInfo.data;
+                // 调用商品list
+                _this.getList();
+                _this.showHeart(resGetUserInfo.data.lastCheckInTime);
+                // _this.getHeart();
               });
-              app.globalData.userInfoData = resGetUserInfo.data;
-              // 调用商品list
-              _this.getList();
-              _this.showHeart(resGetUserInfo.data.lastCheckInTime);
-              // _this.getHeart();
-            });
           });
         }
-      }
+      },
     });
   }
   showHeart(time) {
     const currTime = Date.now();
-    console.log(time, currTime - 24 * 3600 * 1000- time);
+    console.log(time, currTime - 24 * 3600 * 1000 - time);
     if (currTime - 24 * 3600 * 1000 > time) {
       this.setData({ show: true });
     } else {
@@ -145,7 +147,7 @@ class Index {
         this.data.userData.totalWishCard + res.data;
       this.setData({
         userData: this.data.userData,
-        show: false
+        show: false,
       });
     } else {
       this.setData({ show: false });
@@ -157,7 +159,7 @@ class Index {
   async getList() {
     const params = {
       pageSize: 15,
-      pageIndex: 1
+      pageIndex: 1,
     };
     // banner 列表
     const banner = await this.ser.list(
@@ -165,7 +167,7 @@ class Index {
     );
 
     this.setData({
-      bannerList: this._formatListData(banner.data)
+      bannerList: this._formatListData(banner.data),
     });
 
     //每日精选列表
@@ -174,13 +176,12 @@ class Index {
     );
     const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
     // this.dailyList = this._orderByLottery(this._formatListData(daily.data));
-     
+
     this.setData({
-      dailyList:this._orderByLottery(this._formatListData(daily.data)),
-      hotList:this._orderByLottery(this._formatListData(hot.data))
-    })
+      dailyList: this._orderByLottery(this._formatListData(daily.data)),
+      hotList: this._orderByLottery(this._formatListData(hot.data)),
+    });
     // // 热门福利
-    
 
     // this.hotList = this._orderByLottery(this._formatListData(hot.data));
 
@@ -190,40 +191,46 @@ class Index {
   }
   // 时间转化
   _formatListData(list) {
-    return list.map(item => {
+    return list.map((item) => {
       item.currTime = formatTime(item.lotteryTime);
       return item;
     });
   }
-  _orderByLottery(list){
+  _orderByLottery(list) {
     const newArr = [];
-    list.map(item=>{
-      if(item.hasLottery){
+    list.map((item) => {
+      if (item.hasLottery) {
         newArr.push(item);
-      }else{
+      } else {
         newArr.unshift(item);
       }
-    })
+    });
     return newArr;
   }
   onGotUserInfo(e) {
-    this.setData({
-      showLoginLayer: false
-    });
-    this.getTabBar().setData({
-      tabbar: true
-    })
-    // 获取用户信息
-    wx.setStorage({
-      key: 'userInfo',
-      data: e.detail.userInfo
-    });
-    this.getLogin(e.detail.userInfo);
+    if (e.detail.userInfo) {
+      this.setData({
+        showLoginLayer: false,
+      });
+      this.getTabBar().setData({
+        tabbar: true,
+      });
+      // 获取用户信息
+      wx.setStorage({
+        key: 'userInfo',
+        data: e.detail.userInfo,
+      });
+      this.getLogin(e.detail.userInfo);
+    }else{
+      // this.setData({
+      //   showLoginLayer: false,
+      // });
+    }
   }
   // 合作商户
   goMerchant(e) {
     wx.navigateTo({
-      url: '../coopheader/coopheader'
+      url: '../coopheader/coopheader',
     });
   }
   closeHomeLoginLayout() {
@@ -231,30 +238,31 @@ class Index {
   }
   goHeart() {
     wx.navigateTo({
-      url: `../heartCard/heartCard?num=${this.data.userData.totalWishCard -
-        this.data.userData.lotteryTimes}`
+      url: `../heartCard/heartCard?num=${
+        this.data.userData.totalWishCard - this.data.userData.lotteryTimes
+      }`,
     });
   }
   async navTab(e) {
-    this.data.nav.map(v =>
+    this.data.nav.map((v) =>
       v.id === e.currentTarget.dataset.index
         ? (v.active = true)
         : (v.active = false)
     );
     this.setData({
       nav: this.data.nav,
-      currentTab: e.currentTarget.dataset.index
+      currentTab: e.currentTarget.dataset.index,
     });
     const params = {
       pageSize: 15,
-      pageIndex: 1
+      pageIndex: 1,
     };
     if (e.currentTarget.dataset.index) {
       // 热门福利
       const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
       this.hotList = this._formatListData(hot.data);
       this.setData({
-        currentList: this.hotList
+        currentList: this.hotList,
       });
     } else {
       const daily = await this.ser.list(
@@ -262,7 +270,7 @@ class Index {
       );
       this.dailyList = this._formatListData(daily.data);
       this.setData({
-        currentList: this.dailyList
+        currentList: this.dailyList,
       });
     }
     // this.getList();

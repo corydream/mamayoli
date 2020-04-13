@@ -35,7 +35,7 @@ class Index {
     } else if(event.detail.index === 2) {
       this.getDataList('progress');
     }else if(event.detail.index === 3) {
-      this.getDataList('finish');
+      this.getDataList('done');
     }else if(event.detail.index === 4) {
       this.getDataList('finish');
     }

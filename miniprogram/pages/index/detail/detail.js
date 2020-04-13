@@ -14,6 +14,8 @@ class Detail {
     page_index: 1,
     total_count: 0,
     currentId: '2',
+    showHeart: false,
+    showNotHeart: false, // 心愿卡用完
     show: false, // 显示弹窗
     currInfos: {},
     awardList: [],
@@ -39,59 +41,58 @@ class Detail {
   onLoad(options) {
     let _this = this;
     _this.setData({
-      currentId: options.id ? options.id : '1',
+      currentId: options.id ? options.id : '230',
     });
-    console.log(_this)
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          _this.getAwardList();
           _this.getInfo();
           _this.getAddr(options);
+          _this.getAwardList();
         }
       },
       fail() {
         _this.setData({
-          showLoginLayer: true,
+          showHeart: true,
         });
-        // wx.reLaunch({
-        //   url: '/pages/index/index',
-        // });
       },
     });
   }
-  // 授权登录
-  onGotUserInfo(e) {
-    this.setData({
-      showLoginLayer: false,
-    });
-    // 获取用户信息
-    wx.setStorage({
-      key: 'userInfo',
-      data: e.detail.userInfo,
-    });
-    this.getLogin(e.detail.userInfo);
+  // 自定义转发样式
+  onShareAppMessage(e) {
+    this.getShare();
+    return {
+      title: `${this.data.currInfos.providerName} 赞助`,
+      path: `/pages/index/detail/detail?id=${this.data.currentId}`,
+      imageUrl: this.data.currInfos.thumbnail
+    };
   }
-
-  getLogin(obj) {
+  getLogin(obj, type) {
     let _this = this;
     const params = {
       nickName: obj.nickName,
-      avatarUrl: obj.avatarUrl
+      avatarUrl: obj.avatarUrl,
     };
     wx.login({
       success(res) {
         if (res.code) {
           //发起网络请求
-          _this.ser.login({ code: res.code }).then(result => {
+          _this.ser.login({ code: res.code }).then((result) => {
             token.set(result.data);
             // 更新用户信息
             _this.getInfo();
+            _this.getAwardList();
             // 获取用户信息
+            if (type && type.type == 'heart') {
+              _this.checkHeart();
+            }
+            if (type && type.type == 'lottery') {
+              _this.lucky();
+            }
           });
         }
-      }
+      },
     });
   }
   // 获取领奖地址
@@ -156,7 +157,7 @@ class Detail {
         _this.checkLottery();
         _this.getInfo();
         _this.setData({
-          show: true
+          show: true,
         });
       },
     });
@@ -166,6 +167,11 @@ class Detail {
     _this.ser
       .getTodo(`/activity/lottery?id=${_this.data.currentId}`)
       .then((res) => {
+        if (res.code == -4) {
+          _this.setData({
+            showNotHeart: true,
+          });
+        }
         if (res.data) {
           _this.setData({
             clickLucky: true,
@@ -179,6 +185,16 @@ class Detail {
   close() {
     this.setData({
       show: false,
+    });
+  }
+  closeHeart() {
+    this.setData({
+      showHeart: false,
+    });
+  }
+  closeNotHeart() {
+    this.setData({
+      showNotHeart: false,
     });
   }
   // 关闭弹窗
@@ -213,14 +229,10 @@ class Detail {
       });
   }
   // 获取下一页
-
-  // 自定义转发样式
-  onShareAppMessage(e) {
-    return {
-      title: `${this.data.currInfos.providerName} 赞助`,
-      path: `/pages/index/detail/detail?id=${this.data.currentId}`,
-      imageUrl: this.data.currInfos.thumbnail,
-    };
+  async getShare() {
+    const res = await this.ser.getTodo(
+      `/user/share?action=activity&id=${this.data.currentId}`
+    );
   }
   onReachBottom() {}
   onPullDownRefresh(e) {
@@ -240,7 +252,6 @@ class Detail {
         clickLucky: false,
       });
       this.data.currentId = res.data.id;
-      // this.lucky(res.data.id);
       this.getAwardList(res.data.id);
       this.setData({ show: false });
     });
@@ -267,8 +278,9 @@ class Detail {
     this.ser
       .getTodo(`/activity/detail?id=${this.data.currentId}`)
       .then((res) => {
-        if(res.code === -1){
+        if (res.code === -1) {
           Toast('该活动已下架，解释权归平台所有');
+          return;
         }
         if (res.data.addressInfo && res.data.addressInfo.id) {
           wx.navigateTo({
@@ -311,6 +323,33 @@ class Detail {
           winnerObj: res.data,
         });
       });
+  }
+
+  async checkHeart() {
+    const res = await this.ser.getUserInfo('/user/checkIn');
+    if (res.data) {
+      Toast('恭喜你，获得3张心愿卡');
+    } else {
+      Toast('今日已领取过心愿卡了');
+    }
+  }
+  // 授权登录
+  onGotUserInfo(e, type) {
+    // 获取用户信息
+    this.setData({
+      showHeart: false,
+    });
+    wx.setStorage({
+      key: 'userInfo',
+      data: e.detail.userInfo,
+    });
+    this.getLogin(e.detail.userInfo, type);
+  }
+  // 打开
+  async getUserInfoData(e) {
+    if (e.detail.userInfo) {
+      this.onGotUserInfo(e, e.currentTarget.dataset);
+    }
   }
 }
 

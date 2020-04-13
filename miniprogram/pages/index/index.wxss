@@ -203,21 +203,6 @@ swiper {
 }
 
 
-.popup-layout {
-  width           : 440rpx;
-  height          : 741rpx;
-  /* border-radius: 40rpx; */
-  position        : relative;
-  background-color: transparent !important;
-  overflow        : hidden;
-  top             : 548rpx !important;
-}
-
-.popup-image {
-  width : 440rpx;
-  height: 741rpx;
-}
-
 .close {
   width   : 100rpx;
   height  : 100rpx;

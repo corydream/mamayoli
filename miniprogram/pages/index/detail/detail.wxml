@@ -80,7 +80,9 @@
     </view>
     <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
         </view> -->
-    <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
+    <view class="d-ctx">
+        <text>{{currInfos.detail}}</text>
+    </view>
     <view class="d-adv-image" wx:if="{{currInfos.detailPics}}">
         <image wx:for="{{currInfos.detailPics}}" wx:key="index" src="{{item}}" mode="widthFix" lazy-load="false" />
     </view>
@@ -103,10 +105,12 @@
                 <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
-        <view class="go-exp-btn go-share-btn">
-            <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            <view class="go-exp-btn-text">分享</view>
-            <button hover-class="none" class="btn-click-right" open-type="share"></button>
+        <view class="go-exp-btn-outer go-share-btn">
+            <view class="go-exp-btn go-share-btn">
+                <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                <view class="go-exp-btn-text">分享</view>
+                <button hover-class="none" class="btn-click-right" open-type="share"></button>
+            </view>
         </view>
         <view>
             <button class="bottom-btn end-button" hover-class="end-hover-button" lang="zh_CN" bindtap="findLotteryRes">
@@ -134,13 +138,15 @@
                 <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
-        <view class="go-exp-btn go-share-btn">
-            <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            <view class="go-exp-btn-text">分享</view>
-            <button hover-class="none" class="btn-click-right" open-type="share"></button>
+        <view class="go-exp-btn-outer go-share-btn">
+            <view class="go-exp-btn go-share-btn">
+                <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                <view class="go-exp-btn-text">分享</view>
+                <button hover-class="none" class="btn-click-right" open-type="share"></button>
+            </view>
         </view>
         <view>
-            <button class="bottom-btn-active bottom-btn" hover-class="hover-button" wx:if="{{!currInfos.hasLottery&&!clickLucky}}" lang="zh_CN" bindtap="lucky">
+            <button class="bottom-btn-active bottom-btn" hover-class="hover-button" data-type="{{'lottery'}}" wx:if="{{!currInfos.hasLottery&&!clickLucky}}" lang="zh_CN" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfoData">
                 点击抽奖
             </button>
             <button class="bottom-share-btn bottom-btn" wx:else lang="zh_CN">已抽奖，等待开奖</button>
@@ -225,11 +231,20 @@
         <button class="heart-btn" hover-class="hover-linear-btn" bindtap="loadData">下一个</button>
         <image class="popup-image" src="../../../images/0404/popup3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </van-popup>
-    <van-popup close-on-click-overlay="{{false}}" position="bottom" show="{{ showLoginLayer }}" custom-class="popup-login-layout">
-        <!-- 获取用户信息 -->
-        <button class="getinfo-login-btn" hover-class="hover-linear-btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
-            马上登录
+    <van-popup show="{{ showHeart }}" custom-class="popup-layout">
+        <!-- 心愿卡 -->
+        <view class="close-layout-btn" bindtap="closeHeart"></view>
+        <button class="heart-btn" hover-class="hover-linear-btn" data-type="{{'heart'}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoData">
+            开心收下
         </button>
-        <image class="popup-login-image" src="../../../images/0404/homepopup.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <image class="popup-image" src="../../../images/0404/popup0001.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    </van-popup>
+    <van-popup show="{{ showNotHeart }}" custom-class="popup-not-layout">
+        <!-- 没有心愿卡 -->
+        <view class="close-layout-btn" bindtap="closeNotHeart"></view>
+        <button class="heart-btn" hover-class="hover-linear-btn" open-type="share">
+            去分享
+        </button>
+        <image class="popup-not-image" src="../../../images/0404/popup0002.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </van-popup>
 </view>

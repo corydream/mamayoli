@@ -12,7 +12,6 @@ class Index {
   };
   constructor() {
     this.ser = new ShareService();
-    console.log(app.globalData);
   }
   onLoad() {
     this.getUserInfo();

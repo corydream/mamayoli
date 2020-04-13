@@ -84,17 +84,24 @@
     font-size    : 28rpx;
     font-weight  : 500;
     position     : absolute;
-    bottom       : 165rpx;
+    bottom       : 168rpx;
     color        : #fff;
-    left         : 40rpx;
+    left         : 0;
+    right        : 0;
+
+}
+.heart-btn-home{
+    bottom: 248rpx;
 }
 
 .close-layout-btn {
-    width   : 50rpx;
-    height  : 50rpx;
+    width   : 100rpx;
+    height  : 100rpx;
     position: absolute;
-    bottom  : 10rpx;
-    left    : 200rpx;
+    bottom  : 0;
+    left    : 0;
+    right   : 0;
+    margin  : auto;
 }
 
 .addr-btn {
@@ -108,6 +115,39 @@
     font-weight  : 500;
     margin       : 0 32rpx;
 }
-.addr-btn-active{
+
+.addr-btn-active {
     background-color: #F66400;
+}
+
+/*  弹窗 心愿卡 */
+
+.popup-layout {
+    width           : 481rpx;
+    height          : 841rpx;
+    /* border-radius: 40rpx; */
+    position        : relative;
+    background-color: transparent !important;
+    overflow        : hidden;
+    top             : 548rpx !important;
+}
+
+.popup-image {
+    width : 481rpx;
+    height: 841rpx;
+}
+
+.popup-not-layout {
+    width           : 440rpx;
+    height          : 755rpx;
+    /* border-radius: 40rpx; */
+    position        : relative;
+    background-color: transparent !important;
+    overflow        : hidden;
+    top             : 548rpx !important;
+}
+
+.popup-not-image {
+    width : 440rpx;
+    height: 755rpx;
 }
