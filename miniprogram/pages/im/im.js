@@ -23,6 +23,7 @@ Page({
     priceContactId: '',
     priceProvideType: 'address',
     attractingPic: '',
+    sharePic:'',
     startDate: '请选择日期',
     multiArray: [
       ['今天', '明天', '3-2', '3-3', '3-4', '3-5'],
@@ -460,6 +461,15 @@ Page({
       }
     });
   },
+  uploadShareImg(e){
+    this.uploadImage(
+      res=>{
+        this.setData({
+          sharePic:res
+        })
+      },1
+    )
+  },
   uploadAttractingImg: function(e) {
     let t = this;
     wx.chooseImage({
@@ -843,7 +853,8 @@ Page({
           "priceProvideType": this.data.priceProvideType,
           "priceContactId": this.data.priceContactId,
           "attractingPic": this.data.attractingPic,
-          "detailPics":this.data.detailPics.join(',')
+          "detailPics":this.data.detailPics.join(','),
+          "sharePic": this.data.sharePic
         }
       })
       .then(res => {
