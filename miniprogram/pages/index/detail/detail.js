@@ -9,6 +9,7 @@ const app = getApp();
 class Detail {
   data = {
     list: [],
+    isUserInfo: false,
     showLoginLayer: false,
     hasMore: true,
     page_index: 1,
@@ -41,7 +42,7 @@ class Detail {
   onLoad(options) {
     let _this = this;
     _this.setData({
-      currentId: options.id ? options.id : '230',
+      currentId: options.id ? options.id : '235',
     });
     wx.getStorage({
       key: 'userInfo',
@@ -65,7 +66,7 @@ class Detail {
     return {
       title: `${this.data.currInfos.providerName} 赞助`,
       path: `/pages/index/detail/detail?id=${this.data.currentId}`,
-      imageUrl: this.data.currInfos.thumbnail
+      imageUrl: this.data.currInfos.thumbnail,
     };
   }
   getLogin(obj, type) {
@@ -81,14 +82,12 @@ class Detail {
           _this.ser.login({ code: res.code }).then((result) => {
             token.set(result.data);
             // 更新用户信息
+            _this.ser.updateInfo(params);
             _this.getInfo();
             _this.getAwardList();
             // 获取用户信息
             if (type && type.type == 'heart') {
               _this.checkHeart();
-            }
-            if (type && type.type == 'lottery') {
-              _this.lucky();
             }
           });
         }
@@ -143,6 +142,7 @@ class Detail {
     });
   }
   lucky() {
+    console.log(this.data.isUserInfo);
     let _this = this;
     if (
       _this.data.currInfos.status == 'audit' ||
@@ -154,12 +154,14 @@ class Detail {
     wx.requestSubscribeMessage({
       tmplIds: ['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'],
       success(res) {
-        _this.checkLottery();
-        _this.getInfo();
-        _this.setData({
-          show: true,
-        });
-      },
+        if (res['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'] == 'accept') {
+          _this.checkLottery();
+          _this.getInfo();
+          _this.setData({
+            show: true,
+          });
+        }
+      }
     });
   }
   checkLottery() {
@@ -167,15 +169,16 @@ class Detail {
     _this.ser
       .getTodo(`/activity/lottery?id=${_this.data.currentId}`)
       .then((res) => {
-        if (res.code == -4) {
-          _this.setData({
-            showNotHeart: true,
-          });
-        }
         if (res.data) {
           _this.setData({
             clickLucky: true,
           });
+        } else if (res.code == -4) {
+          _this.setData({
+            showNotHeart: true,
+          });
+        } else {
+          Toast(res.msg);
         }
         _this.setData({
           activeResult: res.code,
@@ -292,6 +295,7 @@ class Detail {
         this.setData({
           currInfos: res.data,
           clickLucky: false,
+          isUserInfo: true,
         });
         this.findLotteryRes(res.data);
       });
@@ -338,6 +342,7 @@ class Detail {
     // 获取用户信息
     this.setData({
       showHeart: false,
+      isUserInfo: true,
     });
     wx.setStorage({
       key: 'userInfo',

@@ -158,7 +158,7 @@ class Index {
   }
   async getList() {
     const params = {
-      pageSize: 15,
+      pageSize: 150,
       pageIndex: 1,
     };
     // banner 列表
@@ -208,7 +208,7 @@ class Index {
     return newArr;
   }
   onGotUserInfo(e) {
-    if (e.detail.userInfo) {
+    if (e.detail.userInfo && e.detail.userInfo.nickName) {
       this.setData({
         showLoginLayer: false,
       });

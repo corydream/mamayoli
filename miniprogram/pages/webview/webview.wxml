@@ -1,0 +1,8 @@
+
+<!-- <web-view src="https://www.baidu.com"></web-view> -->
+  <view>
+      <canvas type="2d" id="myCanvas"></canvas>
+      <!-- <image id="bg" src="https://mamayouli.oss-cn-hangzhou.aliyuncs.com/oF6sp41J2F_dPezCL8a5S7-KOxbY/tmp_273cb69e30958f3dc1915cad08c56453.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /> -->
+        
+  </view>
+    
