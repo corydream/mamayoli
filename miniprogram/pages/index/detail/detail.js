@@ -82,6 +82,7 @@ class Detail {
           _this.ser.login({ code: res.code }).then((result) => {
             token.set(result.data);
             // 更新用户信息
+            _this.ser.updateInfo(params);
             _this.getInfo();
             _this.getAwardList();
             // 获取用户信息

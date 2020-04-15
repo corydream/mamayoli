@@ -18,6 +18,7 @@
     "page/im/publish/publish",
     "pages/cropper/cropper-example",
     "custom-tab-bar/index",
+    "pages/webview/webview",
     "pages/blank/blank"
   ],
   "navigateToMiniProgramAppIdList": [
