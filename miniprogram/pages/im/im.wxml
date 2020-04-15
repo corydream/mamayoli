@@ -176,6 +176,12 @@
           </radio-group>
         </view>
         <view class="line"></view>
+          <view class="row">
+          <view class="lable">加粉描述
+          </view>
+          <input  maxlength="20" value="{{attractingText}}" class="content" placeholder="请输入{{attractingType}}描述,20字以内" bindinput="bindAttractingTextInput"></input>
+        </view>
+        <view class="line"></view>
         <view class="row">
           <view class="lable">手机号
             <p class="red">*</p>
@@ -183,6 +189,7 @@
           <input type="number" maxlength="20" value="{{contactPhoneNum}}" class="content" placeholder="请输入对接人联系方式" bindinput="bindAttractingWeiXinIdInput"></input>
         </view>
         <view class="line"></view>
+
         <view class="row">
           <view class="lable">{{attractingType}}二维码
             <p class="red">*</p>
