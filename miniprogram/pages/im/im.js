@@ -23,7 +23,7 @@ Page({
     priceContactId: '',
     priceProvideType: 'address',
     attractingPic: '',
-    sharePic:'',
+    sharePic: '',
     startDate: '请选择日期',
     multiArray: [
       ['今天', '明天', '3-2', '3-3', '3-4', '3-5'],
@@ -32,6 +32,7 @@ Page({
     ],
     multiIndex: [0, 0, 0],
     top_num: 0,
+    attractingText:'',
     touchStart: {}
   },
   onLoad() {
@@ -59,7 +60,7 @@ Page({
           duration: 500
         });
         return false;
-      }else if (price.priceName.length>20){
+      } else if (price.priceName.length > 20) {
         wx.showToast({
           title: '奖品名称过长',
           icon: 'none',
@@ -74,7 +75,7 @@ Page({
           duration: 500
         });
         return false;
-      }else if (price.priceNum>999 || price.priceNum<1){
+      } else if (price.priceNum > 999 || price.priceNum < 1) {
         wx.showToast({
           title: '奖品数量无效',
           icon: 'none',
@@ -218,11 +219,11 @@ Page({
     }
   },
   nextPage: function(e) {
-    let check =true;
-    if (this.data.current === 0){
-      check =this.checkFirst();
+    let check = true;
+    if (this.data.current === 0) {
+      check = this.checkFirst();
     }
-    if(this.data.current===2){
+    if (this.data.current === 2) {
       check = this.checkSecond();
     }
     if (!check) {
@@ -307,7 +308,7 @@ Page({
     let t = this;
     let index = e.currentTarget.dataset['index'];
     wx.chooseImage({
-      count:1,
+      count: 1,
       success: function(res) {
         var tempFilePaths = res.tempFilePaths;
         console.log(res);
@@ -322,7 +323,7 @@ Page({
     });
   },
   uploadDetail(e) {
-    if (this.data.detailPics.length>6){
+    if (this.data.detailPics.length > 6) {
       wx.showToast({
         title: '图片数量超限'
       })
@@ -334,13 +335,13 @@ Page({
         this.setData({
           detailPics: this.data.detailPics
         })
-      }, 
+      },
       6 - this.data.detailPics.length
     )
   },
-  uploadImage(callback,count=1) {
+  uploadImage(callback, count = 1) {
     wx.chooseImage({
-      count:count,
+      count: count,
       success: function(res) {
         var tempFilePaths = res.tempFilePaths;
         console.log(res);
@@ -349,57 +350,57 @@ Page({
           title: '上传中'
         });
         indexService.sts()
-        .then(sts => {
-          console.log(sts);
-          for(let i in tempFilePaths){
-            wx.uploadFile({
-              url: 'https://' + sts.data.host,
-              filePath: tempFilePaths[i],
-              name: 'file',
-              formData: {
-                name: tempFilePaths[i],
-                key: sts.data.dir + '/${filename}',
-                policy: sts.data.policy,
-                OSSAccessKeyId: sts.data.accessid,
-                success_action_status: '200',
-                signature: sts.data.signature
-              },
-              success: function (res) {
-                console.log(res);
-                let picUrl =
-                  'https://' +
-                  sts.data.host +
-                  '/' +
-                  sts.data.dir +
-                  tempFilePaths[i].substring(tempFilePaths[i].lastIndexOf('/'));
-                console.log('chooseImage success, temp path is: ', picUrl);
-                if (i === tempFilePaths.length-1){
+          .then(sts => {
+            console.log(sts);
+            for (let i in tempFilePaths) {
+              wx.uploadFile({
+                url: 'https://' + sts.data.host,
+                filePath: tempFilePaths[i],
+                name: 'file',
+                formData: {
+                  name: tempFilePaths[i],
+                  key: sts.data.dir + '/${filename}',
+                  policy: sts.data.policy,
+                  OSSAccessKeyId: sts.data.accessid,
+                  success_action_status: '200',
+                  signature: sts.data.signature
+                },
+                success: function(res) {
+                  console.log(res);
+                  let picUrl =
+                    'https://' +
+                    sts.data.host +
+                    '/' +
+                    sts.data.dir +
+                    tempFilePaths[i].substring(tempFilePaths[i].lastIndexOf('/'));
+                  console.log('chooseImage success, temp path is: ', picUrl);
+                  if (i === tempFilePaths.length - 1) {
+                    wx.hideLoading();
+                  }
+                  wx.showToast({
+                    title: '上传成功',
+                    icon: 'success',
+                    duration: 1000
+                  });
+                  callback(picUrl)
+                  // t.setData({
+                  // priceContactId: picUrl
+                  // });
+                },
+                fail: function({
+                  errMsg
+                }) {
+                  console.log('upladImage fail, errMsg is: ', errMsg);
                   wx.hideLoading();
+                  wx.showToast({
+                    title: '上传失败',
+                    duration: 1000
+                  });
                 }
-                wx.showToast({
-                  title: '上传成功',
-                  icon: 'success',
-                  duration: 1000
-                });
-                callback(picUrl)
-                // t.setData({
-                // priceContactId: picUrl
-                // });
-              },
-              fail: function ({
-                errMsg
-              }) {
-                console.log('upladImage fail, errMsg is: ', errMsg);
-                wx.hideLoading();
-                wx.showToast({
-                  title: '上传失败',
-                  duration: 1000
-                });
-              }
-            });
-          }
-          
-        });
+              });
+            }
+
+          });
       }
     });
   },
@@ -461,13 +462,13 @@ Page({
       }
     });
   },
-  uploadShareImg(e){
+  uploadShareImg(e) {
     this.uploadImage(
-      res=>{
+      res => {
         this.setData({
-          sharePic:res
+          sharePic: res
         })
-      },1
+      }, 1
     )
   },
   uploadAttractingImg: function(e) {
@@ -581,6 +582,11 @@ Page({
     this.setData({
       contactPhoneNum: e.detail.value
     });
+  },
+  bindAttractingTextInput: function(e) {
+    this.setData({
+      attractingText: e.detail.value
+    })
   },
 
   bindProviderNameInput: function(e) {
@@ -853,8 +859,9 @@ Page({
           "priceProvideType": this.data.priceProvideType,
           "priceContactId": this.data.priceContactId,
           "attractingPic": this.data.attractingPic,
-          "detailPics":this.data.detailPics.join(','),
-          "sharePic": this.data.sharePic
+          "detailPics": this.data.detailPics.join(','),
+          "sharePic": this.data.sharePic,
+          "attractingText": this.data.attractingText
         }
       })
       .then(res => {
