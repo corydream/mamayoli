@@ -9,7 +9,7 @@ class Index {
   data = {
     userData: {},
     currentId: '1',
-    currentData: '',
+    currentData: {},
   };
   constructor() {
     this.ser = new WebViewService();
@@ -18,14 +18,15 @@ class Index {
     this.setData({
       currentId: options.id ? options.id : '235',
     });
-    wx.createSelectorQuery()
-      .select('#myCanvas')
-      .fields({
-        node: true,
-        size: true,
-      })
-      .exec(this.init.bind(this));
-    this.getData();
+    this.getData().then((res) => {
+      wx.createSelectorQuery()
+        .select('#myCanvas')
+        .fields({
+          node: true,
+          size: true,
+        })
+        .exec(this.init.bind(this));
+    });
   }
   // 获取详情数据
   async getData() {
@@ -37,54 +38,110 @@ class Index {
     });
   }
 
-  // 初始化画板
   init(res) {
     const width = res[0].width;
     const height = res[0].height;
-
     const canvas = res[0].node;
     const ctx = canvas.getContext('2d');
 
     const dpr = wx.getSystemInfoSync().pixelRatio;
+    this._dpr = dpr;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
-    ctx.fillStyle = 'red';
-    // ctx.fillRect(0, 0, 100, 100);
+    // 渲染图层
+    this.render(canvas, ctx);
+  }
 
-    wx.getImageInfo({
-      src: 'https://mamayouli.oss-cn-hangzhou.aliyuncs.com/oF6sp41J2F_dPezCL8a5S7-KOxbY/tmp_273cb69e30958f3dc1915cad08c56453.jpg',
-      success (res) {
-        console.log(res.path)
-        console.log(res.height)
-        const img = canvas.createImage();
-        img.src = res.path;
-        console.log(ctx)
-        ctx.drawImage(img, 0, 150 - 25, 300, 300);
-        // ctx.draw(true);
+  render(canvas, ctx) {
+    this.drawBg(canvas, ctx);
+    this.drawBrand(canvas, ctx);
+    this.drawAvatar(canvas, ctx);
+    // this.drawTest(canvas, ctx);
+  }
+  // 绘制背景
+  drawBg(canvas, ctx) {
+    ctx.fillStyle = '#F66400';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  // 绘制头像
+  drawAvatar(canvas, ctx) {
+    const dpr = this._dpr;
+    const offsetLeft = canvas.width / dpr / 2 - 25; // 图片左侧距离
+    const fontNameLeft = canvas.width / dpr / 2;
+    const fontNameTop = 90 + 14;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        if (res.data && res.data.nickName) {
+          const img = canvas.createImage();
+          img.src = res.data.avatarUrl;
+          img.onload = () => {
+            ctx.arc(offsetLeft + 25, 28 + 25, 25, 0, Math.PI * 2, false);
+            ctx.clip();
+            ctx.drawImage(img, offsetLeft, 28, 50, 50);
+            ctx.restore();
+          };
+          ctx.fillStyle = '#fff';
+          ctx.textAlign = 'center';
+          ctx.font = '14px PingFangSC-Medium,PingFang SC';
+          ctx.fillText(res.data.nickName, fontNameLeft, fontNameTop);
+        }
       },
-      fail(err){
-        console.log(err)
-      }
-    })
-    // wx.downloadFile({
-    //   url: 'https://mamayouli.oss-cn-hangzhou.aliyuncs.com/oF6sp41J2F_dPezCL8a5S7-KOxbY/tmp_273cb69e30958f3dc1915cad08c56453.jpg', //仅为示例，并非真实的资源
-    //   success (res) {
-    //     // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-    //     if (res.statusCode === 200) {
-    //       wx.playVoice({
-    //         filePath: res.tempFilePath
-    //       })
-    //       const img = canvas.createImage();
-    //       img.src = res.tempFilePath;
-    //       console.log(ctx)
-    //       ctx.drawImage(img, 0, 150 - 25, 300, 300);
-    //       console.log(res)
-    //     }
-    //   }
-    // })
-    // img.src = 'https://mamayouli.oss-cn-hangzhou.aliyuncs.com/oF6sp41J2F_dPezCL8a5S7-KOxbY/tmp_273cb69e30958f3dc1915cad08c56453.jpg';
-    // console.log(img);
+    });
+  }
+  // 绘制商品
+  drawBrand(canvas, ctx) {
+    let _this = this;
+    const dpr = this._dpr;
+    const fontNameLeft = canvas.width / dpr / 2;
+    const fontNameTop = 232 / 2 + 20;
+    const offsetTop = 313 / 2;
+    const offsetLeft = 15; // 商品框左侧距离
+    const rectWidth = canvas.width / dpr - 30; // 白色矩形宽度
+    const rectHeight = rectWidth * 1.33; // 白色矩形高度
+    const imageHeight = rectWidth * 0.4; // 图片高度
+
+    // 渲染引导文案
+    const text = '邀请你来参加抽奖';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.font = '20px PingFangSC-Medium,PingFang SC';
+    ctx.fillText(text, fontNameLeft, fontNameTop);
+    // 渲染白色矩形
+    ctx.fillRect(offsetLeft, offsetTop, rectWidth, rectHeight);
+    ctx.save();
+    // 获取网络图片
+    wx.getImageInfo({
+      src: _this.data.currentData.thumbnail,
+      success(res) {
+        const imgbrand = canvas.createImage();
+        console.log(imgbrand);
+        imgbrand.src = res.path;
+        imgbrand.onload = () => {
+          ctx.drawImage(imgbrand, offsetLeft, offsetTop, rectWidth, imageHeight);
+        };
+      },
+      fail(err) {
+        console.log(err);
+      },
+    });
+    ctx.restore();
+    ctx.save();
+        // 渲染赞助商
+    ctx.fillStyle = '#F66400';
+    ctx.font = '14px PingFangSC-Medium,PingFang SC';
+    const advText = `${_this.data.currentData.providerName} 赞助`;
+    // ctx.textAlign = 'left';
+    ctx.fillText(advText,fontNameLeft+ 15, fontNameTop+ 180);
+  }
+  drawTest(canvas, ctx) {
+    const imgbg = canvas.createImage();
+    imgbg.src = './../../images/account_flow.png';
+    imgbg.onload = () => {
+      ctx.drawImage(imgbg, 100, 100, 50, 50);
+    };
+    ctx.restore();
   }
 }
 Page(creatorPage(Index));

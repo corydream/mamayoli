@@ -65,7 +65,7 @@ class Index {
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          _this.setData({ showLoginLayer: false });
+          // _this.setData({ showLoginLayer: false });
           _this.getLogin(res.data);
           _this.getTabBar().setData({
             tabbar: true,
@@ -73,9 +73,9 @@ class Index {
         }
       },
       fail() {
-        _this.setData({
-          showLoginLayer: true,
-        });
+        // _this.setData({
+        //   showLoginLayer: true,
+        // });
       },
     });
   }

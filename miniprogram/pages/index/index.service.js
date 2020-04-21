@@ -12,6 +12,6 @@ export default class IndexService {
         return request().get(url)
     }
     list(param) {
-        return request().get('/activity/list', param)
+        return request().get('/activity/listPublic', param)
     }
 }
