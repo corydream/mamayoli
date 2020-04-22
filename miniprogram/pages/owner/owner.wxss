@@ -1,5 +1,15 @@
 .user-center {
   font-family: PingFangSC-Regular, PingFang SC;
+  position   : relative;
+}
+
+.user-center-no-login {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+  width   : 100vw;
+  height  : 100vh;
+  z-index : 10;
 }
 
 .avatar {
@@ -33,7 +43,8 @@
 .center-item {
   padding-right: 10rpx;
 }
-.center-item>view{
+
+.center-item>view {
   display: inline-block;
 }
 
@@ -42,8 +53,8 @@
 }
 
 .center-item>view:nth-child(2) {
-  margin-left: 104rpx;
-  margin-right: 153rpx; 
+  margin-left : 104rpx;
+  margin-right: 153rpx;
 }
 
 .user-item {
@@ -97,10 +108,10 @@
 }
 
 .produce {
-  height    : 185rpx;
-  text-align: center;
-  font-family  : STSongti-TC-Regular, STSongti-TC;
-  font-size: 24rpx;
+  height     : 185rpx;
+  text-align : center;
+  font-family: STSongti-TC-Regular, STSongti-TC;
+  font-size  : 24rpx;
 }
 
 .produce-title {
@@ -108,4 +119,48 @@
   margin-bottom: 32rpx;
   font-size    : 32rpx;
   color        : rgba(28, 28, 28, 1);
+}
+
+/* 弹窗 */
+.popup-layout {
+  width           : 640rpx;
+  height          : 744rpx;
+  position        : relative;
+  background-color: transparent !important;
+  overflow        : hidden;
+  top             : 548rpx !important;
+  font-size       : 32rpx;
+}
+
+.popup-image {
+  width : 640rpx;
+  height: 744rpx;
+}
+
+.login-btn {
+  width        : 450rpx;
+  height       : 88rpx;
+  background   : rgba(246, 100, 0, 1);
+  border-radius: 100rpx;
+  color        : #fff;
+  line-height  : 88rpx;
+  position     : absolute;
+  bottom       : 200rpx;
+  color        : #fff;
+  left         : 0;
+  right        : 0;
+}
+
+.cancel-btn {
+  width        : 484rpx;
+  height       : 86rpx;
+  border-radius: 100rpx;
+  line-height  : 86rpx;
+  border       : 1rpx solid rgba(204, 204, 204, 1);
+  color        : #999;
+  position     : absolute;
+  bottom       : 80rpx;
+  left         : 0;
+  right        : 0;
+  background   : #fff;
 }

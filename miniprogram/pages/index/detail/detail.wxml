@@ -86,6 +86,7 @@
     <view class="d-adv-image" wx:if="{{currInfos.detailPics}}">
         <image wx:for="{{currInfos.detailPics}}" wx:key="index" src="{{item}}" mode="widthFix" lazy-load="false" />
     </view>
+    <view class="d-bottom-black"></view>
     <!-- </scroll-view> -->
     <!-- wx:if="{{!currinfos.hasLottery}}" -->
     <view class="bottom" wx:if="{{currInfos.status == 'done'}}">
@@ -149,7 +150,7 @@
             <button class="bottom-btn-active bottom-btn" hover-class="hover-button" data-type="{{'lottery'}}" wx:if="{{!currInfos.hasLottery&&!clickLucky && !isUserInfo}}" lang="zh_CN" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfoData">
                 点击抽奖
             </button>
-            <button class="bottom-btn-active bottom-btn" hover-class="hover-button" data-type="{{'lottery'}}" wx:elif="{{!currInfos.hasLottery&&!clickLucky && isUserInfo}}" lang="zh_CN"  lang="zh_CN" bindtap="lucky">
+            <button class="bottom-btn-active bottom-btn" hover-class="hover-button" data-type="{{'lottery'}}" wx:elif="{{!currInfos.hasLottery&&!clickLucky && isUserInfo}}" lang="zh_CN" lang="zh_CN" bindtap="lucky">
                 点击抽奖
             </button>
             <button class="bottom-share-btn bottom-btn" wx:else lang="zh_CN">已抽奖，等待开奖</button>
@@ -245,9 +246,7 @@
     <van-popup show="{{ showNotHeart }}" custom-class="popup-not-layout">
         <!-- 没有心愿卡 -->
         <view class="close-layout-btn" bindtap="closeNotHeart"></view>
-        <button class="heart-btn" hover-class="hover-linear-btn" open-type="share">
-            去分享
-        </button>
+        <button class="heart-btn" hover-class="hover-linear-btn" open-type="share">去分享</button>
         <image class="popup-not-image" src="../../../images/0404/popup0002.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </van-popup>
 </view>

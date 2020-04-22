@@ -81,12 +81,4 @@
     <button class="heart-btn heart-btn-home" hover-class="hover-linear-btn" bindtap="getHeart">开心收下</button>
     <image class="popup-image" src="../../images/0404/popup-home.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
   </van-popup>
-  <van-popup close-on-click-overlay="{{false}}" position="bottom" show="{{ showLoginLayer }}" bind:close="closeHomeLoginLayout" custom-class="popup-login-layout">
-    <!-- 获取用户信息 -->
-    <button class="getinfo-login-btn" hover-class="hover-linear-btn"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
-      马上登录
-    </button>
-    <image class="popup-login-image" src="../../images/0404/homepopup.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-  </van-popup>
-  <!-- showLoginLayer -->
 </view>

@@ -1,9 +1,9 @@
 {
-  "navigationStyle": "custom",
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#F66400",
-  "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "心愿池",
+  "navigationStyle": "default",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "商家合作",
   "usingComponents": {
     "van-icon":"/miniprogram_npm/vant-weapp/icon/index"
   }

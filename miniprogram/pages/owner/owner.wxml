@@ -1,4 +1,5 @@
 <view class="user-center">
+  <button class="user-center-no-login" hover-class="none" bindtap="loginBtn" wx:if="{{isLogin && !isUsers}}"></button>
   <view class="avatar">
     <view class="avatar-header">
       <image class="avatar-image" src="{{userData.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
@@ -41,4 +42,12 @@
     <!-- <view class="produce-title">触雪出品</view> -->
     <!-- <view>Mama有礼</view> -->
   </view>
+  <van-popup show="{{ !isLogin }}" custom-class="popup-layout">
+    <!-- 心愿卡 -->
+    <button class="login-btn" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfoData">
+      立即登录
+    </button>
+    <button class="cancel-btn" hover-class="none" bindtap="unloginBtn">暂不登录</button>
+    <image class="popup-image" src="../../images/0419/log_in.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+  </van-popup>
 </view>

@@ -42,7 +42,7 @@ class Detail {
   onLoad(options) {
     let _this = this;
     _this.setData({
-      currentId: options.id ? options.id : '235',
+      currentId: options.id ? options.id : '206',
     });
     wx.getStorage({
       key: 'userInfo',
@@ -237,7 +237,9 @@ class Detail {
       `/user/share?action=activity&id=${this.data.currentId}`
     );
   }
-  onReachBottom() {}
+  // onReachBottom() {
+  //   this.loadData();
+  // }
   onPullDownRefresh(e) {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     //模拟加载

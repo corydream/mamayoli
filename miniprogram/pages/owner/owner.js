@@ -9,23 +9,42 @@ import { formatTime } from '../../utils/util';
 const app = getApp();
 class Index {
   data = {
-    userData: {},
-    dataObj: {},
+    userData: {
+      avatarUrl:'../../images/0419/avatar.png',
+      nickName:'登陆/注册'
+    },
+    dataObj: {
+      totalWishCard: 0,
+      lotteryTimes: 0,
+      winTimes: 0,
+    },
+    isLogin: false,
+    isUsers: false
   };
   constructor() {
     this.ser = new OwnerService();
   }
   onLoad() {
-    this.getUserInfo();
-    this.getData();
+    this.getUserInfoSucc();
+    
   }
   onShow() {
-    this.getData();
+    this.getUserInfoSucc();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 2,
       });
     }
+  }
+  loginBtn() {
+    this.setData({
+      isLogin: false,
+    });
+  }
+  unloginBtn(){
+    this.setData({
+      isLogin: true,
+    });
   }
   coop() {
     wx.navigateTo({
@@ -35,6 +54,8 @@ class Index {
   getData() {
     this.ser.getUserInfo('/user/getUserInfo').then((resGetUserInfo) => {
       this.setData({
+        isLogin: true,
+        isUsers: true,
         dataObj: resGetUserInfo.data,
       });
       // this.getList();
@@ -43,22 +64,63 @@ class Index {
     //   dataObj:app.globalData.userInfoData
     // })
   }
-  getUserInfo() {
+  getUserInfoSucc() {
     let _this = this;
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          _this.getTabBar().setData({
-            tabbar: true,
-          });
+          _this.getData();
           _this.setData({
+            isLogin: true,
+            isUsers: true,
             userData: res.data,
           });
         }
       },
     });
   }
+  // 授权登录
+  onGotUserInfo(e) {
+    // 获取用户信息
+    wx.setStorage({
+      key: 'userInfo',
+      data: e.detail.userInfo,
+    });
+    this.getLogin(e.detail.userInfo);
+  }
+  // 打开
+  async getUserInfoData(e) {
+    if (e.detail.userInfo) {
+      this.onGotUserInfo(e);
+    }
+  }
+  // 登陆
+  getLogin(obj) {
+    let _this = this;
+    const params = {
+      nickName: obj.nickName,
+      avatarUrl: obj.avatarUrl,
+    };
+    _this.setData({
+      userData:params
+    })
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          _this.ser.login({ code: res.code }).then((result) => {
+            token.set(result.data);
+            // 更新用户信息
+            _this.ser.updateInfo(params);
+            _this.getData();
+            // 获取用户信息
+          });
+        }
+      },
+    });
+  }
+  // 跳转页面
   record() {
     wx.navigateTo({
       url: './lotteryrecord/lotteryrecord',

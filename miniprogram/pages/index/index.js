@@ -20,7 +20,6 @@ class Index {
     duration: 500,
     show: false,
     ser: null,
-    showLoginLayer: false,
     userData: {},
     bannerList: [],
     dailyList: [],
@@ -65,7 +64,6 @@ class Index {
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          // _this.setData({ showLoginLayer: false });
           _this.getLogin(res.data);
           _this.getTabBar().setData({
             tabbar: true,
@@ -73,9 +71,7 @@ class Index {
         }
       },
       fail() {
-        // _this.setData({
-        //   showLoginLayer: true,
-        // });
+
       },
     });
   }
@@ -209,9 +205,6 @@ class Index {
   }
   onGotUserInfo(e) {
     if (e.detail.userInfo && e.detail.userInfo.nickName) {
-      this.setData({
-        showLoginLayer: false,
-      });
       this.getTabBar().setData({
         tabbar: true,
       });
@@ -222,9 +215,6 @@ class Index {
       });
       this.getLogin(e.detail.userInfo);
     }else{
-      // this.setData({
-      //   showLoginLayer: false,
-      // });
     }
   }
   // 合作商户
@@ -232,9 +222,6 @@ class Index {
     wx.navigateTo({
       url: '../coopheader/coopheader',
     });
-  }
-  closeHomeLoginLayout() {
-    this.setData({ showLoginLayer: false });
   }
   goHeart() {
     wx.navigateTo({

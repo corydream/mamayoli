@@ -1,12 +1,12 @@
 <!-- <custom-component> -->
 <view class="outer-home">
    <view class="title-first">
-      <view class="header-block">
+      <!-- <view class="header-block">
          <view class="header">
             <van-icon name="arrow-left" class="header-arrow" bindtap="back" />
             <text class="header-header">商家合作</text>
          </view>
-      </view>
+      </view> -->
       <view style="background: #fff">
          <image class="title-image" src="../../images/tuiguang4.png" alt="" style="height: 789rpx" />
          <image class="title-image" src="../../images/tuiguang5.png" alt="" style="height: 900rpx" />
