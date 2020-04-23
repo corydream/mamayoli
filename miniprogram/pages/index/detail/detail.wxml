@@ -106,11 +106,11 @@
                 <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
-        <view class="go-exp-btn-outer go-share-btn">
+        <!-- 分享弹窗触发按钮 -->
+        <view class="go-exp-btn-outer go-share-btn" bindtap="shareOpen">
             <view class="go-exp-btn go-share-btn">
                 <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
                 <view class="go-exp-btn-text">分享</view>
-                <button hover-class="none" class="btn-click-right" open-type="share"></button>
             </view>
         </view>
         <view>
@@ -139,11 +139,11 @@
                 <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
-        <view class="go-exp-btn-outer go-share-btn">
+        <!-- 分享弹窗触发按钮 -->
+        <view class="go-exp-btn-outer go-share-btn" bindtap="shareOpen">
             <view class="go-exp-btn go-share-btn">
                 <image class="go-exp-btn-img" src="../../../images/0404/share.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
                 <view class="go-exp-btn-text">分享</view>
-                <button hover-class="none" class="btn-click-right" open-type="share"></button>
             </view>
         </view>
         <view>
@@ -235,18 +235,35 @@
         <button class="heart-btn" hover-class="hover-linear-btn" bindtap="loadData">下一个</button>
         <image class="popup-image" src="../../../images/0404/popup3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </van-popup>
-    <van-popup show="{{ showHeart }}" custom-class="popup-layout">
-        <!-- 心愿卡 -->
+    <!-- <van-popup show="{{ showHeart }}" custom-class="popup-layout">
         <view class="close-layout-btn" bindtap="closeHeart"></view>
         <button class="heart-btn" hover-class="hover-linear-btn" data-type="{{'heart'}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoData">
             开心收下
         </button>
         <image class="popup-image" src="../../../images/0404/popup0001.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-    </van-popup>
+    </van-popup> -->
     <van-popup show="{{ showNotHeart }}" custom-class="popup-not-layout">
         <!-- 没有心愿卡 -->
         <view class="close-layout-btn" bindtap="closeNotHeart"></view>
         <button class="heart-btn" hover-class="hover-linear-btn" open-type="share">去分享</button>
         <image class="popup-not-image" src="../../../images/0404/popup0002.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    </van-popup>
+    <van-popup round show="{{ showShare }}" position="bottom" custom-style="height: 366rpx;">
+        <view class="share-ctx-btn">
+            <view class="share-ctx-btn-item">
+                <view class="share-ctx-image">
+                    <image src="../../../images/0419/friends.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+                </view>
+                <text>发送给朋友</text>
+                <button hover-class="none" class="btn-click-share-fri" open-type="share"></button>
+            </view>
+            <view class="share-ctx-btn-item" bindtap="goView">
+                <view class="share-ctx-image">
+                    <image src="../../../images/0419/pics.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+                </view>
+                <text>保存分享图</text>
+            </view>
+        </view>
+        <view class="share-cancel-btn" bindtap="shareClose">取消</view>
     </van-popup>
 </view>

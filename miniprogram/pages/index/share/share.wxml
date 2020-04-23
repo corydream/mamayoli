@@ -1,5 +1,3 @@
 <view class="record">
-    <view style="width:0;height:0;overflow:hidden">
-        <canvas canvas-id="myCanvas" hidden="{{canvasHidden}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px"></canvas>
-    </view>
+   <canvas type="2d" id="myCanvas"></canvas>
 </view>

@@ -1,15 +1,15 @@
 {
   "pages": [
+    "pages/webview/webview",
+    "pages/index/index",
     "pages/index/detail/detail",
+    "pages/index/share/share",
     "pages/owner/owner",
     "pages/coopheader/coopheader",
-    "pages/index/index",
-    "pages/webview/webview",
     "pages/owner/address/add/add",
     "pages/index/submit/submit",
     "pages/owner/address/address",
     "pages/owner/config/config",
-    "pages/index/share/share",
     "pages/owner/lotteryrecord/lotteryrecord",
     "pages/owner/center/center",
     "pages/owner/lotterymanage/lotterymanage",

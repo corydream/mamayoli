@@ -1,4 +1,39 @@
-#myCanvas{
+.outer-canvas{
+    position: relative;
+    background-color: #fff;
     width: 100vw;
     height: 100vh;
+}
+#myCanvas{
+    width: 520rpx;
+    height: 925rpx;
+    position: absolute;
+    top: 72rpx;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+.show-canvas-image{
+    width: 520rpx;
+    height: 925rpx;
+}
+.show-bottom-layout{
+    height: 136rpx;
+    width: 100%;
+    border-top: 1rpx solid #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+}
+.show-bottom-button{
+    width: 686rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background-color: #565758;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
 }

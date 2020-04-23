@@ -11,6 +11,10 @@ class Index {
     userData: {},
     currentId: '1',
     currentData: {},
+    canvasW: '',
+    canvasH: '',
+    previewImage: '',
+    canvasObj:null
   };
   constructor() {
     this.ser = new WebViewService();
@@ -19,15 +23,7 @@ class Index {
     this.setData({
       currentId: options.id ? options.id : '235',
     });
-    this.getData().then((res) => {
-      wx.createSelectorQuery()
-        .select('#myCanvas')
-        .fields({
-          node: true,
-          size: true,
-        })
-        .exec(this.init.bind(this));
-    });
+    this.getData();
   }
   // 获取详情数据
   async getData() {
@@ -38,6 +34,18 @@ class Index {
     this.setData({
       currentData: res.data,
     });
+    const query = wx.createSelectorQuery();
+    const canvasObj = await new Promise((resolve, reject) => {
+      query
+        .select('#myCanvas')
+        .fields({ node: true, size: true })
+        .exec(async (result) => {
+          console.log(result);
+          this.init(result);
+          resolve(result[0].node);
+        });
+    });
+    this.data.canvasObj = canvasObj;
   }
 
   init(res) {
@@ -45,11 +53,12 @@ class Index {
     const height = res[0].height;
     const canvas = res[0].node;
     const ctx = canvas.getContext('2d');
-
     const dpr = wx.getSystemInfoSync().pixelRatio;
     this._dpr = dpr;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
+    this.data.canvasH = canvas.height;
+    this.data.canvasW = canvas.width;
     ctx.scale(dpr, dpr);
     // 渲染图层
     this.render(canvas, ctx);
@@ -73,7 +82,7 @@ class Index {
     const offsetLeft = canvas.width / dpr / 2 - 25; // 图片左侧距离
     const fontNameLeft = canvas.width / dpr / 2;
     const avatarTop = (canvas.height / dpr) * (56 / 667) - 25;
-    const fontNameTop = (canvas.height / dpr) * (105 / 667);
+    const fontNameTop = (canvas.height / dpr) * (117 / 667);
     wx.getStorage({
       key: 'userInfo',
       success(res) {
@@ -88,7 +97,7 @@ class Index {
           };
           ctx.fillStyle = '#fff';
           ctx.textAlign = 'center';
-          ctx.font = '14px PingFangSC-Medium,PingFang SC';
+          ctx.font = `14px PingFangSC-Medium,PingFang SC`;
           ctx.fillText(res.data.nickName, fontNameLeft, fontNameTop);
         }
       },
@@ -99,19 +108,18 @@ class Index {
     let _this = this;
     const dpr = this._dpr;
     const fontNameLeft = canvas.width / dpr / 2;
-    const fontNameTop = (canvas.height / dpr) * (137 / 667);
+    const fontNameTop = (canvas.height / dpr) * (147 / 667);
     const offsetTop = (canvas.height / dpr) * (162 / 667);
     const offsetLeft = 15; // 商品框左侧距离
     const rectWidth = canvas.width / dpr - 30; // 白色矩形宽度
     const rectHeight = (canvas.height / dpr) * (462 / 667); // 白色矩形高度
-    console.log(rectHeight);
     const imageHeight = rectWidth * 0.4; // 图片高度
 
     // 渲染引导文案
     const text = '邀请你来参加抽奖';
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
-    ctx.font = '20px PingFangSC-Medium,PingFang SC';
+    ctx.font = '16px PingFangSC-Medium,PingFang SC';
     ctx.fillText(text, fontNameLeft, fontNameTop);
     // 渲染白色矩形
     ctx.fillRect(offsetLeft, offsetTop, rectWidth, rectHeight);
@@ -121,7 +129,6 @@ class Index {
       src: _this.data.currentData.thumbnail,
       success(res) {
         const imgbrand = canvas.createImage();
-        console.log(imgbrand);
         imgbrand.src = res.path;
         imgbrand.onload = () => {
           ctx.drawImage(
@@ -133,9 +140,7 @@ class Index {
           );
         };
       },
-      fail(err) {
-        console.log(err);
-      },
+      fail(err) {},
     });
     ctx.restore();
     ctx.save();
@@ -144,19 +149,19 @@ class Index {
     ctx.font = '14px PingFangSC-Medium,PingFang SC';
     ctx.textAlign = 'left';
     const advText = `${_this.data.currentData.providerName} 赞助`;
-    ctx.fillText(advText, 15 + 15, fontNameTop + imageHeight + 50);
+    ctx.fillText(advText, 15 + 15, fontNameTop + imageHeight + (canvas.height / dpr) * (46 / 667));
 
     // 标题
     ctx.fillStyle = '#333';
-    ctx.font = '20px PingFangSC-Medium,PingFang SC';
+    ctx.font = '17px PingFangSC-Medium,PingFang SC';
     const titleText = `${_this.data.currentData.name} X ${_this.data.currentData.lotteryNum}`;
-    ctx.fillText(titleText, 15 + 15, fontNameTop + imageHeight + 83);
+    ctx.fillText(titleText, 15 + 15, fontNameTop + imageHeight + (canvas.height / dpr) * (79 / 667));
 
     // 时间
     ctx.fillStyle = '#999';
-    ctx.font = '12px PingFangSC-Regular,PingFang SC';
+    ctx.font = '10px PingFangSC-Regular,PingFang SC';
     const timeText = `${_this.data.currentData.currTime} 自动开奖`;
-    ctx.fillText(timeText, 15 + 15, fontNameTop + imageHeight + 114);
+    ctx.fillText(timeText, 15 + 15, fontNameTop + imageHeight + (canvas.height / dpr) * (114 / 667));
   }
   drawBottomFont(canvas, ctx) {
     const dpr = this._dpr;
@@ -164,7 +169,7 @@ class Index {
     const fontNameBottom =
       canvas.height / dpr - (canvas.height / dpr) * (16 / 667);
     ctx.fillStyle = '#fff';
-    ctx.font = '14px SourceHanSansCN-Medium,SourceHanSansCN';
+    ctx.font = '12px SourceHanSansCN-Medium,SourceHanSansCN';
     ctx.textAlign = 'center';
     const bottomText = `百万妈妈福利抽奖工具`;
     ctx.fillText(bottomText, fontNameLeft, fontNameBottom);
@@ -173,7 +178,7 @@ class Index {
   drawQRcode(canvas, ctx) {
     let _this = this;
     const dpr = this._dpr;
-    const offsetTop = (canvas.height / dpr) * (444 / 667);
+    const offsetTop = (canvas.height / dpr) * (420 / 667);
     const offsetLeft = canvas.width / dpr / 2 - 50; // 图片左侧距离
     const offsetNameTop = (canvas.height / dpr) * (594 / 667);
     const fontNameLeft = canvas.width / dpr / 2;
@@ -198,21 +203,57 @@ class Index {
           ctx.clip();
           ctx.drawImage(imgbrand, offsetLeft, offsetTop, qrSize, qrSize);
           ctx.restore();
+          _this.setImage();
         };
       },
-      fail(err) {
-        console.log(err);
-      },
+      fail(err) {},
     });
     ctx.save();
   }
-  drawTest(canvas, ctx) {
-    const imgbg = canvas.createImage();
-    imgbg.src = './../../images/account_flow.png';
-    imgbg.onload = () => {
-      ctx.drawImage(imgbg, 100, 100, 50, 50);
-    };
-    ctx.restore();
+  async setImage() {
+    let self = this;
+    wx.canvasToTempFilePath(
+      {
+        //fileType: 'jpg',
+        //canvasId: 'posterCanvas', //之前的写法
+        canvas: self.data.canvasObj, //现在的写法
+        success: (res) => {
+          console.log(res.tempFilePath);
+          self.data.previewImage = res.tempFilePath;
+          console.log(self.data)
+        },
+        fail(res) {
+          console.log(res);
+        },
+      },
+      this
+    );
+  }
+  saveImg() {
+    //保存图片
+    let _this = this;
+    wx.saveImageToPhotosAlbum({
+      filePath: _this.data.previewImage,
+      success: function (data) {
+        wx.showToast({
+          title: '已保存到相册',
+          icon: 'success',
+          duration: 3500,
+        });
+      },
+      fail: function (err) {
+        console.log(err);
+        if (err.errMsg === 'saveImageToPhotosAlbum:fail auth deny') {
+          console.log('当初用户拒绝，再次发起授权');
+        } else {
+          util.showToast('请截屏保存分享');
+        }
+      },
+      complete(res) {
+        wx.hideLoading();
+        console.log(res);
+      },
+    });
   }
 }
 Page(creatorPage(Index));

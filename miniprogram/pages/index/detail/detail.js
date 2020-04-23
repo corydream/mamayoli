@@ -15,7 +15,6 @@ class Detail {
     page_index: 1,
     total_count: 0,
     currentId: '2',
-    showHeart: false,
     showNotHeart: false, // 心愿卡用完
     show: false, // 显示弹窗
     currInfos: {},
@@ -34,6 +33,7 @@ class Detail {
     btnLight: false,
     addrId: '',
     winnerObj: {}, // 中奖者名单列表
+    showShare: false  // 分享弹窗
   };
   ser = null;
   constructor() {
@@ -44,20 +44,15 @@ class Detail {
     _this.setData({
       currentId: options.id ? options.id : '206',
     });
+    _this.getInfo();
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          _this.getInfo();
           _this.getAddr(options);
           _this.getAwardList();
         }
-      },
-      fail() {
-        _this.setData({
-          showHeart: true,
-        });
-      },
+      }
     });
   }
   // 自定义转发样式
@@ -188,11 +183,6 @@ class Detail {
   close() {
     this.setData({
       show: false,
-    });
-  }
-  closeHeart() {
-    this.setData({
-      showHeart: false,
     });
   }
   closeNotHeart() {
@@ -343,7 +333,6 @@ class Detail {
   onGotUserInfo(e, type) {
     // 获取用户信息
     this.setData({
-      showHeart: false,
       isUserInfo: true,
     });
     wx.setStorage({
@@ -357,6 +346,26 @@ class Detail {
     if (e.detail.userInfo) {
       this.onGotUserInfo(e, e.currentTarget.dataset);
     }
+  }
+
+  // 打开分享弹窗
+  shareOpen(){
+    this.setData({
+      showShare: true
+    })
+  }
+  shareClose(){
+    this.setData({
+      showShare: false
+    })
+  }
+  // 去生成分享图页面
+  goView(){
+    Toast('尚在开发中~');
+    return;
+    wx.navigateTo({
+      url: '../../webview/webview',
+    });
   }
 }
 

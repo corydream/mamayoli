@@ -3,6 +3,7 @@
   "navigationStyle": "default",
   "navigationBarTextStyle": "black",
   "usingComponents": {
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
   },
   "disableScroll": true
 }

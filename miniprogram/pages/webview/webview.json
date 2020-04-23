@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "页面",
+  "navigationBarTitleText": "生成分享图",
   "usingComponents": {
     "van-icon":"/miniprogram_npm/vant-weapp/icon/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index"

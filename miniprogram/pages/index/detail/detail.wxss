@@ -242,14 +242,6 @@
     height  : 96rpx;
 }
 
-.btn-click-right {
-    position: absolute;
-    height  : 96rpx;
-    width   : 140rpx;
-    top     : 0;
-    left    : 0;
-}
-
 .go-exp-btn-img {
     width : 44rpx;
     height: 44rpx;
@@ -467,4 +459,51 @@ swiper {
     margin       : auto;
     color        : #fff;
     background   : linear-gradient(360deg, rgba(251, 0, 0, 1) 0%, rgba(246, 100, 0, 1) 100%);
+}
+
+/* 分享弹窗样式 */
+.share-ctx-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:39rpx 128rpx 46rpx;
+    background:#F1F2F6;
+}
+.share-ctx-btn-item{
+    position: relative;
+}
+.share-ctx-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16rpx;
+    border-radius: 50%;
+    background: #fff;
+    width: 120rpx;
+    height: 120rpx;
+}
+.share-ctx-btn-item .share-ctx-image>image{
+    display: block;
+    width: 64rpx;
+    height: 64rpx;
+}
+.share-ctx-btn-item>text{
+    color: #666;
+    font-size: 24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+}
+.share-cancel-btn{
+    height: 112rpx;
+    line-height: 112rpx;
+    color: #333;
+    text-align: center;
+    font-size: 32rpx;
+    background:#fff;
+}
+.btn-click-share-fri {
+    position: absolute;
+    height  : 120rpx;
+    width   : 120rpx;
+    top     : 0;
+    left    : 0;
 }

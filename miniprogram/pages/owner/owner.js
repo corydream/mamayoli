@@ -10,23 +10,22 @@ const app = getApp();
 class Index {
   data = {
     userData: {
-      avatarUrl:'../../images/0419/avatar.png',
-      nickName:'登陆/注册'
+      avatarUrl: '../../images/0419/avatar.png',
+      nickName: '登陆/注册',
     },
     dataObj: {
       totalWishCard: 0,
       lotteryTimes: 0,
       winTimes: 0,
     },
-    isLogin: false,
-    isUsers: false
+    isLogin: true,
+    isUsers: true,
   };
   constructor() {
     this.ser = new OwnerService();
   }
   onLoad() {
     this.getUserInfoSucc();
-    
   }
   onShow() {
     this.getUserInfoSucc();
@@ -41,7 +40,7 @@ class Index {
       isLogin: false,
     });
   }
-  unloginBtn(){
+  unloginBtn() {
     this.setData({
       isLogin: true,
     });
@@ -78,6 +77,12 @@ class Index {
           });
         }
       },
+      fail(err) {
+        _this.setData({
+          isLogin: false,
+          isUsers: false,
+        });
+      },
     });
   }
   // 授权登录
@@ -103,8 +108,8 @@ class Index {
       avatarUrl: obj.avatarUrl,
     };
     _this.setData({
-      userData:params
-    })
+      userData: params,
+    });
     wx.login({
       success(res) {
         if (res.code) {
