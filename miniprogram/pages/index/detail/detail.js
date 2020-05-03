@@ -33,7 +33,8 @@ class Detail {
     btnLight: false,
     addrId: '',
     winnerObj: {}, // 中奖者名单列表
-    showShare: false  // 分享弹窗
+    showShare: false, // 分享弹窗
+    priceList: [],
   };
   ser = null;
   constructor() {
@@ -41,18 +42,35 @@ class Detail {
   }
   onLoad(options) {
     let _this = this;
-    _this.setData({
-      currentId: options.id ? options.id : '206',
-    });
-    _this.getInfo();
+    console.log(options);
+    if (options && options.scene) {
+      _this.setData({
+        currentId: options.scene,
+      });
+    } else if (options && options.id) {
+      _this.setData({
+        currentId: options.id ? options.id : '206',
+      });
+    }
+    this.getPriceList();
     wx.getStorage({
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
           _this.getAddr(options);
           _this.getAwardList();
+          _this.setData({
+            isUserInfo: true,
+          });
+          _this.getInfo('/activity/detail');
         }
-      }
+      },
+      fail() {
+        _this.setData({
+          isUserInfo: false,
+        });
+        _this.getInfo('/activity/detail2');
+      },
     });
   }
   // 自定义转发样式
@@ -63,6 +81,16 @@ class Detail {
       path: `/pages/index/detail/detail?id=${this.data.currentId}`,
       imageUrl: this.data.currInfos.thumbnail,
     };
+  }
+  getPriceList() {
+    this.ser
+      .getTodo(`/activity/priceList?id=${this.data.currentId}`)
+      .then((res) => {
+        console.log(res)
+        this.setData({
+          priceList: res.data
+        })
+      });
   }
   getLogin(obj, type) {
     let _this = this;
@@ -78,11 +106,13 @@ class Detail {
             token.set(result.data);
             // 更新用户信息
             _this.ser.updateInfo(params);
-            _this.getInfo();
+            _this.getInfo('/activity/detail');
             _this.getAwardList();
             // 获取用户信息
             if (type && type.type == 'heart') {
               _this.checkHeart();
+            } else if (type && type.type == 'webview') {
+              _this.goView();
             }
           });
         }
@@ -137,7 +167,6 @@ class Detail {
     });
   }
   lucky() {
-    console.log(this.data.isUserInfo);
     let _this = this;
     if (
       _this.data.currInfos.status == 'audit' ||
@@ -151,12 +180,12 @@ class Detail {
       success(res) {
         if (res['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'] == 'accept') {
           _this.checkLottery();
-          _this.getInfo();
+          _this.getInfo('/activity/detail');
           _this.setData({
             show: true,
           });
         }
-      }
+      },
     });
   }
   checkLottery() {
@@ -183,11 +212,6 @@ class Detail {
   close() {
     this.setData({
       show: false,
-    });
-  }
-  closeNotHeart() {
-    this.setData({
-      showNotHeart: false,
     });
   }
   // 关闭弹窗
@@ -269,28 +293,25 @@ class Detail {
       },
     });
   }
-  getInfo() {
-    this.ser
-      .getTodo(`/activity/detail?id=${this.data.currentId}`)
-      .then((res) => {
-        if (res.code === -1) {
-          Toast('该活动已下架，解释权归平台所有');
-          return;
-        }
-        if (res.data.addressInfo && res.data.addressInfo.id) {
-          wx.navigateTo({
-            url: '../submit/submit',
-          });
-        }
-        res.data.currTime = formatTime(res.data.lotteryTime);
-        res.data.lotteryList = res.data.lotteryList.slice(0, 5);
-        this.setData({
-          currInfos: res.data,
-          clickLucky: false,
-          isUserInfo: true,
+  getInfo(url) {
+    this.ser.getTodo(`${url}?id=${this.data.currentId}`).then((res) => {
+      if (res.code === -1) {
+        Toast('该活动已下架，解释权归平台所有');
+        return;
+      }
+      if (res.data.addressInfo && res.data.addressInfo.id) {
+        wx.navigateTo({
+          url: '../submit/submit',
         });
-        this.findLotteryRes(res.data);
+      }
+      res.data.currTime = formatTime(res.data.lotteryTime);
+      res.data.lotteryList = res.data.lotteryList.slice(0, 5);
+      this.setData({
+        currInfos: res.data,
+        clickLucky: false,
       });
+      this.findLotteryRes(res.data);
+    });
   }
   getAwardList(ids) {
     this.ser
@@ -321,20 +342,9 @@ class Detail {
       });
   }
 
-  async checkHeart() {
-    const res = await this.ser.getUserInfo('/user/checkIn');
-    if (res.data) {
-      Toast('恭喜你，获得3张心愿卡');
-    } else {
-      Toast('今日已领取过心愿卡了');
-    }
-  }
   // 授权登录
   onGotUserInfo(e, type) {
     // 获取用户信息
-    this.setData({
-      isUserInfo: true,
-    });
     wx.setStorage({
       key: 'userInfo',
       data: e.detail.userInfo,
@@ -349,22 +359,20 @@ class Detail {
   }
 
   // 打开分享弹窗
-  shareOpen(){
+  shareOpen() {
     this.setData({
-      showShare: true
-    })
+      showShare: true,
+    });
   }
-  shareClose(){
+  shareClose() {
     this.setData({
-      showShare: false
-    })
+      showShare: false,
+    });
   }
   // 去生成分享图页面
-  goView(){
-    Toast('尚在开发中~');
-    return;
+  goView() {
     wx.navigateTo({
-      url: '../../webview/webview',
+      url: `../../webview/webview?id=${this.data.currentId}`,
     });
   }
 }

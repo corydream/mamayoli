@@ -1,0 +1,19 @@
+<view class="add">
+    <view class="no-award-list">
+        <view class="no-award-name">
+           {{winnerObj.priceLevelName}}：{{winnerObj.priceName}}
+        </view>
+        <view class="item-outer">
+            <view class="no-award-item">
+                <image class="item-avatar" src="{{winnerObj.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" />
+                <view class="item-name">{{winnerObj.userName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="add-list" wx:if="{{winnerObj.addressInfo}}">
+        <view class="a-name bold">{{winnerObj.addressInfoItem.name}}</view>
+        <view class="a-tel bold">{{winnerObj.addressInfoItem.phoneNum}}</view>
+        <view class="a-info">{{winnerObj.addressInfoItem.province}} {{winnerObj.addressInfoItem.city}} {{winnerObj.addressInfoItem.area}}</view>
+        <view class="a-info a-info-bottom">{{winnerObj.addressInfoItem.detail}}</view>
+    </view>
+</view>

@@ -21,7 +21,10 @@ class Index {
     show: false,
     ser: null,
     userData: {},
-    bannerList: [],
+    bannerList: [{
+      id:0,
+      banner:'../../images/0419/placeholder.png'
+    }],
     dailyList: [],
     hotList: [],
     currentList: [],
@@ -64,15 +67,13 @@ class Index {
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          _this.getLogin(res.data);
+          // _this.getLogin(res.data);
           _this.getTabBar().setData({
             tabbar: true,
           });
         }
       },
-      fail() {
-
-      },
+      fail() {},
     });
   }
   // 跳转详情页
@@ -153,37 +154,53 @@ class Index {
     this.setData({ show: false });
   }
   async getList() {
+    let currUrl = '/activity/listPublic';
+    let _this = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        if (res.data && res.data.nickName) {
+          currUrl = '/activity/list';
+          _this.getDataList(currUrl);
+        }
+      },
+      fail() {
+        _this.getDataList(currUrl);
+      },
+    });
+  }
+
+  async getDataList(currUrl) {
     const params = {
       pageSize: 150,
       pageIndex: 1,
     };
     // banner 列表
     const banner = await this.ser.list(
+      currUrl,
       Object.assign(params, { type: 'banner' })
     );
+    if(banner.data&& banner.data.length>0){
+      this.setData({
+        bannerList: this._formatListData(banner.data),
+      });
+    }
 
-    this.setData({
-      bannerList: this._formatListData(banner.data),
-    });
 
     //每日精选列表
     const daily = await this.ser.list(
+      currUrl,
       Object.assign(params, { type: 'dailySelection' })
     );
-    const hot = await this.ser.list(Object.assign(params, { type: 'hot' }));
-    // this.dailyList = this._orderByLottery(this._formatListData(daily.data));
+    const hot = await this.ser.list(
+      currUrl,
+      Object.assign(params, { type: 'hot' })
+    );
 
     this.setData({
       dailyList: this._orderByLottery(this._formatListData(daily.data)),
       hotList: this._orderByLottery(this._formatListData(hot.data)),
     });
-    // // 热门福利
-
-    // this.hotList = this._orderByLottery(this._formatListData(hot.data));
-
-    // this.setData({
-    //   currentList: this.data.currentTab === 0 ? this.dailyList : this.hotList
-    // });
   }
   // 时间转化
   _formatListData(list) {
@@ -214,7 +231,7 @@ class Index {
         data: e.detail.userInfo,
       });
       this.getLogin(e.detail.userInfo);
-    }else{
+    } else {
     }
   }
   // 合作商户
@@ -260,7 +277,6 @@ class Index {
         currentList: this.dailyList,
       });
     }
-    // this.getList();
   }
 }
 Page(creatorPage(Index));

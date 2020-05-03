@@ -1,13 +1,23 @@
 <view class="add">
-    <view class="add-list" wx:for="{{addressList}}" wx:key="index"  data-id="{{item.id}}" bindtap="selectAddr">
-        <view class="a-name bold">{{item.name}}</view>
-        <view class="a-tel bold">{{item.phoneNum}}</view>
-        <view class="a-info">{{item.province}} {{item.city}} {{item.area}}</view>
-        <view class="a-info a-info-bottom">{{item.detail}}</view>
-        <view class="a-first bold" bindtap="onchange" data-item="{{item}}"><radio class="checkbox" checked="{{item.isFirst}}"/>设为首选</view>
-    </view>
+    <van-swipe-cell id="swipe-cell2" wx:for="{{addressList}}" wx:key="index" data-id="{{item.id}}" right-width="{{ 65 }}" >
+        <van-cell-group>
+            <view class="add-list" data-id="{{item.id}}" bindtap="selectAddr">
+                <view class="a-name bold">{{item.name}}</view>
+                <view class="a-tel bold">{{item.phoneNum}}</view>
+                <view class="a-info">{{item.province}} {{item.city}} {{item.area}}</view>
+                <view class="a-info a-info-bottom">{{item.detail}}</view>
+                <view class="a-first bold" bindtap="onchange" data-item="{{item}}">
+                    <radio class="checkbox" checked="{{item.isFirst}}" />
+                    设为首选
+                </view>
+            </view>
+        </van-cell-group>
+        <view slot="right" class="right-btn" data-id="{{item.id}}" bindtap="delAddr">删除</view>
+    </van-swipe-cell>
+    <!--  -->
     <view class="address-btn bold" bindtap="add">
-        <van-icon name="plus"  style="vertical-align: -2px;"/>
+        <van-icon name="plus" style="vertical-align: -2px;" />
         新增地址
     </view>
+    <van-dialog id="van-dialog" />
 </view>

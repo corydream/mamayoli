@@ -1,0 +1,36 @@
+<view class="lottery">
+    <view class="award-header">点击头像查看用户信息</view>
+    <view class="no-award-list" wx:if="{{winnerObj.first}}">
+        <view class="no-award-name">
+            一等奖：{{winnerObj.first[0].priceName}} X {{winnerObj.first.length}}
+        </view>
+        <view class="item-outer">
+            <view class="no-award-item" wx:for="{{winnerObj.first}}" wx:key="index" data-id="{{item.id}}" bindtap="detail">
+                <image class="item-avatar" src="{{item.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" />
+                <view class="item-name">{{item.userName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="no-award-list" wx:if="{{winnerObj.second}}">
+        <view class="no-award-name">
+            二等奖：{{winnerObj.second[0].priceName}} X {{winnerObj.second.length}}
+        </view>
+        <view class="item-outer">
+            <view class="no-award-item" wx:for="{{winnerObj.second}}" wx:key="index" data-id="{{item.id}}" bindtap="detail">
+                <image class="item-avatar" src="{{item.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" />
+                <view class="item-name">{{item.userName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="no-award-list" wx:if="{{winnerObj.third}}">
+        <view class="no-award-name">
+            三等奖：{{winnerObj.third[0].priceName}} X {{winnerObj.third.length}}
+        </view>
+        <view class="item-outer">
+            <view class="no-award-item" wx:for="{{winnerObj.third}}" wx:key="index" data-id="{{item.id}}" bindtap="detail">
+                <image class="item-avatar" src="{{item.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" />
+                <view class="item-name">{{item.userName}}</view>
+            </view>
+        </view>
+    </view>
+</view>

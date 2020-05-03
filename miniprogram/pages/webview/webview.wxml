@@ -1,6 +1,6 @@
 <view class="outer-canvas">
   <canvas type="2d" id="myCanvas"></canvas>
   <view class="show-bottom-layout">
-    <button class="show-bottom-button" bindtap="saveImg">保存到手机</button>
+    <button class="show-bottom-button" bindtap="getPhotosAuthorize">保存到手机</button>
   </view>
 </view>

@@ -163,6 +163,7 @@ swiper {
 .daily-list {
   width        : 686rpx;
   height       : 586rpx;
+  min-height       : 586rpx;
   background   : rgba(255, 255, 255, 1);
   border-radius: 8rpx;
   margin-bottom: 32rpx;

@@ -1,7 +1,7 @@
 @import "../../../style/button";
 
 .add {
-    padding         : 0 32rpx;
+    padding-left    : 32rpx;
     font-size       : 28rpx;
     font-family     : PingFangSC-Regular, PingFang SC;
     background-color: #fff;
@@ -10,6 +10,16 @@
 .add-list {
     padding      : 48rpx 0;
     border-bottom: 1px solid #ddd;
+}
+
+.right-btn {
+    height          : 386rpx;
+    line-height     : 386rpx;
+    border-bottom   : 1px solid #ddd;
+    background-color: #ec132d;
+    color           : #fff;
+    width           : 130rpx;
+    text-align      : center;
 }
 
 .a-name {
@@ -25,6 +35,7 @@
     color: #999;
 
 }
+
 .a-info-bottom {
     margin-bottom: 40rpx;
 }
@@ -35,6 +46,7 @@
     text-align : center;
 
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }

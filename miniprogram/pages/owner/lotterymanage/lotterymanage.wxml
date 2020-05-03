@@ -1,30 +1,45 @@
 <view class="record">
-  <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
+  <van-tabs custom-class="tab-nav" color="#333" sticky swipeable active="{{ active }}" bind:change="onChange">
     <van-tab title="待审核" border>
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link  title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}"  wx:key="index" url="/pages/index/detail/detail?id={{item.id}}"/>
-      </van-cell-group>
+      <view class="award-list" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="linkDetail">
+        <image class="award-list-img" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="award-item">
+          <text class="award-item-tit">{{item.name}}</text>
+          <text class="award-item-time">{{item.currTime}}</text>
+          <text class="award-item-btn">预览 ></text>
+        </view>
+      </view>
     </van-tab>
     <van-tab title="审核未通过">
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index"  url="/pages/index/detail/detail?id={{item.id}}"/>
-      </van-cell-group>
+      <view class="award-list" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="linkDetail">
+        <image class="award-list-img" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="award-item">
+          <text class="award-item-tit">{{item.name}}</text>
+          <text class="award-item-time">{{item.currTime}}</text>
+          <text class="award-item-btn">预览 ></text>
+        </view>
+      </view>
     </van-tab>
     <van-tab title="已发布">
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index"  url="/pages/index/detail/detail?id={{item.id}}"/>
-      </van-cell-group>
+      <view class="award-list" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="linkDetail">
+        <image class="award-list-img" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="award-item">
+          <text class="award-item-tit">{{item.name}}</text>
+          <text class="award-item-time">{{item.currTime}}</text>
+          <text class="award-item-btn">预览 ></text>
+        </view>
+      </view>
     </van-tab>
     <van-tab title="已结束">
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.name}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index"  url="/pages/index/detail/detail?id={{item.id}}"/>
-      </van-cell-group>
+      <view class="award-list" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="linkaward">
+        <image class="award-list-img" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="award-item">
+          <text class="award-item-tit">{{item.name}}</text>
+          <text class="award-item-time">{{item.currTime}}</text>
+          <text class="award-item-btn">查看中奖者名单 ></text>
+        </view>
+      </view>
     </van-tab>
-    <!-- <van-tab title="未发放">
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="查看中奖者名单" label="{{item.currTime}}" wx:key="index" bindtap="change" />
-      </van-cell-group>
-    </van-tab> -->
   </van-tabs>
   <!-- <view class="bottom">
     <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" bindtap="goLottery">

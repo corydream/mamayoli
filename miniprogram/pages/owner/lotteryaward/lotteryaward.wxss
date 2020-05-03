@@ -1,0 +1,45 @@
+.lottery{
+    background-color: #fff;
+}
+.award-header{
+    height: 148rpx;
+    line-height: 148rpx;
+    color: #999;
+    font-size: 32rpx;
+    padding-left: 48rpx;
+    border-bottom: 24rpx solid #F4F5F7;
+}
+.no-award-name{
+    color: #333;
+    font-size: 32rpx;
+    padding-left: 48rpx;
+    height: 136rpx;
+    line-height: 136rpx;
+    font-weight: 500;
+}
+.item-outer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.no-award-item{
+    width: 150rpx;
+    height: 140rpx;
+}
+.item-avatar{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-left: 35rpx;
+}
+.item-name{
+    font-size: 24rpx;
+    color: #999;
+    text-align: center;
+    line-height: 40rpx;
+}
+/* <view class="item-outer">
+<view class="no-award-item" wx:for="{{winnerObj.first}}" wx:key="index">
+    <image class="item-avatar" src="{{item.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" />
+    <view class="item-name">{{item.userName}}</view>
+</view>
+</view> */

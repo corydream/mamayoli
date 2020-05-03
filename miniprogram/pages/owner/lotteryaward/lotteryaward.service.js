@@ -1,7 +1,7 @@
 
-import request from '../../service/http';
-export default class IndexService {
-    // 考生获取公告  
+import request from '../../../service/http';
+export default class LotteryAwardService {
+    
     login(param) {
         return request().post('/user/login', param)
     }
@@ -11,7 +11,10 @@ export default class IndexService {
     getUserInfo(url) {
         return request().get(url)
     }
-    list(url,param) {
-        return request().get(url, param)
+    list(param) {
+        return request().get('/activity/list', param)
+    }
+    getTodo(url) {
+        return request().get(url)
     }
 }

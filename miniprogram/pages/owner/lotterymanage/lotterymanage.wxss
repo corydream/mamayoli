@@ -20,3 +20,33 @@
   font-size       : 40rpx;
   background-color: #fff;
 }
+
+.award-list{
+  padding: 48rpx;
+  height: 160rpx;
+  display: flex;
+}
+.award-list-img{
+  width: 300rpx;
+  height: 160rpx;
+  margin-right: 32rpx;
+}
+.award-item{
+  display: flex;
+  flex-direction: column;
+}
+.award-item-tit{
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+.award-item-time{
+  color: #999;
+  font-size: 24rpx;
+  margin-bottom: 28rpx;
+}
+.award-item-btn{
+  color: #F66400;
+  font-size: 28rpx;
+}

@@ -27,7 +27,9 @@ class Index {
     //   title: `切换到标签 ${event.detail.index + 1}`,
     //   icon: 'none'
     // });
-
+    this.setData({
+      list:[]
+    });
     if (event.detail.index === 0) {
       this.getDataList('audit');
     } else if (event.detail.index === 1) {
@@ -36,8 +38,6 @@ class Index {
       this.getDataList('progress');
     }else if(event.detail.index === 3) {
       this.getDataList('done');
-    }else if(event.detail.index === 4) {
-      this.getDataList('finish');
     }
   }
   getDataList(type) {
@@ -54,10 +54,15 @@ class Index {
         }
     });
   }
-  change(ev){
-    // wx.navigateTo({
-    //   url:`../../index/detail/detail?id=${ev.currentTarget.dataset.id}`
-    // })
+  linkDetail(ev){
+    wx.navigateTo({
+      url:`../../index/detail/detail?id=${ev.currentTarget.dataset.id}`
+    })
+  }
+  linkaward(ev){
+    wx.navigateTo({
+      url:`../lotteryaward/lotteryaward?id=${ev.currentTarget.dataset.id}`
+    })
   }
   goLottery(){
     wx.reLaunch({

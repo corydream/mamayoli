@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
       <block wx:for="{{bannerList}}" wx:key="id">
         <swiper-item class="swiper-item-list">
-          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail" />
+          <image class="swiper-item-image" src="{{item.banner}}" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail" />
         </swiper-item>
       </block>
     </swiper>
@@ -40,7 +40,7 @@
   </view>
   <!-- 详情  list -->
   <view class="daily-list" wx:for="{{dailyList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
-    <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" />
     <view class="list-ctx d-list-ctx">
       <view class="adv ellpsis">{{item.providerName}}  赞助</view>
       <view class="title ellpsis">{{item.name}}</view>
@@ -54,7 +54,7 @@
   </view>
   <view class="list" wx:for="{{hotList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
     <view class="list-image">
-      <image class="" src="{{item.thumbnail}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+      <image class="" src="{{item.thumbnail}}" mode="aspectFit" lazy-load="{{true}}" binderror="" bindload="" />
     </view>
     <view class="list-ctx">
       <view class="adv ellpsis">{{item.providerName}}  赞助</view>
@@ -79,6 +79,6 @@
     <!-- 心愿卡 -->
     <view class="close-layout-btn" bindtap="close"></view>
     <button class="heart-btn heart-btn-home" hover-class="hover-linear-btn" bindtap="getHeart">开心收下</button>
-    <image class="popup-image" src="../../images/0404/popup-home.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <image class="popup-image" src="../../images/0404/popup-home.png" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" />
   </van-popup>
 </view>

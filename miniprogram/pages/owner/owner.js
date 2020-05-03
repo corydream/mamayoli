@@ -5,6 +5,7 @@ import creatorPage from '../../utils/create';
 import OwnerService from './owner.service';
 import token from '../../service/token.service';
 import { formatTime } from '../../utils/util';
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 
 const app = getApp();
 class Index {
@@ -124,6 +125,10 @@ class Index {
         }
       },
     });
+  }
+  // 商城
+  shop(){
+    Toast('尚在开发中~');
   }
   // 跳转页面
   record() {

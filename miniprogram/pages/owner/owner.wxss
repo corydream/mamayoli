@@ -1,11 +1,107 @@
-
 @import "../../style/popup";
+
 .user-center {
   font-family: PingFangSC-Regular, PingFang SC;
   position   : relative;
+  padding    : 60rpx 0 0;
+  background : #fff;
+  height     : 100vh;
 }
 
+.user-header {
+  display    : flex;
+  align-items: center;
+  padding    : 0 48rpx;
+}
 
+.avatar-image {
+  width        : 120rpx;
+  height       : 120rpx;
+  border-radius: 50%;
+}
+
+.avatar-name {
+  margin-left: 32rpx;
+  font-size  : 32rpx;
+  color      : #333;
+  font-weight: bold;
+}
+
+.config {
+  margin-left: auto;
+  height     : 88rpx;
+  padding    : 0 48rpx;
+}
+
+.config-icon {
+  width        : 48rpx;
+  height       : 48rpx;
+  margin-bottom: 8rpx;
+  display      : block;
+}
+
+.config-text {
+  font-size: 24rpx;
+  color    : #666;
+}
+
+/* 居中样式 */
+.center-item {
+  display        : flex;
+  padding        : 64rpx 100rpx 0;
+  height         : 133rpx;
+  justify-content: space-between;
+}
+
+.user-item {
+  display        : flex;
+  justify-content: space-between;
+  padding        : 0 30rpx;
+}
+
+.item-title {
+  font-size    : 32rpx;
+  color        : #333;
+  margin-bottom: 18rpx;
+  display      : block;
+  text-align   : center;
+}
+
+.item-ctx {
+  font-size: 24rpx;
+  color    : #666;
+}
+
+.banner {
+  width           : 654rpx;
+  height          : 160rpx;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  background-color: #d8d8d8;
+  color           : #999;
+  border-radius   : 8rpx;
+  margin          : 0 48rpx 48rpx;
+}
+
+.list{
+  border-top: 24rpx solid #F4F5F7;
+}
+.title-list {
+  padding: 48rpx!important;
+}
+.title-title{
+  font-size: 32rpx;
+  color: #333;
+  font-family:PingFangSC-Medium,PingFang SC;
+}
+
+.value-title{
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* copy
 .avatar {
   padding         : 112rpx 52rpx 80rpx 32rpx;
   height          : 420rpx;
@@ -113,4 +209,4 @@
   margin-bottom: 32rpx;
   font-size    : 32rpx;
   color        : rgba(28, 28, 28, 1);
-}
+} */

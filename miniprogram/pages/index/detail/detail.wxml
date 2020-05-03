@@ -9,7 +9,7 @@
     > -->
     <!-- awardList -->
     <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
-        <block wx:for="{{awardList}}" wx:key="id">
+        <block wx:for="{{priceList}}" wx:key="id">
             <swiper-item class="swiper-item-list">
                 <image class="swiper-item-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-id="{{item.id}}" bindtap="goDetail" />
             </swiper-item>
@@ -62,24 +62,7 @@
             加好友
         </button>
     </view>
-    <!-- <image wx:if="{{currInfos.attractingType == 'app'}}" class="d-image" src="../../../images/xcx_flow.png" />
-        <image wx:if="{{currInfos.attractingType == 'public'}}" class="d-image" src="../../../images/number_flow.png" />
-        <image wx:if="{{currInfos.attractingType == 'weixin'}}" class="d-image" src="../../../images/account_flow.png" />
-        <view class="d-type">
-            <view class="d-type-name">{{currInfos.providerName}}</view>
-            <button wx:if="{{currInfos.attractingType == 'app'}}"  hover-class="none" data-type="xcx" class="d-type-btn d-type-btn1" bindtap="attractType">
-                 <image src="../../../images/button1-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </button>
-            <button wx:if="{{currInfos.attractingType == 'public'}}" hover-class="none" data-type="gzh" class="d-type-btn d-type-btn2" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
-                <image src="../../../images/button2-detail.png" style="width:200rpx;height:72rpx;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </button>
-            <button wx:if="{{currInfos.attractingType == 'weixin'}}" hover-class="none" class="d-type-btn d-type-btn3" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
-                <image src="../../../images/button3-detail.png" style="width:200rpx;height:72rpx;"  mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-            </button>
-        </view>
-    </view>
-    <view class="d-ctx"><text>{{currInfos.detail}}</text></view>
-        </view> -->
+    <!-- 详情 -->
     <view class="d-ctx">
         <text>{{currInfos.detail}}</text>
     </view>
@@ -87,8 +70,7 @@
         <image wx:for="{{currInfos.detailPics}}" wx:key="index" src="{{item}}" mode="widthFix" lazy-load="false" />
     </view>
     <view class="d-bottom-black"></view>
-    <!-- </scroll-view> -->
-    <!-- wx:if="{{!currinfos.hasLottery}}" -->
+
     <view class="bottom" wx:if="{{currInfos.status == 'done'}}">
         <view class="go-exp-btn-outer">
             <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'app'}}" bindtap="attractType">
@@ -222,11 +204,6 @@
                     确 认
                 </button>
             </view>
-            <!-- <view class="bottom-layer" wx:if="{{!currinfos.hasLottery}}">
-                <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" open-type="share">
-                    炫耀一下
-                </button>
-            </view> -->
         </view>
     </van-popup>
     <van-toast id="van-toast" />
@@ -235,20 +212,7 @@
         <button class="heart-btn" hover-class="hover-linear-btn" bindtap="loadData">下一个</button>
         <image class="popup-image" src="../../../images/0404/popup3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     </van-popup>
-    <!-- <van-popup show="{{ showHeart }}" custom-class="popup-layout">
-        <view class="close-layout-btn" bindtap="closeHeart"></view>
-        <button class="heart-btn" hover-class="hover-linear-btn" data-type="{{'heart'}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoData">
-            开心收下
-        </button>
-        <image class="popup-image" src="../../../images/0404/popup0001.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-    </van-popup> -->
-    <van-popup show="{{ showNotHeart }}" custom-class="popup-not-layout">
-        <!-- 没有心愿卡 -->
-        <view class="close-layout-btn" bindtap="closeNotHeart"></view>
-        <button class="heart-btn" hover-class="hover-linear-btn" open-type="share">去分享</button>
-        <image class="popup-not-image" src="../../../images/0404/popup0002.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-    </van-popup>
-    <van-popup round show="{{ showShare }}" position="bottom" custom-style="height: 366rpx;">
+    <van-popup round show="{{ showShare }}" position="bottom" custom-style="height: 366rpx;" bind:close="shareClose">
         <view class="share-ctx-btn">
             <view class="share-ctx-btn-item">
                 <view class="share-ctx-image">
@@ -257,10 +221,10 @@
                 <text>发送给朋友</text>
                 <button hover-class="none" class="btn-click-share-fri" open-type="share"></button>
             </view>
-            <view class="share-ctx-btn-item" bindtap="goView">
-                <view class="share-ctx-image">
+            <view class="share-ctx-btn-item">
+                <button class="share-ctx-image" open-type="getUserInfo"  data-type="{{'webview'}}" lang="zh_CN" bindgetuserinfo="getUserInfoData">
                     <image src="../../../images/0419/pics.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
-                </view>
+                </button>
                 <text>保存分享图</text>
             </view>
         </view>

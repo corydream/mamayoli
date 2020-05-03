@@ -21,7 +21,8 @@ App({
   init: function( ) {
     // 全局数据
   },
-  onLaunch: function() {
+  onLaunch: function(options) {
+    console.log(options.query)
     if (wx.canIUse('getUpdateManager')) {
       const updateManager = wx.getUpdateManager()
       updateManager.onCheckForUpdate(function (res) {

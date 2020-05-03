@@ -13,7 +13,6 @@ class Index {
   }
   constructor() {
     this.ser = new LotteryRecordService();
-    console.log(app.globalData)
   }
   onLoad() {
     this.getUserInfo();
@@ -24,7 +23,6 @@ class Index {
       key: 'userInfo',
       success(res) {
         if (res.data && res.data.nickName) {
-          console.log(res.data)
           _this.setData({
             userData:res.data
           })
