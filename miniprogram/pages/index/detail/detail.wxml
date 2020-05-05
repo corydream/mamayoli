@@ -96,7 +96,7 @@
             </view>
         </view>
         <view>
-            <button class="bottom-btn end-button" hover-class="end-hover-button" lang="zh_CN" bindtap="findLotteryRes">
+            <button class="bottom-btn end-button" hover-class="end-hover-button" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfoData" data-type="{{'find'}}">
                 查看中奖结果
             </button>
             <button wx:if="{{activeResult == -2}}" class="bottom-btn after-button" hover-class="none" lang="zh_CN">
@@ -138,7 +138,7 @@
             <button class="bottom-share-btn bottom-btn" wx:else lang="zh_CN">已抽奖，等待开奖</button>
         </view>
     </view>
-    <van-popup position="bottom" show="{{getWinnerLayer}}" safe-area-inset-top="{{true}}" bind:close="closeWinnerLayer" closeable round>
+    <van-popup position="bottom" show="{{getWinnerLayer && isUserInfo}}" safe-area-inset-top="{{true}}" bind:close="closeWinnerLayer" closeable round>
         <view class="close" bindtap="closeWinnerLayer">
             <van-icon name="cross" />
         </view>

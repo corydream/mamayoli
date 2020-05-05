@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/index/detail/detail",
     "pages/owner/owner",
-    "pages/index/index",
     "pages/webview/webview",
     "pages/owner/address/address",
     "pages/owner/lotterydetail/lotterydetail",

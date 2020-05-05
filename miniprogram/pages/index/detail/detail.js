@@ -14,7 +14,7 @@ class Detail {
     hasMore: true,
     page_index: 1,
     total_count: 0,
-    currentId: '2',
+    currentId: '247',
     showNotHeart: false, // 心愿卡用完
     show: false, // 显示弹窗
     currInfos: {},
@@ -49,7 +49,7 @@ class Detail {
       });
     } else if (options && options.id) {
       _this.setData({
-        currentId: options.id ? options.id : '206',
+        currentId: options.id ? options.id : '247',
       });
     }
     this.getPriceList();
@@ -113,6 +113,8 @@ class Detail {
               _this.checkHeart();
             } else if (type && type.type == 'webview') {
               _this.goView();
+            }else if(type && type.type == 'find'){
+              _this.findLotteryRes();
             }
           });
         }
@@ -349,6 +351,9 @@ class Detail {
       key: 'userInfo',
       data: e.detail.userInfo,
     });
+    this.setData({
+      isUserInfo: true
+    })
     this.getLogin(e.detail.userInfo, type);
   }
   // 打开
