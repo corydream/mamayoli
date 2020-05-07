@@ -30,7 +30,7 @@
 .config {
   margin-left: auto;
   height     : 88rpx;
-  padding    : 0 48rpx;
+  padding-left   : 96rpx;
 }
 
 .config-icon {

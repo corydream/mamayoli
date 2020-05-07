@@ -1,0 +1,88 @@
+.list-tab {
+  height          : 88rpx;
+  color           : #666;
+  padding         : 60rpx 48rpx 0;
+  background-color: #fff;
+  display         : flex;
+}
+
+.list-tab .tab-nav {
+  margin-right: 90rpx;
+  position    : relative;
+}
+
+.tab-nav .cur {
+  color           : #333;
+  font-weight     : bold;
+  /* border-bottom: 2px solid #F66400; */
+}
+
+.tab-nav .cur:after {
+  content : '___';
+  position: absolute;
+  left    : 23rpx;
+  bottom  : 0;
+  color   : #333;
+  margin  : auto;
+}
+
+.daily-list {
+  width        : 686rpx;
+  height       : 586rpx;
+  min-height   : 586rpx;
+  background   : rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+  margin-bottom: 32rpx;
+}
+
+.d-image {
+  height       : 366rpx;
+  width        : 686rpx;
+  border-radius: 8rpx 8rpx 0 0;
+}
+
+.d-list-ctx {
+  padding: 24rpx 32rpx 32rpx;
+}
+
+.list-ctx .adv {
+  color        : #f66400;
+  font-size    : 28rpx;
+  margin-bottom: 12rpx;
+  font-weight  : bold;
+}
+
+.list-ctx .title {
+  color        : #333;
+  font-size    : 32rpx;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  white-space  : nowrap;
+  margin-bottom: 16rpx;
+  font-weight  : bold;
+}
+
+.list-ctx .time {
+  font-size    : 24rpx;
+  color        : #999;
+  margin-bottom: 24rpx;
+  font-family  : PingFangSC-Regular, PingFang SC;
+}
+
+.title-award-list {
+  padding: 42rpx!important;
+  margin-bottom: 32rpx;
+}
+.title-award-title{
+  font-size: 28rpx;
+  color: #333;
+  font-family:PingFangSC-Medium,PingFang SC;
+}
+
+.value-award-title{
+  font-size: 28rpx;
+  color: #999;
+}
+.title-award-list .van-cell__right-icon-wrap{
+  margin-top: 20rpx!important;
+}

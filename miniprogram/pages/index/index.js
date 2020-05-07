@@ -76,6 +76,7 @@ class Index {
       fail() {},
     });
   }
+  
   // 跳转详情页
   goDetail(e) {
     wx.navigateTo({

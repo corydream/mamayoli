@@ -128,7 +128,7 @@ class Index {
   }
   // 商城
   shop(){
-    Toast('尚在开发中~');
+    Toast('此模块正在研发中');
   }
   // 跳转页面
   record() {

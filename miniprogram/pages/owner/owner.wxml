@@ -4,28 +4,28 @@
     <image class="avatar-image" src="{{userData.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
     <view class="avatar-name">{{userData.nickName}}</view>
     <view class="config" bindtap="setting">
-      <image class="config-icon" src="../../images/0419/set.png"  lazy-load="false" binderror="" bindload="" />
+      <image class="config-icon" src="../../images/0419/set.png" lazy-load="false" binderror="" bindload="" />
       <text class="config-text">设置</text>
     </view>
   </view>
   <view class="center-item">
-    <view>
-      <text class="item-title">{{dataObj.totalWishCard}}</text>
-      <text class="item-ctx">已有积分</text>
-    </view>
     <view bindtap="record">
       <text class="item-title">{{dataObj.lotteryTimes}}</text>
       <text class="item-ctx">全部抽奖</text>
     </view>
-    <view>
+    <view bindtap="record">
       <text class="item-title">{{dataObj.winTimes}}</text>
       <text class="item-ctx">中奖记录</text>
     </view>
+    <view>
+      <text class="item-title">{{dataObj.winTimes}}</text>
+      <text class="item-ctx">我发起的</text>
+    </view>
   </view>
-  <view class="banner">banner位</view>
+  <!-- <view class="banner">banner位</view> -->
   <view class="list">
     <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="积分商城" value="积分换好物" bind:click="shop" link-type="navigateTo" url="/pages/dashboard/index" />
-    <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="卖家中心" value="" link-type="navigateTo" url="./center/center" />
+    <!-- <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="卖家中心" value="" link-type="navigateTo" url="./center/center" /> -->
     <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="商务合作" value="" link-type="navigateTo" url="./../coopheader/coopheader" />
   </view>
   <van-toast id="van-toast" />

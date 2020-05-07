@@ -15,6 +15,7 @@ class Index {
     canvasH: '',
     previewImage: '',
     canvasObj: null,
+    priceList:[]
   };
   constructor() {
     this.ser = new WebViewService();
@@ -32,6 +33,7 @@ class Index {
             userInfo: res.data,
           });
           _this.getData();
+          _this.getPriceList();
         }
       },
     });
@@ -53,6 +55,15 @@ class Index {
       .exec(async (result) => {
         this.init(result);
       });
+  }
+
+  async getPriceList() {
+    const res = await this.ser.getTodo(
+      `/activity/priceList?id=${this.data.currentId}`
+    );
+    this.setData({
+      priceList: res.data
+    })
   }
 
   init(res) {
@@ -103,9 +114,16 @@ class Index {
     img.src = this.data.userInfo.avatarUrl;
     img.onload = () => {
       ctx.save();
-      ctx.arc(offsetLeft + radius, avatarTop + radius, radius, 0, Math.PI * 2, false);
+      ctx.arc(
+        offsetLeft + radius,
+        avatarTop + radius,
+        radius,
+        0,
+        Math.PI * 2,
+        false
+      );
       ctx.clip();
-      ctx.drawImage(img, offsetLeft, avatarTop, radius *2, radius *2);
+      ctx.drawImage(img, offsetLeft, avatarTop, radius * 2, radius * 2);
       ctx.restore();
     };
   }
@@ -120,7 +138,6 @@ class Index {
     const rectWidth = canvas.width / dpr - 30; // 白色矩形宽度
     const rectHeight = (canvas.height / dpr) * (495.5 / 667); // 白色矩形高度
     const imageHeight = (canvas.height / dpr) * (184 / 667); // 图片高度
-
 
     const mamaFontSize = `${(canvas.height / dpr) * (18 / 667)}px`;
     const advFontSize = `${(canvas.height / dpr) * (14 / 667)}px`;
@@ -169,7 +186,7 @@ class Index {
     // 标题
     ctx.fillStyle = '#333';
     ctx.font = `${titleFontSize} SourceHanSansCN-Medium,SourceHanSansCN`;
-    const titleText = `${_this.data.currentData.name} X ${_this.data.currentData.lotteryNum}`;
+    const titleText = `${_this.data.priceList[0].name} X ${_this.data.priceList[0].number}`;
     ctx.fillText(
       titleText,
       15 + 15,
@@ -201,7 +218,7 @@ class Index {
   drawQRcode(canvas, ctx) {
     let _this = this;
     const dpr = this._dpr;
-    const qrSize = (canvas.height / dpr) * (50 / 667)
+    const qrSize = (canvas.height / dpr) * (50 / 667);
     const offsetTop = (canvas.height / dpr) * (454 / 667);
     const offsetLeft = canvas.width / dpr / 2 - qrSize; // 图片左侧距离
     const offsetNameTop = (canvas.height / dpr) * (603 / 667);
@@ -215,14 +232,16 @@ class Index {
         imgCode.src = res.path;
         imgCode.onload = () => {
           ctx.save();
-          ctx.drawImage(imgCode, offsetLeft, offsetTop, qrSize*2, qrSize*2);
+          ctx.drawImage(imgCode, offsetLeft, offsetTop, qrSize * 2, qrSize * 2);
           ctx.restore();
         };
       },
     });
 
     ctx.fillStyle = '#666';
-    ctx.font = `${(canvas.height / dpr) * (14 / 667)}px SourceHanSansCN-Medium,SourceHanSansCN`;
+    ctx.font = `${
+      (canvas.height / dpr) * (14 / 667)
+    }px SourceHanSansCN-Medium,SourceHanSansCN`;
     ctx.textAlign = 'center';
     const bottomText = `长按识别小程序，参与抽奖`;
     ctx.fillText(bottomText, fontNameLeft, offsetNameTop);

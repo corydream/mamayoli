@@ -1,12 +1,31 @@
 @import  '../../../style/button';
+@import "../../../style/list";
 
+.record {
+  font-size  : 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+.record-list {
+  background-color: #F1F2F6;
+  padding         : 32rpx;
+}
+
+/* .tab-nav{
+  border-bottom: 1px solid #eee;
+} */
+.cell-image {
+  width   : 140rpx;
+  height  : 110rpx;
+  display : block;
+  position: absolute;
+  top     : 19rpx;
+  right   : 200rpx;
+}
 .record {
   font-size       : 32rpx;
   font-family     : PingFangSC-Regular, PingFang SC;
   background-color: #fff;
-}
-.tab-nav{
-  border-bottom: 1px solid #eee;
 }
 .bottom {
   width           : 100%;

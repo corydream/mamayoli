@@ -1,6 +1,8 @@
 <view class="record">
     <van-cell is-link title="地址管理" link-type="navigateTo" url="/pages/owner/address/address" />
-    <van-cell is-link class="help-btn" title="帮助中心">
-        <button class='contact-button' open-type='contact'></button>
+    <van-cell is-link class="help-btn" title="使用问题">
+        <!-- <button class='contact-button' open-type='contact'></button> -->
+        <button class='contact-button' bindtap="ques"></button>
     </van-cell>
+    <van-toast id="van-toast" />
 </view>

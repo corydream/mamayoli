@@ -1,4 +1,4 @@
-<view class="record">
+<!-- <view class="record">
   <van-tabs custom-class="tab-nav" color="#333" sticky swipeable active="{{ active }}" bind:change="onChange">
     <van-tab title="待审核" border>
       <view class="award-list" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="linkDetail">
@@ -45,5 +45,30 @@
     <button class="bottom-btn" hover-class="hover-button" lang="zh_CN" bindtap="goLottery">
       发起抽奖
     </button>
-  </view> -->
+  </view> 
+</view> -->
+<view class="record">
+  <!-- 导航  nav -->
+  <view class="list-tab">
+    <view class="tab-nav" wx:for="{{nav}}" wx:key="index" data-index="{{index}}" bindtap="navTab">
+      <text class="{{item.id === currentTab ? 'cur': ''}}">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="record-list">
+    <view class="daily-list" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="linkDetail" wx:if="{{currentTab === 0}}">
+      <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" />
+      <view class="list-ctx d-list-ctx">
+        <view class="adv ellpsis">{{item.providerName}}  赞助</view>
+        <view class="title ellpsis">{{item.priceName}}</view>
+        <view class="time">{{item.currTime}} 自动开奖</view>
+      </view>
+    </view>
+    <view class="award-list" wx:if="{{currentTab === 1}}">
+      <van-cell custom-class="title-award-list" title-class="title-award-title" is-link value-class="value-award-title" wx:for="{{list}}" data-id="{{item.id}}" label="{{item.currTime}}" wx:key="index" bindtap="linkaward">
+        <view slot="title" class="cell-outer">
+          <view class="van-cell-text">{{item.priceName}}</view>
+        </view>
+      </van-cell>
+    </view>
+  </view>
 </view>

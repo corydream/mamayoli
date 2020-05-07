@@ -1,24 +1,37 @@
 <view class="record">
-  <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
-    <van-tab title="待开奖" border>
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" bindtap="change" />
-      </van-cell-group>
-    </van-tab>
-    <van-tab title="已结束">
-      <van-cell-group border>
-        <van-cell wx:for="{{list}}" is-link title="{{item.priceName}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" bindtap="change" />
-      </van-cell-group>
-    </van-tab>
+  <!-- 导航  nav -->
+  <view class="list-tab">
+    <view class="tab-nav" wx:for="{{nav}}" wx:key="index" data-index="{{index}}" bindtap="navTab">
+      <text class="{{item.id === currentTab ? 'cur': ''}}">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="record-list">
+    <view class="daily-list" wx:for="{{list}}" wx:key="index" data-id="{{item.activityId}}" bindtap="change" wx:if="{{currentTab === 0}}">
+      <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" />
+      <view class="list-ctx d-list-ctx">
+        <view class="adv ellpsis">{{item.providerName}}  赞助</view>
+        <view class="title ellpsis">{{item.priceName}}</view>
+        <view class="time">{{item.currTime}} 自动开奖</view>
+      </view>
+    </view>
+    <view class="award-list" wx:if="{{currentTab === 1}}">
+      <van-cell custom-class="title-award-list" title-class="title-award-title" is-link  value-class="value-award-title" wx:for="{{list}}" data-id="{{item.activityId}}" label="{{item.currTime}}" wx:key="index" bindtap="change">
+        <view slot="title" class="cell-outer">
+          <view class="van-cell-text">{{item.priceName}}</view>
+        </view>
+      </van-cell>
+    </view>
+  </view>
+  <!-- <van-tabs custom-class="tab-nav" color="#fff" sticky swipeable active="{{ active }}" bind:change="onChange">
     <van-tab title="中奖记录">
       <van-cell-group border>
-        <van-cell is-link wx:for="{{list}}"  data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" bindtap="change">
+        <van-cell is-link wx:for="{{list}}" data-id="{{item.activityId}}" center value="去看看" label="{{item.currTime}}" wx:key="index" bindtap="change">
           <view slot="title" class="cell-outer">
             <view class="van-cell-text">{{item.priceName}}</view>
-            <image  class="cell-image" src="../../../images/get_lottery.png"/>
+            <image class="cell-image" src="../../../images/get_lottery.png" />
           </view>
         </van-cell>
       </van-cell-group>
     </van-tab>
-  </van-tabs>
+  </van-tabs> -->
 </view>

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "发奖记录",
+  "navigationBarTitleText": "我发起的",
   "usingComponents": {
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",

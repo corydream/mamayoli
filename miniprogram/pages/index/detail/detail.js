@@ -42,7 +42,6 @@ class Detail {
   }
   onLoad(options) {
     let _this = this;
-    console.log(options);
     if (options && options.scene) {
       _this.setData({
         currentId: options.scene,
@@ -82,14 +81,14 @@ class Detail {
       imageUrl: this.data.currInfos.thumbnail,
     };
   }
-  getPriceList() {
+  getPriceList(id) {
     this.ser
-      .getTodo(`/activity/priceList?id=${this.data.currentId}`)
+      .getTodo(`/activity/priceList?id=${id ? id : this.data.currentId}`)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         this.setData({
-          priceList: res.data
-        })
+          priceList: res.data,
+        });
       });
   }
   getLogin(obj, type) {
@@ -113,7 +112,7 @@ class Detail {
               _this.checkHeart();
             } else if (type && type.type == 'webview') {
               _this.goView();
-            }else if(type && type.type == 'find'){
+            } else if (type && type.type == 'find') {
               _this.findLotteryRes();
             }
           });
@@ -274,6 +273,7 @@ class Detail {
       });
       this.data.currentId = res.data.id;
       this.getAwardList(res.data.id);
+      this.getPriceList(res.data.id);
       this.setData({ show: false });
     });
   }
@@ -352,8 +352,8 @@ class Detail {
       data: e.detail.userInfo,
     });
     this.setData({
-      isUserInfo: true
-    })
+      isUserInfo: true,
+    });
     this.getLogin(e.detail.userInfo, type);
   }
   // 打开
