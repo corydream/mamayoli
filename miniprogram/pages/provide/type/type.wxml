@@ -1,0 +1,31 @@
+<!--miniprogram/pages/provide/type/index.wxml-->
+
+<radio-group  style="" bindchange="onTypeChange">
+  <label>
+    <radio value="true" checked="{{contactMe=='true'}}"></radio>
+    <text style="width:100%">让中奖者联系我</text>
+    <text style="font-size:24rpx;  margin-left: 88rpx;color:rgba(153,153,153,1);">中奖者可获得发奖人的联系方式，双方自行商</text>
+  </label>
+
+</radio-group>
+<view wx:if="{{contactMe=='true'}}">
+  <text style="margin-left:32rpx;font-size:24rpx;color:rgba(153,153,153,1);margin-top:64rpx;margin-bottom:24rpx">请选择一种联系方式</text>
+  <radio-group class="radio-group" bindchange="onContactChange">
+    <label>
+      <radio value="phoneNum" checked="{{contactType=='phoneNum'}}" />
+      <text class="text">手机号</text>
+    </label>
+    <input wx:if="{{contactType=='phoneNum'}}" placeholder="请输入手机号"> </input>
+    <label>
+      <radio value="qrCode" checked="{{contactType=='qrCode'}}" />
+      <text class="text">二维码</text>
+    </label>
+    <view wx:if="{{contactType=='qrCode'}}" class="uploadPicView" bindtap="uploadQrCode">
+      <image wx:if="{{!qrCodePath}}" mode="scaleToFill" class="uploadPic" src="../../../images/add_pic.png"></image>
+      <text wx:if="{{!qrCodePath}}" class="upload text">点击添加二维码</text>
+      <image class="uploadImg" mode="widthFix" wx:if="{{qrCodePath}}" src="{{qrCodePath}}"></image>
+    </view>
+  </radio-group>
+</view>
+
+<button bindtap="submit">确定</button>

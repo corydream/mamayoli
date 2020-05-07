@@ -1,0 +1,14 @@
+<!--miniprogram/pages/provide/detail/detail.wxml-->
+<textarea class="detail" value="{{detailText}}" maxlength="500" placeholder="最多可设置500字符~" bindinput="bindDetailInput"></textarea>
+
+<block wx:for="{{detailPics}}" wx-for-index="index">
+  <view class="detailPicsView">
+    <image catchtap="deleteDetail" data-index="{{index}}" class="deletePrice" src="../../../images/delete.png"></image>
+    <image mode="widthFix" class="detailPics" src="{{item.filePath}}"></image>
+  </view>
+</block>
+<view class="uploadPicView" bindtap="uploadDetail">
+  <image mode="scaleToFill" class="uploadPic" src="../../../images/add_pic.png"></image>
+  <text class="upload text">点击添加图片</text>
+</view>
+<button bindtap="submit">确定</button>

@@ -1,0 +1,10 @@
+<!--miniprogram/pages/provide/attract/attract.wxml-->
+<radio-group bindchange="onSelectChange">
+
+  <label wx:for="{{list}}" wx-for-index="index">
+    <radio checked="{{index==checked}}" value="{{index}}">{{item.attractName}}</radio>
+  </label>
+</radio-group>
+
+<button bindtap="addAttract">添加新设置</button>
+<button bindtap="submit">确定</button>

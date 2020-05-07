@@ -1,0 +1,25 @@
+/* miniprogram/pages/provide/detail/detail.wxss */
+@import '../../../style/upload';
+
+.detail {
+  height: 360rpx;
+  width: calc(100% - 96rpx);
+  text-align: left;
+  border: solid #999 1px;
+  padding: 16rpx;
+  margin-left: 32rpx;
+  margin-right: 32rpx;
+  font-weight: 400;
+  border-radius: 8rpx;
+}
+
+.detailPicsView {
+  width: calc(100% - 64rpx);
+  position: relative;
+  margin-left: 32rpx;
+  margin-right: 32rpx;
+}
+
+.detailPics {
+  width: 100%;
+}

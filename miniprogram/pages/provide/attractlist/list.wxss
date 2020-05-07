@@ -1,0 +1,2 @@
+/* miniprogram/pages/provide/attractlist/list.wxss */
+@import '../../../style/upload';
