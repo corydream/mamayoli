@@ -879,7 +879,7 @@ Page({
         });
         if (res.data) {
           wx.redirectTo({
-            url: '/pages/im/publish/publish',
+            url:  `/pages/index/detail/detail?id=${res.data.id}`,
           });
         } else {
           wx.showToast({
