@@ -2,10 +2,9 @@
     <view class="add-top">
         <van-cell-group>
             <van-field value="{{ name }}" clearable label="姓名" placeholder="请输入用户名" bind:change="addName"/>
+            <van-field value="{{ phoneNum }}" type="number" label="电话" placeholder="请填写收件人手机号" bind:change="addPhone"/>
             <van-field value="{{ allProv }}" label="地区" placeholder="请选择地区" readonly bindtap="area"/>
             <van-field value="{{ detail }}" label="地址" placeholder="请填写详细地址" bind:change="addDetail"/>
-            <van-field value="{{ zipCode }}" type="number" label="邮编" placeholder="选填" bind:change="addZip"/>
-            <van-field value="{{ phoneNum }}" type="number" label="电话" placeholder="请填写收件人手机号" bind:change="addPhone"/>
         </van-cell-group>
     </view>
     <van-cell title="设为首选" clickable bind:click="onClick">

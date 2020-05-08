@@ -90,9 +90,6 @@ class Index {
   addDetail(e){
     this.data.detail = e.detail;
   }
-  addZip(e){
-    this.data.zipCode = e.detail;
-  }
   addPhone(e){
     this.data.phoneNum = e.detail;
   }

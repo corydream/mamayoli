@@ -5,7 +5,8 @@
   position   : relative;
   padding    : 60rpx 0 0;
   background : #fff;
-  height     : 100vh;
+  height     : calc(100vh - 116rpx);
+  position   : relative;
 }
 
 .user-header {
@@ -28,21 +29,21 @@
 }
 
 .config {
-  margin-left: auto;
-  height     : 88rpx;
-  padding-left   : 96rpx;
+  margin-left : auto;
+  height      : 88rpx;
+  padding-left: 96rpx;
 }
 
 .config-icon {
-  width        : 48rpx;
-  height       : 48rpx;
-  display      : block;
+  width  : 48rpx;
+  height : 48rpx;
+  display: block;
 }
 
 .config-text {
   margin-top: 8rpx;
-  font-size: 24rpx;
-  color    : #666;
+  font-size : 24rpx;
+  color     : #666;
 }
 
 /* 居中样式 */
@@ -84,23 +85,48 @@
   margin          : 0 48rpx 48rpx;
 }
 
-.list{
+.list {
   border-top: 24rpx solid #F4F5F7;
 }
+
 .title-list {
-  padding: 48rpx!important;
-}
-.title-title{
-  font-size: 32rpx;
-  color: #333;
-  font-family:PingFangSC-Medium,PingFang SC;
+  padding: 48rpx !important;
 }
 
-.value-title{
+.title-title {
+  font-size  : 32rpx;
+  color      : #333;
+  font-family: PingFangSC-Medium, PingFang SC;
+}
+
+.value-title {
   font-size: 24rpx;
-  color: #999;
+  color    : #999;
 }
 
+.login-popup {
+  width          : 702rpx;
+  height         : 88rpx;
+  background-size: 100% 100%;
+  position       : absolute;
+  bottom         : 84rpx;
+  left           : 24rpx;
+}
+
+.login-popup image {
+  width : 702rpx;
+  height: 88rpx;
+}
+.login-popup text{
+  display: block;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 80rpx;
+}
 /* copy
 .avatar {
   padding         : 112rpx 52rpx 80rpx 32rpx;

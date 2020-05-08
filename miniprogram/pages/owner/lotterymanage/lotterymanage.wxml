@@ -59,14 +59,14 @@
       <image class="d-image" src="{{item.thumbnail}}" mode="aspectFit|aspectFill|widthFix" lazy-load="{{true}}" binderror="" bindload="" />
       <view class="list-ctx d-list-ctx">
         <view class="adv ellpsis">{{item.providerName}}  赞助</view>
-        <view class="title ellpsis">{{item.priceName}}</view>
+        <view class="title ellpsis">{{item.name}}</view>
         <view class="time">{{item.currTime}} 自动开奖</view>
       </view>
     </view>
     <view class="award-list" wx:if="{{currentTab === 1}}">
       <van-cell custom-class="title-award-list" title-class="title-award-title" is-link value-class="value-award-title" wx:for="{{list}}" data-id="{{item.id}}" label="{{item.currTime}}" wx:key="index" bindtap="linkaward">
         <view slot="title" class="cell-outer">
-          <view class="van-cell-text">{{item.priceName}}</view>
+          <view class="van-cell-text">{{item.name}}</view>
         </view>
       </van-cell>
     </view>

@@ -17,12 +17,16 @@
       <text class="item-title">{{dataObj.winTimes}}</text>
       <text class="item-ctx">中奖记录</text>
     </view>
-    <view>
+    <view bindtap="launch">
       <text class="item-title">{{dataObj.winTimes}}</text>
       <text class="item-ctx">我发起的</text>
     </view>
   </view>
   <!-- <view class="banner">banner位</view> -->
+  <view class="login-popup" wx:if="{{isLayoutPopup}}">
+    <image src="../../images/0419/toastlogin.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
+    <text bindtap="goAddressInfo">{{isAddress?'快去试试手气吧':'点击完善信息，有助于领奖哦'}}</text>
+  </view>
   <view class="list">
     <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="积分商城" value="积分换好物" bind:click="shop" link-type="navigateTo" url="/pages/dashboard/index" />
     <!-- <van-cell custom-class="title-list" title-class="title-title" value-class="value-title" is-link title="卖家中心" value="" link-type="navigateTo" url="./center/center" /> -->

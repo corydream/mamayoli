@@ -6,6 +6,10 @@
   font-family: PingFangSC-Regular, PingFang SC;
 }
 
+.award-list{
+  flex-direction: column;
+  padding: 0!important;
+}
 .record-list {
   background-color: #F1F2F6;
   padding         : 32rpx;

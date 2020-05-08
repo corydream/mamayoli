@@ -1,12 +1,4 @@
 <view class="detail-container" id="Jdetail">
-    <!-- <scroll-view scroll-y="true" 
-        lower-threshold="150" 
-        refresher-enabled 
-        style="height: calc(100vh - 212rpx)" 
-        bindscrolltoupper="upper" 
-        bindrefresherpulling="lower"
-        refresher-threshold
-    > -->
     <!-- awardList -->
     <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#F66400">
         <block wx:for="{{priceList}}" wx:key="id">
@@ -189,7 +181,7 @@
                 <view class="award-detail">
                     <image class="award-detail-image" src="../../../images/go_award_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
                     <view class="award-info">
-                        <button class="award-detail-btn" hover-class="none" bindtap="showAddr">
+                        <button wx:if="{{!showAddr}}" class="award-detail-btn" hover-class="none" bindtap="showAddr">
                             去领奖
                         </button>
                     </view>
@@ -207,11 +199,11 @@
         </view>
     </van-popup>
     <van-toast id="van-toast" />
-    <van-popup show="{{ show }}" custom-class="popup-layout">
+    <!-- <van-popup show="{{ show }}" custom-class="popup-layout">
         <view class="close-layout-btn" bindtap="close"></view>
         <button class="heart-btn" hover-class="hover-linear-btn" bindtap="loadData">下一个</button>
         <image class="popup-image" src="../../../images/0404/popup3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
-    </van-popup>
+    </van-popup> -->
     <van-popup round show="{{ showShare }}" position="bottom" custom-style="height: 366rpx;" bind:close="shareClose">
         <view class="share-ctx-btn">
             <view class="share-ctx-btn-item">

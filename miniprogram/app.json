@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/owner/address/add/add",
     "pages/owner/owner",
     "pages/owner/lotterymanage/lotterymanage",
     "pages/owner/lotteryrecord/lotteryrecord",
@@ -11,7 +12,6 @@
     "pages/owner/lotteryaward/lotteryaward",
     "pages/index/share/share",
     "pages/coopheader/coopheader",
-    "pages/owner/address/add/add",
     "pages/index/submit/submit",
     "pages/owner/config/config",
     "pages/owner/center/center",

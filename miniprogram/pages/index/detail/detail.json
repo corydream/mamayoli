@@ -2,7 +2,7 @@
   "navigationBarTitleText": "奖品详情",
   "backgroundTextStyle": "dark",
   "onReachBottomDistance": 5,
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",

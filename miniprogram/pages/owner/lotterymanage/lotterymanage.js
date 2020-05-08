@@ -46,9 +46,9 @@ class Index {
       currentTab: e.currentTarget.dataset.index,
     });
     if (e.currentTarget.dataset.index) {
-      this.getDataList('progress');
-    } else {
       this.getDataList('done');
+    } else {
+      this.getDataList('progress');
     }
   }
   onChange(event) {
@@ -56,9 +56,6 @@ class Index {
     //   title: `切换到标签 ${event.detail.index + 1}`,
     //   icon: 'none'
     // });
-    this.setData({
-      list: [],
-    });
     if (event.detail.index === 0) {
       //   this.getDataList('audit');
       // } else if (event.detail.index === 1) {

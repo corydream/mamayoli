@@ -4,12 +4,13 @@
 import creatorPage from '../../utils/create';
 import OwnerService from './owner.service';
 import token from '../../service/token.service';
-import { formatTime } from '../../utils/util';
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 
 const app = getApp();
 class Index {
   data = {
+    isAddress: false,
+    isLayoutPopup: false,
     userData: {
       avatarUrl: '../../images/0419/avatar.png',
       nickName: '登陆/注册',
@@ -35,6 +36,29 @@ class Index {
         selected: 2,
       });
     }
+  }
+  // 获得领奖信息
+  goAddressInfo(){
+    if(this.data.isAddress){
+      return 
+    }
+    wx.navigateTo({
+      url: './address/add/add',
+    })
+  }
+  async getAddr() {
+    const res = await this.ser.getTodo('/address/list');
+    console.log(res);
+    if(res.data && res.data.length>0){
+      this.setData({
+        isAddress: true
+      })
+    }else{
+      this.setData({
+        isAddress: false
+      })
+    }
+
   }
   loginBtn() {
     this.setData({
@@ -110,7 +134,13 @@ class Index {
     };
     _this.setData({
       userData: params,
+      isLayoutPopup: true,
     });
+    setTimeout(() => {
+      _this.setData({
+        isLayoutPopup: false,
+      });
+    }, 3000);
     wx.login({
       success(res) {
         if (res.code) {
@@ -119,6 +149,7 @@ class Index {
             token.set(result.data);
             // 更新用户信息
             _this.ser.updateInfo(params);
+            _this.getAddr();
             _this.getData();
             // 获取用户信息
           });
@@ -127,13 +158,18 @@ class Index {
     });
   }
   // 商城
-  shop(){
+  shop() {
     Toast('此模块正在研发中');
   }
   // 跳转页面
   record() {
     wx.navigateTo({
       url: './lotteryrecord/lotteryrecord',
+    });
+  }
+  launch(){
+    wx.navigateTo({
+      url: './lotterymanage/lotterymanage'
     });
   }
   setting() {

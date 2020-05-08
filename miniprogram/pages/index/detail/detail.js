@@ -169,13 +169,13 @@ class Detail {
   }
   lucky() {
     let _this = this;
-    if (
-      _this.data.currInfos.status == 'audit' ||
-      _this.data.currInfos.status == 'auditFailed'
-    ) {
-      Toast('预览模式，无法抽奖哦');
-      return;
-    }
+    // if (
+    //   _this.data.currInfos.status == 'audit' ||
+    //   _this.data.currInfos.status == 'auditFailed'
+    // ) {
+    //   Toast('预览模式，无法抽奖哦');
+    //   return;
+    // }
     wx.requestSubscribeMessage({
       tmplIds: ['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'],
       success(res) {
