@@ -138,7 +138,7 @@
             <p class="red">*</p>
           </view>
         </view>
-        <view wx:if="{{priceProvideType!='address'}}" class="uploadPicView" bindtap="uploadProvideImg">
+        <view wx:if="{{priceProvideType!='address'}}"  style="height:{{priceContactId?'auto':'366rpx;'}}"  class="uploadPicView" bindtap="uploadProvideImg">
           <image wx:if="{{!priceContactId}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
           <text wx:if="{{!priceContactId}}" class="upload text">点击添加二维码</text>
           <image class="uploadImg" mode="widthFix" wx:if="{{priceContactId}}" src="{{priceContactId}}"></image>
