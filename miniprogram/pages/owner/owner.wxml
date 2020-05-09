@@ -18,7 +18,7 @@
       <text class="item-ctx">中奖记录</text>
     </view>
     <view bindtap="launch">
-      <text class="item-title">{{dataObj.winTimes}}</text>
+      <text class="item-title">{{dataObj.provideTimes}}</text>
       <text class="item-ctx">我发起的</text>
     </view>
   </view>
