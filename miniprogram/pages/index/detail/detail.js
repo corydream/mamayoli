@@ -176,6 +176,12 @@ class Detail {
     //   Toast('预览模式，无法抽奖哦');
     //   return;
     // }
+    console.log(_this.data.currInfos);
+    // const reg =抽奖模版 ｜
+    if (_this.data.currInfos.providerName.indexOf('抽奖模版') > -1) {
+      Toast('模板不能抽奖');
+      return;
+    }
     wx.requestSubscribeMessage({
       tmplIds: ['FIVR7Amk_8EBLPSvBhO4K0ZupxHkfts7YfsvRhv8ATA'],
       success(res) {
