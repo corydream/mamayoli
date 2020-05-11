@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/live/live",
     "pages/owner/address/add/add",
     "pages/owner/owner",
     "pages/owner/lotterymanage/lotterymanage",

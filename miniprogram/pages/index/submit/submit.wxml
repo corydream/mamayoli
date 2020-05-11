@@ -4,9 +4,8 @@
       <text class="ctx-title">快去联系商家发奖吧</text>
       <text class="ctx-text">点击下方“去领奖”添加商家</text>
    </view>
-     
    <view class="bottom">
-      <button class="old-button" open-type='contact' hover-class="hover-button" lang="zh_CN">
+      <button class="old-button" open-type='contact' hover-class="hover-button" lang="zh_CN" show-message-card="{{true}}" send-message-img="{{currInfos.thumbnail}}" send-message-title="{{currInfos.providerName}} 赞助"  send-message-path="/pages/index/detail/detail?id={{currInfos.id}}&winner=true">
          去领奖 >
       </button>
    </view>

@@ -1,6 +1,6 @@
 <!-- index.wxml -->
 <view class="container">
-  <my-component style="width:100%" heartNum='{{userData.totalWishCard? userData.totalWishCard - userData.lotteryTimes: 0}}' />
+  <my-component style="width:100%" heartNum='{{0}}' />
   <view class="category">
     <view class="g-left" bindtap="goHeart">
       <image class="g-image" src="../../images/icon 领心愿卡.png" />

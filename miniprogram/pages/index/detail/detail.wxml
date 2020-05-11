@@ -41,7 +41,7 @@
             <image class="d-flow-img" src="../../../images/0404/gongzhonghao.png" />
             <view class="d-flow-text">{{currInfos.providerName}}</view>
         </view>
-        <button data-type="gzh" class="d-btn-origin btn-blue" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
+        <button data-type="gzh" class="d-btn-origin btn-blue" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}}" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}">
             去看看
         </button>
     </view>
@@ -50,7 +50,7 @@
             <image class="d-flow-img" src="../../../images/0404/wechat.png" />
             <view class="d-flow-text">{{currInfos.providerName}}</view>
         </view>
-        <button hover-class="btn-green-hover" class="d-btn-origin btn-green" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="pages/index/detail/detail?id={{currInfos.id}}">
+        <button hover-class="btn-green-hover" class="d-btn-origin btn-green" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.attractingWeiXinId}}" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}">
             加好友
         </button>
     </view>
@@ -72,12 +72,12 @@
             <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'public'}}">
                 <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'public'}}" src="../../../images/0404/graygongzhonghao.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
                 <view class="go-exp-btn-text">去看看</view>
-                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
             <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'weixin'}}">
                 <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'weixin'}}" src="../../../images/0404/graywechat.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
                 <view class="go-exp-btn-text">加好友</view>
-                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
         <!-- 分享弹窗触发按钮 -->
@@ -105,12 +105,12 @@
             <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'public'}}">
                 <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'public'}}" src="../../../images/0404/graygongzhonghao.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
                 <view class="go-exp-btn-text">去看看</view>
-                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
             <view class="go-exp-btn" wx:if="{{currInfos.attractingType == 'weixin'}}">
                 <image class="go-exp-btn-img" wx:if="{{currInfos.attractingType == 'weixin'}}" src="../../../images/0404/graywechat.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" />
                 <view class="go-exp-btn-text">加好友</view>
-                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="pages/index/detail/detail?id={{currInfos.id}}"></button>
+                <button hover-class="none" class="btn-click-left" open-type='contact' show-message-card="{{true}}" send-message-title="{{currInfos.providerName}} 赞助" send-message-path="/pages/index/detail/detail?id={{currInfos.id}}"></button>
             </view>
         </view>
         <!-- 分享弹窗触发按钮 -->
@@ -175,8 +175,9 @@
             <view class="award-ctx">
                 <view class="title">恭喜你，中奖了</view>
                 <view class="text">你的中奖</view>
-                <view class="detail" wx:for="{{awardList}}" wx:key="index">
-                    {{item.name}} x {{item.number}}
+                <view class="detail">
+                    <!-- {{item.name}} x {{item.number}} -->
+                    {{winnerObj.priceName}}
                 </view>
                 <view class="award-detail">
                     <image class="award-detail-image" src="../../../images/go_award_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />

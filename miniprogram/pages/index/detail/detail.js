@@ -19,6 +19,7 @@ class Detail {
     show: false, // 显示弹窗
     currInfos: {},
     awardList: [],
+    awardObj:{},
     activeResult: '',
     addrText: '点击添加配送信息',
     getWinner: false, //是否中奖
@@ -150,7 +151,7 @@ class Detail {
       .then((res) => {
         if (res.data) {
           wx.navigateTo({
-            url: '../submit/submit',
+            url: `../submit/submit?id=${this.data.currentId}`,
           });
         }
       });
@@ -243,6 +244,7 @@ class Detail {
         if (res.data) {
           this.setData({
             getWinner: true,
+            winnerObj: res.data
           });
         } else {
           this.setData({
@@ -309,7 +311,7 @@ class Detail {
       }
       if (res.data.addressInfo && res.data.addressInfo.id) {
         wx.navigateTo({
-          url: '../submit/submit',
+          url: `../submit/submit?id=${this.data.currentId}`,
         });
       }
       res.data.currTime = formatTime(res.data.lotteryTime);
