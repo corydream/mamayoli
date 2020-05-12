@@ -36,6 +36,7 @@ class Detail {
     winnerObj: {}, // 中奖者名单列表
     showShare: false, // 分享弹窗
     priceList: [],
+    addrObj:{}
   };
   ser = null;
   constructor() {
@@ -133,7 +134,7 @@ class Detail {
           this.setData({
             btnLight: true,
             addrId: options.addrId,
-            addrText: `${addr.province}  ${addr.city}  ${addr.area}`,
+            addrText: `${addr.province}  ${addr.city}  ${addr.area} ${addr.detail}`,
           });
         }
       });
@@ -179,7 +180,7 @@ class Detail {
     // }
     console.log(_this.data.currInfos);
     // const reg =抽奖模版 ｜
-    if (_this.data.currInfos.providerName.indexOf('抽奖模版') > -1) {
+    if (_this.data.currInfos.providerName.indexOf('抽奖模板') > -1) {
       Toast('模板不能抽奖');
       return;
     }
@@ -242,6 +243,7 @@ class Detail {
       .getTodo(`/activity/isWinner?id=${this.data.currentId}`)
       .then((res) => {
         if (res.data) {
+          this.getAddress();
           this.setData({
             getWinner: true,
             winnerObj: res.data
@@ -259,6 +261,18 @@ class Detail {
     const res = await this.ser.getTodo(
       `/user/share?action=activity&id=${this.data.currentId}`
     );
+  }
+  // 获取默认收货地址
+  async getAddress(){
+    const res = await this.ser.getTodo('/address/list');
+    if(res.data&& res.data.length>0){
+      const obj = res.data.filter(v=>v.isFirst == true)[0];
+      this.setData({
+        btnLight: true,
+        addrId: obj.id,
+        addrText: `${obj.province}  ${obj.city}  ${obj.area} ${obj.detail}`,
+      })
+    } 
   }
   // onReachBottom() {
   //   this.loadData();

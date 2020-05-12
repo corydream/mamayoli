@@ -434,6 +434,10 @@ swiper {
 
 .send-addr .addr-text {
     color: #666;
+    max-width: 500rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bottom-addr {
