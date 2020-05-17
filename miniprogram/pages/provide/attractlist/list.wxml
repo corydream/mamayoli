@@ -1,0 +1,16 @@
+<!--miniprogram/pages/provide/attractlist/list.wxml-->
+<text>请选择一种加粉类型</text>
+<radio-group bindchange="onTypeChange">
+  <label wx:for="{{list}}" wx-for-index="index" wx:key="attractType">
+    <radio checked="{{index==checked}}" value="{{index}}">{{item.attractName}}</radio>
+    <input value="{{item.attractText}}" bindinput="bindTextInput" data-index="{{index}}" wx:if="{{index==checked}}" placeholder="请输入{{item.attractName}}名称"></input>
+    <input value="{{item.attractDetail}}" bindinput="bindDetailInput" data-index="{{index}}" wx:if="{{index==checked}}" maxlength="15" placeholder="请输入加粉描述，建议15字符内"></input>
+    <view wx:if="{{index==checked}}" data-index="{{index}}" class="uploadPicView" bindtap="uploadImg">
+      <image wx:if="{{!item.attractImg}}" mode="scaleToFill" class="uploadPic" src="../../../images/add_pic.png"></image>
+      <text wx:if="{{!item.attractImg}}" class="upload text">上传二维码图片</text>
+      <image class="uploadImg" mode="widthFix" wx:if="{{item.attractImg}}" src="{{item.attractImg}}"></image>
+
+    </view>
+  </label>
+</radio-group>
+<button bindtap="submit">确定</button>

@@ -1,0 +1,71 @@
+<!--miniprogram/pages/provide/provide.wxml-->
+<scroll-view scroll-x="false" scroll-y="true" class="swipper-scroll">
+  <block wx:for="{{priceList}}" data-index="{{item.index}}">
+    <!-- <view wx:if="{{index!=0}}" class="empty"></view> -->
+    <view class="uploadPicView" bindtap="uploadPrice" data-index="{{item.index}}">
+      <image wx:if="{{!item.priceThumbnail}}" mode="scaleToFill" class="uploadPic" src="../../images/add_pic.png"></image>
+      <text wx:if="{{!item.priceThumbnail}}" class="upload text">点击添加图片</text>
+      <image wx:if="{{item.index>=1}}" catchtap="deletePrice" data-index="{{item.index}}" class="deletePrice" src="../../images/delete.png"></image>
+      <image class="uploadImg" mode="scaleToFill" wx:if="{{item.priceThumbnail}}" src="{{item.priceThumbnail}}"></image>
+    </view>
+    <view class="row">
+      <view class="lable">
+        奖品名称
+        <p class="red">*</p>
+      </view>
+      <input class="content" maxlength="10" placeholder="奖品名称建议在10字以内" bindinput="bindPriceNameInput" data-index="{{item.index}}"></input>
+    </view>
+    <view class="line"></view>
+
+    <view class="row">
+      <view class="lable">
+        奖品份数
+        <p class="red">*</p>
+      </view>
+      <input class="content" placeholder="1~999份" bindinput="bindPriceNumInput" type="number" data-index="{{item.index}}"></input>
+    </view>
+    <view class="line"></view>
+  </block>
+  <view class="row">
+    <view class="addPirce" bindtap="addPrice">
+      <image class="addPriceImg" src="../../images/add_pic.png"></image>
+      <text>添加奖项</text>
+    </view>
+  </view>
+  <view class="empty"></view>
+  <view class="row">
+    <view class="lable">
+      开奖时间
+      <p class="red">*</p>
+    </view>
+    <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      {{startDate}}
+    </picker>
+  </view>
+  <view class="line"></view>
+  <view class="row">
+    <view class="lable">
+      发奖方式
+      <p class="red">*</p>
+    </view>
+    <text class="content" bindtap="selectProvideType">{{provideType.contactMe?'让中奖者联系我':'请选择发奖方式'}}</text>
+  </view>
+  <view class="empty"></view>
+  <view class="row">
+    <view class="lable">活动说明</view>
+    <text class="content" bindtap="setDetail">{{activityDetail.detailText?activityDetail.detailText:'选填'}}</text>
+  </view>
+  <view class="empty"></view>
+  <view class="row">
+    <view class="lable">更多功能</view>
+  </view>
+  <view class="row">
+    <view class="lable">快捷加粉</view>
+    <text class="content" bindtap="setAttract">{{attract.attractName?attract.attractName:'点击设置'}}</text>
+  </view>
+  <view class="row">
+    <view class="lable">允许参与者分享</view>
+    <switch></switch>
+  </view>
+  <button class="bottom-btn-active bottom-btn" bindtap="submit"> 发起抽奖</button>
+</scroll-view>

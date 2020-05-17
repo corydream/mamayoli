@@ -1,5 +1,12 @@
 {
   "pages": [
+    "pages/provide/provide",
+    "pages/provide/attract/attract",
+    "pages/provide/attractlist/list",
+    "pages/provide/detail/detail",
+    "pages/provide/type/type",
+    "pages/index/detail/detail",
+    "pages/owner/owner",
     "pages/index/index",
     "pages/live/live",
     "pages/owner/address/add/add",
@@ -22,7 +29,8 @@
     "page/im/publish/publish",
     "pages/cropper/cropper-example",
     "custom-tab-bar/index",
-    "pages/blank/blank"
+    "pages/blank/blank",
+    "pages/provide/success/success"
   ],
   "navigateToMiniProgramAppIdList": [
     "wx33937497a1a8a074"
